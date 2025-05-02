@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadata %}
+    <meta name="description" content="" /> 
+    <link rel="canonical" href="https://mstream.com{{request.path_info}}" />               
+    <meta property="og:site_name" content="Eduklinik" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+    <meta property="og:locale" content="en_us" />
+    <meta property="og:url" content="https://mstream.com{{request.path_info}}" />
+    <meta name="twitter:site" content="@CCI" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="Mstream - Multiple Movies and Musics Stream, Explore Trendings and read blogs about your fevourite show" />
+    <meta name="twitter:creator" content="@PythonMaster" />
+    <meta name="twitter:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+    <meta property="twiter:card" content="summary_large_image" />
+    <meta name="twitter:image:alt" content="mstreamapp logo" />
+    <link rel="stylesheet" href="{% static 'eduklinikapp/styles/blog.css' %}">
+    <link rel="stylesheet" href="{% static 'eduklinikapp/styles/homepage.css' %}">
+    <link rel="stylesheet" href="{% static 'educklinkappp/styles/responsive.css' %}">
+{% endblock %}
+
+{% block title %}Eduklinik - blog section {% endblock %}
+
+{% block content %}
+
+<style>
+    main{
+        padding: 1rem 0px !important;
+    }
+</style>
+<section class="blog_image" style="background-image: url(/eduklinikapp/static/eduklinikapp/images/laptop.jpg);">
+    <div class="blog_image_holder">
+        <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+            Explore detailed articles on the Eduklinik Blog.
+        </h1>
+        <div class="links_container">
+            <span>
+                <a href="/">
+                    Home
+                </a>
+            </span>
+            <span>
+                ❯
+            </span>
+            <span>
+                <a href="/blog/">
+                    Blog
+                </a>
+            </span>
+        </div>
+    </div>
+</section>
+
+
+    <div class="blog_body">
+
+        {% if popular %}
+        {% for post in popular %}
+        <div class="blog_body_header">
+            <div class="blog_body_header_image" style="background-image: url({{post.image.url}});">
+            </div>
+            <div class="blog_body_header_text">
+                <div class="read">
+                    <span>
+                        <p>
+                            Posted on: {{post.pub_date}}
+                        </p>
+                    </span>
+                </div>
+                <a href="/">
+                    <h1>{{post.title}}</h1>
+                </a>
+                <p>
+                    <a href="/">
+                        {{post.context}}
+                    </a> 
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <div class="blog_body_content">
+            {% for i in page %}
+            <div class="blog_body_post_1 blog_body_post">
+                <div class="blog_body_post_image blog_body_post_image_1" style="background-image: url({{i.image.url}});">
+                </div>
+                <div class="blog_body_post_text">
+                    <a href="">
+                        <h2>
+                           {{i.title}}
+                        </h2>
+                    </a>
+                    <p>
+                        <a href="">
+                            {{i.context}}
+                        </a>
+                    </p>
+                    <div>
+                        <span>
+                            <p>
+                               Posted on: {{i.pub_date}}
+                            </p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    
+<div class="next_prev_btns">
+    {% if page.has_previous %}
+        <button id="next">
+            <a href="/blog/?page={{ page.previous_page_number}}">
+            << Prev
+            </a>
+        </button> 
+{% endif %}
+
+{% if page.has_next %}
+<button id="next">
+    <a href="/blog/?page={{ page.next_page_number}}">
+        Next >>
+    </a>
+</button>
+
+{% endif %}
+    </div>
+
+    <section class="developer">
+        <div class="developer_name">
+            <h3>Developed and maintained by <span>clean code inc.(CCI)</span></h3>
+        </div>
+        <div class="copyright">
+            <h4> &copy; Copyright 2025. All rights reserved</h4>
+            <h5>EDUKLINIK LEARNING NEXUS</h5>
+        </div>
+    </section>
+    <script src="homepage.js"></script>
+
+{% endblock %}

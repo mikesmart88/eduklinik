@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz app</title>
+    <link rel="stylesheet" href="/stylesheet/quiz.css">
+    <link rel="stylesheet" href="/stylesheet/online_school.css">
+    <link rel="stylesheet" href="/stylesheet/responsive.css">
+</head>
+
+<body>
+    <aside id="aside">
+        <header class="aside_header">
+            <h1>
+                EDUKLINIK ONLINE SCHOOL
+            </h1>
+            <span id="remove_aside">
+                X
+            </span>
+        </header>
+        <ul>
+            <li>
+                <a href="/eduklinikapp/online_school.html">
+                    Home
+                </a>
+                <span>
+                    &#10095;
+                </span>
+            </li>
+            <li>
+                <a href="/eduklinikapp/online_school/profile.html">
+                    My profile
+                </a>
+                <span>
+                    &#10095;
+                </span>
+            </li>
+             <li>
+                <a href="">
+                    Dashboard
+                </a>
+                <span>
+                    &#10095;
+                </span>
+            </li>
+            <li>
+                <a href="/eduklinikapp/online_school/about_onlineschool.html">
+                    About us
+                </a>
+                <span>
+                    &#10095;
+                </span>
+            </li>
+            <li>
+                <a href="">
+                    Contact us
+                </a>
+                <span>
+                    &#10095;
+                </span>
+            </li>
+            <li>
+                <a href="/eduklinikapp/online_school/rate_us.html">
+                    Rate us
+                </a>
+                <span>
+                    &#10095;
+                </span>
+            </li>
+        </ul>
+        <section class="nav_end">
+            <div class="log_out">
+                <a href="">
+                    Log out
+                </a>
+                <span>
+                    &#11122;
+                </span>
+            </div>
+            <div class="Support">
+                <a href="">
+                    Support
+                </a>
+                <span>
+                    &#11122;
+                </span>
+            </div>
+        </section>
+    </aside>
+    <main id="top">
+        <section class="main-header">
+            <div class="menu">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                    </svg>
+                </span>
+              <img class="home_image" src="/images/header_logo.png" alt="" width="40px">
+            </div>
+            <div class="main_header_search">
+                <input type="search" placeholder="What are you looking for?...">
+                <button class="search">
+                    <a id="searchfunction" href="">
+                        Search
+                    </a>
+                </button>
+            </div>
+            <div class="main_header_end">
+                <div class="activated">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="search_svg" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg>
+                </div>
+                <div class="user">
+                    <span id="display_profile">
+                        <img id="profile_image" class="user_image" src="/images/esther.jpg">
+                    </span>
+                    <div class="myprofile">
+                        <h1>
+                            My profile &#10091;
+                        </h1>
+                        <span class="remove_profile">
+                            X
+                        </span>
+                        <img id="profile_image" src="/images/esther.jpg" alt="Profile image is here" width="100px"
+                            height="100px" style="border-radius: 50%;">
+                        <div class="profile_info">
+                            <span>
+                                <b>
+                                    Name:
+                                </b> Oloruntimileyin Esther
+                            </span>
+                            <span>
+                                <b>
+                                    Gender:
+                                </b> Female
+                            </span>
+                            <span>
+                                <b>
+                                    Age:
+                                </b> 23
+                            </span>
+                            <span>
+                                <b>
+                                    Discipline:
+                                </b> Student
+                            </span>
+                            <span>
+                                <b>
+                                    Hobbies:
+                                </b> Reading , Dancing and painting
+                            </span>
+                        </div>
+                        <button class="edit_profile">
+                            <a href="">
+                                Edit profile &#10095;
+                            </a>
+                        </button>
+                    </div>
+                </div>
+                <div class="notifications">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-bell" viewBox="0 0 16 16">
+                        <path
+                            d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
+                    </svg>
+                    <small id="notifications_numbers">
+                        20
+                    </small>
+                </div>
+            </div>
+        </section>
+
+      <!-- hey comments goes in here -->
+
+        <section class="quiz_container">
+            <div class="heading">
+                <h1>MATHEMATICS(common entrance)</h1>
+                <span id="timer">
+                    00 : 02 : 44
+                </span>
+            </div>
+            <div class="question">
+                <h2>1. Which of the folliwng is the main reason why we see lightning first before thunder?</h2>
+                <div class="answer_buttons">
+                    <button class="btns" id="answer_1">
+                       Lightning is very handsome
+                    </button>
+                    <button class="btns" id="answer_2">
+                        the earth is very far from the sun
+                    </button>
+                    <button class="btns" id="answer_3">
+                       lightning is faster than sound 
+                    </button>
+                    <button class="btns" id="answer_4">
+                        this is a mediocre
+                    </button>
+                </div>
+            </div>
+            <div class="next_prev">
+                <button class="btn2">
+                    &#11119; Previous  
+                 </button>
+                <button class="btn1">
+                   Next  &#11122;
+                </button>
+              
+            </div>
+            <div class="single_btns">
+               <button class="question_each" id="each_1">1</button>
+               <button class="question_each" id="each_2">2</button>
+               <button class="question_each" id="each_3">3</button>
+               <button class="question_each" id="each_4">4</button>
+               <button class="question_each" id="each_5">5</button>
+               <button class="question_each" id="each_6">6</button>
+               <button class="question_each" id="each_7">7</button>
+               <button class="question_each" id="each_8">8</button>
+               <button class="question_each" id="each_9">9</button>
+               <button class="question_each" id="each_10">10</button>
+               <button class="question_each" id="each_11">11</button>
+               <button class="question_each" id="each_12">12</button>
+               <button class="question_each" id="each_13">13</button>
+               <button class="question_each" id="each_14">14</button>
+               <button class="question_each" id="each_15">15</button>
+               <button class="question_each" id="each_16">16</button>
+               <button class="question_each" id="each_17">17</button>
+               <button class="question_each" id="each_18">18</button>
+               <button class="question_each" id="each_19">19</button>
+               <button class="question_each" id="each_20">20</button>
+               <button class="question_each" id="each_21">21</button>
+               <button class="question_each" id="each_22">22</button>
+               <button class="question_each" id="each_23">23</button>
+               <button class="question_each" id="each_24">24</button>
+               <button class="question_each" id="each_25">25</button>
+            </div>
+            <button class="home_btn">
+                <a href="/eduklinikapp/quiz/quiz_search.html">
+                    &#11126; Home
+                </a>
+            </button>
+        </section>
+        <div class="back_to_top">
+            <a class="rotate_to_top" href="#top">
+                &#10095;
+            </a>
+        </div>
+    </main>
+    <section class="fixed_bottom_navbar">
+        <span>
+            <a href="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="25" fill="currentColor" class="bi bi-shop"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.37 2.37 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0M1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5M4 15h3v-5H4zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm3 0h-2v3h2z" />
+                </svg>
+            </a>
+            <small>
+                <a href="/eduklinikapp/online_school.html" style="color: var(--text-black); font-size:.7rem ;">
+                    Home
+                </a>
+            </small>
+        </span>
+        <span>
+            <a href="/eduklinikapp/courses/courseshome.html">
+                <svg xmlns="http://www.w3.org/500/svg" width="16" height="25" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0M1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0" />
+                    <path
+                        d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zm6 8.73V7.27l-3.5 1.555v4.35zM1 8v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1" />
+                    <path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6M7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
+                </svg>
+            </a>
+            <small>
+                <a href="/eduklinikapp/courses/courseshome.html" style="color: var(--text-black); font-size:.7rem ;">
+                    Courses
+                </a>
+            </small>
+        </span>
+        <span>
+            <a href="/eduklinikapp/search.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                  </svg>
+            </a>
+            <small>
+                <a href="/eduklinikapp/search.html" style="color: var(--main-color); font-size:.7rem ;">
+                   Search
+                </a>
+            </small>
+        </span>
+        <span>
+            <a href="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="25" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0" />
+                    <path
+                        d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z" />
+                </svg>
+            </a>
+            <small>
+                <a href="/eduklinikapp/" style="color: var(--text-black); font-size:.7rem ;">
+                    Dashboard
+                </a>
+            </small>
+        </span>
+    </section>
+    <script src="/eduklinikapp/quiz/quiz.js"></script>
+    <script src="main.js"></script>
+    <script src="/eduklinikapp/onlineschool.js"></script>
+</body>
+
+</html>

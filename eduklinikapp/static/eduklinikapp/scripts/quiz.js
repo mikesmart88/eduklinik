@@ -1,0 +1,2 @@
+//
+const quiz = document.querySelector('')
