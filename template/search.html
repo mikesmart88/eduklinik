@@ -1,15 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
+{% block metadata %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'eduklinikapp/styles/online_school.css' %}">
+<link rel="stylesheet" href="{% static 'eduklinikapp/styles/responsive.css' %}">
+{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>search section</title>
-    <link rel="stylesheet" href="/stylesheet/online_school.css">
-    <link rel="stylesheet" href="/stylesheet/responsive.css">
-</head>
+{% block title %} search section {% endblock %}
 
-<body>
+{% block content %}
+
+<style>
+    header{
+        display: none !important;
+    }
+    footer{
+        display: none !important;
+    }
+</style>
     <div class="search_body">
         <div class="search_container">
             <span class="rotate_back">
@@ -18,8 +27,17 @@
                         d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
                 </svg>
             </span>
-            <button class="search_sect">
-                <input type="search" class="search_input" placeholder="Search for anything here">
+            <form method="post" class="search_sect">
+                {% csrf_token %}
+                <style>
+                    form{
+                        gap: 0px !important;
+                        display: flex;
+                        align-items: center;
+                        flex-direction: row !important;
+                    }
+                </style>
+                <input type="search" class="search_input" name="search_bar" placeholder="Search for anything here" style="color: #000 !important;">
                 <span id="search_instructor">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-search" viewBox="0 0 16 16">
@@ -27,25 +45,257 @@
                             d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                     </svg>
                 </span>
-            </button>
+            </form>
         </div>
+
         <div class="search_results">
             <h5>
-                Search results for . <b>""</b>
+                Search results for . <b>"{{search_query}}"</b>
             </h5>
+
+            <style>
+                .csearch_body > div {
+                    height: 360px;
+                    background-color: var(--text-white);
+                    box-shadow: var(--box-shadow);
+                    border-radius: 0.5rem;
+                    min-width: 260px;
+                    max-width: 300px;
+                    display: block;
+                    position: relative;
+                    color: var(--text-black);
+                    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                }
+                .box_image_container {
+                    height: 50%;
+                    width: 100%;
+                    background-color: gray;
+                    border-top-left-radius: 0.4rem;
+                    border-top-right-radius: 0.4rem;
+                }
+                .box_text{
+                    font-size: 14px;
+                }
+            </style>
+
             <div class="popular_searches">
                 <div class="popular_searches_header">
                     <h3>
-                        Popular Searches.
+                        Course Searches.
                     </h3>
                 </div>
 
+                <style>
+                    .csearch_body {
+                        display: flex !important;
+                        justify-content: center;
+                        align-items: center;
+                        margin-top: 1rem;
+                        width: 100%;
+                        height: fit-content;
+                        box-sizing: border-box;
+                        overflow: hidden;
+                        flex-wrap: wrap;
+                        padding: 10px;
+                    }
+                </style>
+
+                {% if results %}
+
+                <div class="csearch_body">
+                    {% for course in results %}
+                    <div class="boxes">
+                        <div class="box_image_container">
+                            <img class="box_image" src="{{course.c_img.url}}" alt="">
+                        </div>
+                        <div class="box_text">
+                            <span id="category">
+                                {{course.course_subject.sub_name}}
+                            </span>
+                            <div class="poster_date">
+                                <small>
+                                    Uploaded on <small id="upload_time">{{course.pub_date|date:"Y-m-d"}}</small> by <small id="uploader">{{course.up_by.name}}</small>
+                                </small>
+                            </div>
+                            <h2 id="Topic">
+                                {{course.meta_data}}
+                            </h2>
+                            <div class="time_learners">
+                                <div class="time">
+                                </div>
+                                <div class="learners">
+                                    &#10012;
+                                    <span>
+                                        {{course.participant}} Learners
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="more_start">
+                                <button class="more">
+                                    <a href="/course/single/{{course.c_str}}">
+                                        More info
+                                    </a>
+                                </button>
+                                <button class="start">
+                                    <a href="/payment/pay/{{course.c_str}}" style="color: #fff;">
+                                        Start learning
+                                    </a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+
+                <h2>
+                    No results found
+                </h2>
+                {% endif %}
             </div>
+
+
+            <div class="popular_searches">
+                <div class="popular_searches_header">
+                    <h3>
+                        Books and Others search.
+                    </h3>
+                </div>
+
+                <style>
+                    .csearch_body {
+                        display: flex !important;
+                        gap: 10px;
+                        justify-content: center;
+                        align-items: center;
+                        margin-top: 1rem;
+                        width: 100%;
+                        height: fit-content;
+                        box-sizing: border-box;
+                        overflow: hidden;
+                        flex-wrap: wrap;
+                    }
+                </style>
+
+                {% if book_results %}
+                <div class="csearch_body">
+                    <style>
+                        .csearch_body div{
+                            font-size: 14px;
+                        }
+                        .csearch_body div > h4{
+                            font-size: 1.2rem;
+                        }
+                    </style>
+                    {% for lesson in book_results %}
+                    <!-- the following is materials file boxes -->
+                    <div class="materials_boxes" style="color: #000;">
+                        {% if lesson.class_level is not None %}
+                        <span class="file_subject">
+                            {{lesson.class_level}}
+                        </span>
+                        {% else %}
+
+                        {% endif %}
+                        <img id="lesson_thumbnail" src="{{lesson.lesson_img.url}}">
+                        <div class="material_box_content">
+                            <h4 class="subject">
+                                {{lesson.under_course.course_name}}
+                            </h4>
+                            <h5 class="file_name">
+                               {{lesson.ltitle}}
+                            </h5>
+                            <div class="poster_date">
+                                <small>
+                                    Uploaded on <small id="upload_time">{{lesson.pub_date|date:"Y-m-d"}}</small> by <small id="uploader">{{lesson.add_by.name}}</small>
+                                </small>
+                            </div>
+                            <div style="font-weight: 500;">
+                                Type: {{lesson.attribute}}
+                            </div>
+                            <br>
+                            <button class="download">
+                                <a href="" download="download">
+                                    Download file
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                </div>
+                {% else %}
+                <h2>
+                    No results found
+                </h2>
+                {% endif %}
+            </div>
+            
+            
+            <div class="popular_searches">
+                <div class="popular_searches_header">
+                    <h3>
+                        Blog Searches.
+                    </h3>
+                </div>
+
+                <style>
+                    .csearch_body {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-top: 1rem;
+                        width: 100%;
+                        height: fit-content;
+                        box-sizing: border-box;
+                        overflow: hidden;
+                        flex-wrap: wrap;
+                    }
+                </style>
+
+                {% if blog_results %}
+                <div class="csearch_body">
+                    {% for i in blog_results %}
+                    <div class="blog_body_post_1 blog_body_post">
+                        <div class="blog_body_post_image blog_body_post_image_1" style="background-image: url({{i.image.url}});">
+                        </div>
+                        <div class="blog_body_post_text">
+                            <a href="">
+                                <h2>
+                                   {{i.title}}
+                                </h2>
+                            </a>
+                            <p>
+                                <a href="">
+                                    {{i.context}}
+                                </a>
+                            </p>
+                            <div>
+                                <span>
+                                    <p>
+                                       Posted on: {{i.pub_date}}
+                                    </p>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+
+                <h2>
+                    No results found
+                </h2>
+                {% endif %}
+            </div>
+
         </div>
     </div>
+
+
     <section class="fixed_bottom_navbar">
         <span>
-            <a href="/eduklinikapp/online_school.html">
+            <a href="/">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-house-door-fill" viewBox="0 0 16 16">
                     <path
@@ -53,13 +303,13 @@
                 </svg>
             </a>
             <small>
-                <a href="/eduklinikapp/online_school.html" style="color: var(--main-color); font-size:.7rem ;">
+                <a href="/" style="color: var(--main-color); font-size:.7rem ;">
                     Home
                 </a>
             </small>
         </span>
         <span>
-            <a href="/eduklinikapp/courses/courseshome.html">
+            <a href="/course/">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-award-fill" viewBox="0 0 16 16">
                     <path
@@ -68,7 +318,7 @@
                 </svg>
             </a>
             <small>
-                <a href="/eduklinikapp/courses/courseshome.html" style="color: var(--main-color); font-size:.7rem ;">
+                <a href="/course/" style="color: var(--main-color); font-size:.7rem ;">
                     Courses
                 </a>
             </small>
@@ -86,7 +336,7 @@
             </small>
         </span> -->
         <span>
-            <a href="/eduklinikapp/search.html">
+            <a href="/search/">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
                     viewBox="0 0 16 16">
                     <path
@@ -94,13 +344,13 @@
                 </svg>
             </a>
             <small>
-                <a href="/eduklinikapp/search.html" style="color: var(--main-color); font-size:.7rem ;">
+                <a href="/search/" style="color: var(--main-color); font-size:.7rem ;">
                     Search
                 </a>
             </small>
         </span>
         <span>
-            <a href="">
+            <a href="/dashboard/">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-database-fill-dash" viewBox="0 0 16 16">
                     <path
@@ -110,13 +360,11 @@
                 </svg>
             </a>
             <small>
-                <a href="/eduklinikapp/" style="color: var(--main-color); font-size:.7rem ;">
+                <a href="/dashboard/" style="color: var(--main-color); font-size:.7rem ;">
                     Dashboard
                 </a>
             </small>
         </span>
     </section>
-    <script src="onlineschool.js"></script>
-</body>
-
-</html>
+    <script src="{% static 'eduklinikapp/scripts/onlineschool.js/' %}"></script>
+{% endblock %}

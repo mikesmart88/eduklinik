@@ -9,6 +9,7 @@ from django.http import HttpRequest, JsonResponse as json
 from django.views.decorators.http import require_GET as re_ge
 from django.contrib.auth.decorators import login_required as l_g
 from django.core.paginator import Paginator, EmptyPage
+from .functions import loop_mode
 
 
 # Create your views here.
@@ -38,7 +39,7 @@ def login_view(request):
     if request.user.is_authenticated:
         # check what type of use it is and return then to there dashboard
         #lets use student for now 
-        return redirect('/user/dashboard')
+        return redirect('/dashboard')
     else:
         return render(request, 'user/login.html')
     
@@ -46,7 +47,7 @@ def register_view(request):
     if request.user.is_authenticated:
         # check what type of use it is and return then to there dashboard
         #lets use student for now 
-        return redirect('/user/dashboard')
+        return redirect('/dashboard')
     else:
         return render(request, 'user/register.html')
     
@@ -55,21 +56,92 @@ def online_school(request):
     if request.user.is_authenticated:
         user = request.user
         current_user = models.profile.objects.filter(user=user).first()
-        pics = models.userimage.objects.filter(profile=current_user).first()
+        c_ann = models.c_notification.objects.order_by('-add_date')[:3]
         context = {
             'user': current_user,
-            'img': pics,
+            'anounce': c_ann,
         }
         return render(request, 'online_school.html', context=context)
     else:
         return redirect('/user/login')
+    
+def course(request):
+    if request.user.is_authenticated:
+        user = request.user
+        current_user = models.profile.objects.filter(user=user).first()
+        p_course = models.course.objects.annotate(high=Max('participant')).order_by('-pub_date')[:10]
+        cart_sub = models.subject.objects.prefetch_related('course').all()
+        context = {
+            'user': current_user,
+            'pop_cur': p_course,
+            'subject': cart_sub,
+            'subjects': cart_sub,
+        }
+        return render(request, 'courses/courseshome.html', context=context)
+    else:
+        return redirect('/user/login')
+    
+def popular_course(request):
+    if request.user.is_authenticated:
+        user = request.user
+        current_user = models.profile.objects.filter(user=user).first()
+        p_course = models.course.objects.annotate(high=Max('participant')).order_by('-pub_date').all()
+        page_n = request.GET.get('page', 1)
+        p = Paginator(p_course, 15)
+        try:
+            page = p.page(page_n)
+        except EmptyPage:
+            page = p.page(1)
+        context = {
+            'user': current_user,
+            'pop_cur': page,
+        }
+        return render(request, 'courses/popular.html', context=context)
+    else:
+        return redirect('/user/login')
+    
+def spec_cource(request, course):
+    if request.user.is_authenticated:
+        user = request.user
+        current_user = models.profile.objects.filter(user=user).first()
+        sub = models.subject.objects.filter(sub_name=course).first()
+        main_course = models.course.objects.filter(course_subject=sub).all()
+        page_n = request.GET.get('page', 1)
+        p = Paginator(main_course, 15)
+        try:
+            page = p.page(page_n)
+        except EmptyPage:
+            page = p.page(1)
+        context = {
+            'user': current_user,
+            'pop_cur': page,
+        }
+        return render(request, 'courses/popular.html', context=context)
+    else:
+        return redirect('/user/login')
 
+def get_course(request, str):
+    if request.user.is_authenticated:
+        user = request.user
+        current_user = models.profile.objects.filter(user=user).first()
+        main_course = models.course.objects.filter(c_str=str).first()
+        get_sub = models.subject.objects.filter(sub_name=main_course.course_subject).first()
+        related = models.course.objects.filter(course_subject=get_sub).exclude(c_str=main_course.c_str).order_by('-pub_date')[:5]
+        context = {
+            'user': current_user,
+            'main':main_course,
+            'relative':related
+        }
+        return render(request, 'courses/singlecourse.html', context=context)
+    else:
+        return redirect('/user/login')
+    
 
 def blog(request):
     popular_post = models.article.objects.annotate(high=Max('views')).filter().order_by('-pub_date')[:1]
     post = models.article.objects.all().order_by('-pub_date')
     page_n = request.GET.get('page', 1)
-    p = Paginator(post, 1)
+    p = Paginator(post, 15)
     try:
         page = p.page(page_n)
     except EmptyPage:
@@ -81,3 +153,121 @@ def blog(request):
         'page': page,
     }
     return render(request, 'blog.html', context=context)
+
+def lesson_note(request):
+    if request.user.is_authenticated:
+        user = request.user
+        current_user = models.profile.objects.filter(user=user).first()
+        all_leson = models.lesson.objects.filter(attribute='lesson note').all()
+        page_n = request.GET.get('page', 1)
+        p = Paginator(all_leson, 15)
+        try:
+            page = p.page(page_n)
+        except EmptyPage:
+            page = p.page(1)
+        context = {
+            'user': current_user,
+            'l_all': page,
+        }
+        return render(request, 'lessonnotes/lesson.html', context=context)
+    else:
+        return redirect('/user/login')
+    
+def pass_quest(request):
+    if request.user.is_authenticated:
+        user = request.user
+        current_user = models.profile.objects.filter(user=user).first()
+        all_leson = models.lesson.objects.filter(attribute='past question').all()
+        page_n = request.GET.get('page', 1)
+        p = Paginator(all_leson, 15)
+        try:
+            page = p.page(page_n)
+        except EmptyPage:
+            page = p.page(1)
+        context = {
+            'user': current_user,
+            'l_all': page,
+        }
+        return render(request, 'pastquestions/pastquestion1.html', context=context)
+    else:
+        return redirect('/user/login')
+    
+
+def syllabuses(request):
+    if request.user.is_authenticated:
+        user = request.user
+        current_user = models.profile.objects.filter(user=user).first()
+        all_leson = models.lesson.objects.filter(attribute='syllabue').all()
+        page_n = request.GET.get('page', 1)
+        p = Paginator(all_leson, 15)
+        try:
+            page = p.page(page_n)
+        except EmptyPage:
+            page = p.page(1)
+        context = {
+            'user': current_user,
+            'l_all': page,
+        }
+        return render(request, 'syllabuses/syllabuses1.html', context=context)
+    else:
+        return redirect('/user/login')
+
+def textbook(request):
+    if request.user.is_authenticated:
+        user = request.user
+        current_user = models.profile.objects.filter(user=user).first()
+        all_leson = models.lesson.objects.filter(attribute='textbook').all()
+        page_n = request.GET.get('page', 1)
+        p = Paginator(all_leson, 15)
+        try:
+            page = p.page(page_n)
+        except EmptyPage:
+            page = p.page(1)
+        context = {
+            'user': current_user,
+            'l_all': page,
+        }
+        return render(request, 'Textbooks/Textbooks1.html', context=context)
+    else:
+        return redirect('/user/login')
+    
+def handout(request):
+    if request.user.is_authenticated:
+        user = request.user
+        current_user = models.profile.objects.filter(user=user).first()
+        all_leson = models.lesson.objects.filter(attribute='handout').all()
+        page_n = request.GET.get('page', 1)
+        p = Paginator(all_leson, 15)
+        try:
+            page = p.page(page_n)
+        except EmptyPage:
+            page = p.page(1)
+        context = {
+            'user': current_user,
+            'l_all': page,
+        }
+        return render(request, 'handouts/handout1.html', context=context)
+    else:
+        return redirect('/user/login')
+    
+    
+def payment(request, cstr):
+    main = models.course.objects.filter(c_str=cstr).first()
+    return render(request, 'payments.html')
+
+
+def webmanifest(request):
+    return render(request, 'seo/manifest.json', content_type='application/json')
+
+
+@re_ge
+def about(request):
+    return render(request, 'about.html')
+
+
+@re_ge
+def contact(request):
+    return render(request, 'contact.html')
+
+
+    

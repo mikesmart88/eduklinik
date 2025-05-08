@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadata %}
+<meta name="description" content="" /> 
+<link rel="canonical" href="https://mstream.com{{request.path_info}}" />               
+<meta property="og:site_name" content="Eduklinik" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+<meta property="og:locale" content="en_us" />
+<meta property="og:url" content="https://mstream.com{{request.path_info}}" />
+<meta name="twitter:site" content="@CCI" />
+<meta name="twitter:title" content="" />
+<meta name="twitter:description" content="Mstream - Multiple Movies and Musics Stream, Explore Trendings and read blogs about your fevourite show" />
+<meta name="twitter:creator" content="@PythonMaster" />
+<meta name="twitter:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+<meta property="twiter:card" content="summary_large_image" />
+<meta name="twitter:image:alt" content="mstreamapp logo" />
+<link rel="stylesheet" href="{% static 'eduklinikapp/styles/dashboard.css' %}">
+
+{% endblock %}
+
+{% block title %}Eduklinik - User dashboard {% endblock %}
+
+{% block content %}
+
+{% include 'admin/boards.html' %}
+
+<section class="content">
+    <wt-tkn id="us_tkn">{% csrf_token %}</wt-tkn>
+    
+    <style>
+        .loader{
+            display: none !important;
+        }
+        .link:nth-child(1){
+            background-color: transparent !important;
+            color: #303030d3 !important;
+        }
+        .setting_head{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .user_main{
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+            overflow: hidden;
+            max-height: 50%;
+        }
+        .user_main span{
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            overflow: hidden;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            border-radius: 25px;
+        }
+        .user_main span img{
+            width: auto;
+            height: 100%;
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .usermain_text{
+            height: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+            margin-left: 5px;
+        }
+        .usermain_text h4{
+            margin: 0px;
+            font-size: 0.90rem;
+        }
+        .usermain_text p{
+            margin: 0px;
+            box-sizing: border-box;
+            color: #303030d3;
+            font-size: 11px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-weight: 600;
+        }
+        .secter h4{
+            font-size: 12px;
+            color: #303030d3;
+        }
+        .secter p{
+            color: #161616;
+        }
+        .n{
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .update_user{
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+        .del_btn{
+            width: 150px;
+            box-sizing: border-box;
+            overflow: hidden;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: red !important;
+            background-color: #000;
+            border-radius: 7px;
+        }
+    </style>
+    
+    <section class="setting_head">
+        <h4>
+            User Profile Information.
+        </h4>
+    </section>
+    <br>
+    
+    <section class="setting_head">
+        <div class="user_main">
+            <span>
+                <img {% if user.profile_pics %} src="{{user.profile_pics.image.url}}" {% else %} src="{% static 'eduklinikapp/images/nouser.png' %}" {% endif %} alt="">
+            </span>
+            <div class="usermain_text">
+                <h4>
+                    {{user.user.first_name}}
+                </h4>
+                <p>
+                    {{user.user.email}}
+                </p>
+            </div>
+        </div>
+        <div>
+            <p class="n">
+                {{user.account_type}}
+            </p>
+        </div>
+    </section>
+    <br>
+    
+    <section class="user_account_sect">
+        <h4>
+            Personal Information
+        </h4>
+        <article class="update_user">
+    
+            <div class="secter">
+                <h4>Full Name</h4>
+                <p>{{user.user.first_name}}</p>
+            </div>
+    
+            <div class="secter">
+                <h4>Email Address</h4>
+                <p>{{user.user.email}}</p>
+            </div>
+    
+            <div class="secter">
+                <h4>Date Joined</h4>
+                <p>{{user.date_joined}}</p>
+            </div>
+    
+            <div class="secter">
+                <h4>Country</h4>
+                <p>{{user.country}}</p>
+            </div>
+    
+            <div class="secter">
+                <h4>Phone Number</h4>
+                <p>{{user.c_code}}{{user.phone_number}}</p>
+            </div>
+    
+            <div class="secter">
+                <h4>Ip address</h4>
+                <p>{{user.ip_adres}}</p>
+            </div>
+    
+            <div class="secter">
+                <h4>Browser access</h4>
+                <p>{{user.Browser}}</p>
+            </div>
+    
+    
+        </article>
+    </section>
+    <br>
+    
+    <section class="user_account_sect" style="min-height: 0px; display:block;">
+        <article class="update_user" style="display: block;">
+            <h2>
+                Delete Account
+            </h2>
+            <p>
+                Dont Need This Account Anymore.
+            </p>
+            <a href="/user/delete" class="del_btn">
+                Delete Account
+            </a>
+        </article>
+    </section>
+    
+    <br>
+    <br>
+    
+    
+
+</section>
+
+{% endblock %}

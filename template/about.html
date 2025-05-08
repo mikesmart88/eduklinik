@@ -1,0 +1,561 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Eduklinik - About us {% endblock %}
+
+{% block metadata %}
+<meta name="description" content="" /> 
+<link rel="canonical" href="https://mstream.com{{request.path_info}}" />               
+<meta property="og:site_name" content="Eduklinik" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+<meta property="og:locale" content="en_us" />
+<meta property="og:url" content="https://mstream.com{{request.path_info}}" />
+<meta name="twitter:site" content="@CCI" />
+<meta name="twitter:title" content="" />
+<meta name="twitter:description" content="Mstream - Multiple Movies and Musics Stream, Explore Trendings and read blogs about your fevourite show" />
+<meta name="twitter:creator" content="@PythonMaster" />
+<meta name="twitter:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+<meta property="twiter:card" content="summary_large_image" />
+<meta name="twitter:image:alt" content="mstreamapp logo" />
+<link rel="stylesheet" href="{% static 'eduklinikapp/styles/online_school.css' %}">
+<link rel="stylesheet" href="{% static 'eduklinikapp/styles/responsive.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+    main > .main-body {
+        height: auto;
+        /* background-color: rgb(216, 25, 25); */
+        width: 100%;
+        display: block;
+        position: relative;
+        padding: 0rem 3rem;
+        margin-top: 4rem;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 
+        'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    .about_body > h1 {
+        color: var(--main-color);
+        width: auto;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        border-left: 5px solid red;
+        padding-left: 0.5rem;
+    }
+
+    .ed_heder{
+        display: none !important;
+    }
+    #footer{
+        display: none !important;
+    }
+    .main-body{
+        color: #000 !important;
+    }
+    </style>
+    
+    <aside id="aside">
+        <header class="aside_header">
+            <h1>
+                EDUKLINIK ONLINE SCHOOL
+            </h1>
+            <span id="remove_aside">
+                X
+            </span>
+        </header>
+        <ul>
+            <li>
+                <a href="/">
+                    Home
+                </a>
+                <span>
+                    &#10095;
+                </span>
+            </li>
+            <li>
+                <a href="/user/profile/">
+                    My profile
+                </a>
+                <span>
+                    &#10095;
+                </span>
+            </li>
+            <li>
+                <a href="/dashboard/">
+                    Dashboard
+                </a>
+                <span>
+                    &#10095;
+                </span>
+            </li>
+            <li>
+                <a href="/eduklinikapp/homepage.html">
+                    About us
+                </a>
+                <span>
+                    &#10095;
+                </span>
+            </li>
+            <li>
+                <a href="">
+                    Contact us
+                </a>
+                <span>
+                    &#10095;
+                </span>
+            </li>
+            <li>
+                <a href="/eduklinikapp/online_school/rate_us.html">
+                    Rate us
+                </a>
+                <span>
+                    &#10095;
+                </span>
+            </li>
+        </ul>
+        <section class="nav_end">
+            <div class="log_out">
+                <a href="">
+                    Log out
+                </a>
+                <span>
+                    &#11122;
+                </span>
+            </div>
+            <div class="Support">
+                <a href="/eduklinikapp/support.html">
+                    Support
+                </a>
+                <span>
+                    &#11122;
+                </span>
+            </div>
+        </section>
+    </aside>
+    
+    <!-- the section that foloows is the section for the main part of the stuff -->
+    
+    <main id="top">
+        <section class="main-header">
+            <div class="menu">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                    </svg>
+                </span>
+                <img class="home_image" src="{% static 'eduklinik/images/header_logo.png' %}" alt="" width="40px">
+                <!-- <h5>
+                    HOME
+                </h5> -->
+            </div>
+            <div class="main_header_search">
+                <input type="search" placeholder="What are you looking for?...">
+                <button class="search">
+                    <a id="searchfunction" href="">
+                        Search
+                    </a>
+                </button>
+            </div>
+            <div class="main_header_end">
+                <div class="activated">
+                    <a href="/search/" style="color: var(--main-color);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="search_svg" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                        </svg>
+                        <!--  -->
+                    </a>
+                </div>
+                <div class="user">
+                    <span id="display_profile">
+                        <img {% if user.profile_pics %} src="{{user.profile_pics.image.url}}" {% else %} src="{% static 'eduklinikapp/images/nouser.png' %}" {% endif %} id="profile_image" class="user_image" >
+    
+                    </span>
+                    <div class="myprofile">
+                        <h1>
+                            My profile &#10091;
+                        </h1>
+                        <span class="remove_profile">
+                            X
+                        </span>
+                        <img {% if user.profile_pics %} src="{{user.profile_pics.image.url}}" {% else %} src="{% static 'eduklinikapp/images/nouser.png' %}" {% endif %} id="profile_image" class="user_image" style="width: 100px; height:100px;border-radius: 50%;">
+                        <div class="profile_info">
+                            <span>
+                                <b>
+                                    Name:
+                                </b> {{user.user.first_name}}.
+                            </span>
+                            <span>
+                                <b>
+                                    Date joined:
+                                </b> {{user.date_joined}}
+                            </span>
+                            <span>
+                                <b>
+                                    Age:
+                                </b> {{user.age}}
+                            </span>
+                            <span>
+                                <b>
+                                    Discipline:
+                                </b> {{user.account_type}}
+                            </span>
+                            <span>
+                                <b>
+                                   ip address:
+                                </b> {{user.ip_adress}}
+                            </span>
+                        </div>
+                        <button class="edit_profile">
+                            <a href="/">
+                                Edit profile &#10095;
+                            </a>
+                        </button>
+                    </div>
+                </div>
+                <div class="notifications" onclick="window.location.href='/notification/';">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-bell" viewBox="0 0 16 16">
+                        <path
+                            d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
+                    </svg>
+                    {% if user.not_count >= 0 %}
+                    <small id="notifications_numbers">
+                        {{cnt}}
+                    </small>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+    <section class="main-body about_body">
+        <h1 style="margin-top: 2rem;">
+            ABOUT EDUKLINIK
+        </h1>
+        <div class="about_coontent">
+            <p>
+                Eduklinik is a learning platform designed to provide educators, administrators and learners with a
+                single robust, secure and integrated system to create personalised learning environments. You can
+                download the software onto your own web server or ask one of our knowledgeable Eduklinik Partners to
+                assist you.
+
+                Eduklinik is built by theEduklinik project which is led and coordinated byEduklinik HQ, which is
+                financially supported by a network of Eduklinik Partner service companies worldwide.
+
+                <br><br>
+                Eduklinik is a free and open-source learning management system (LMS) developed by <span>Clean code
+                    incoporation</span>.
+                It
+                is designed to provide educators, administrators and learners with a single robust, secure and
+                integrated system to create personalized learning environments.Eduklinik is used by millions of
+                users
+                around the world in schools, universities, workplaces and other organizations.
+                <br><br>
+                Eduklinik is built on a modular architecture, which allows for easy customization and extension of
+                its
+                features. It supports a wide range of activities and resources, including quizzes, assignments,
+                forums, wikis, databases, and more. Verily still under the process of development some of the
+                aforementioned features will be rolling out in the coming weeks . Eduklinik also has a large
+                community of developers and users who
+                contribute to its ongoing development and improvement.
+            </p>
+            <h1 style="border-bottom: 1px solid gray; margin: 1rem 0rem;">
+                Built for learning, globally
+            </h1>
+            <p>
+            <h1>
+                Designed to support both teaching and learning
+            </h1>
+            With over 10 years of intense knowledge about the ambit of education as a firm and of course guided by
+            social constructionist pedagogy, Eduklinik delivers a
+            powerful set of learner-centric tools and collaborative learning environments that empower both
+            teaching and learning.A lot this features will be rolling out in the next update very soon.
+            </p>
+            <p>
+            <h1>
+                Easy to use
+            </h1>
+            A simple interface and well-documented resources along with ongoing
+            usability improvements make Eduklinik easy to learn and use.
+            </p>
+            <p>
+            <h1>
+                Always up-to-date
+            </h1>
+            The Eduklinik project’s open-source approach means that Eduklinik is continually being reviewed and
+            improved on to suit the current and evolving needs of its users.
+            </p>
+            <p>
+            <h1>
+                Eduklinik in your language
+            </h1>
+            Eduklinik’s multilingual capabilities ensure there are no linguistic limitations to learning online.
+            The Eduklinik community has begun translating Eduklinik into more than 10 languages (and counting) so
+            users can easily localise their Eduklinik site, along with plenty of resources, support and community
+            discussions available in various languages.
+            </p>
+            <p>
+            <h1>
+                Scalable to any size
+            </h1>
+            From a few students to millions of users, Eduklinik can be scaled to support the needs of both small
+            classes and large organisations. Because of its flexibility and scalability, Eduklinik has been adapted
+            for use across education, business, non-profit, government, and community contexts.
+            </p>
+            <p>
+            <h1>
+                Robust, secure and private
+            </h1>
+            Committed to safeguarding data security and user privacy, security controls are constantly being
+            updated and implemented in Eduklinik development processes and software to protect against unauthorised
+            access, data loss and misuse. Eduklinik can be easily deployed on a private secure cloud or server for
+            complete control.
+            </p>
+            <p>
+            <h1>
+                Use any time, anywhere, on any device
+            </h1>
+            Eduklinik is web-based and so can be accessed from anywhere in the world. With a default
+            mobile-compatible interface and cross-browser compatibility, content on the Eduklinik platform is
+            easily accessible and consistent across different web browsers and devices.
+            </p>
+            <p>
+               <h1>
+                Backed by a strong community
+               </h1>
+                The Eduklinik project is well-supported by an active international community, a team of dedicated
+                full-time developers and a network of certified Eduklinik Partners. Driven by open collaboration and
+                great community support, the project continues to achieve rapid bug fixes and improvements, with
+                major new releases every six months. Come explore Eduklinik with us in our community forums!
+            </p>
+        </div>
+        <div class="see_also">
+            <h1>
+                <span>
+                    See also
+                </span>
+                <span>
+                    &#11122;
+                </span>
+            </h1>
+            <div class="see_also_content">
+                <ul class="see_one">
+                    <a href="/eduklinikapp/support.html">
+                       Our support center
+                    </a>
+                    <span>
+                        &#11122;
+                    </span>
+                </ul>
+                <ul class="see_two">
+                    <a href="">
+                        Our contact center
+                    </a>
+                    <span>
+                        &#11122;
+                    </span>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <div class="back_to_top" style="z-index: 100000;">
+        <a class="rotate_to_top" href="#top">
+            &#10095;
+        </a>
+    </div>
+    <div class="whatsapp_message">
+        <a href="">
+            <img src="/images/whatsapp-logo.jpg" alt="" width="100%">
+        </a>
+    </div>
+    <section class="online_footer">
+        <div class="online_footer_header">
+            <h1>
+                <span
+                    style="box-shadow: 4px 0px 6px var(--main-color);color: var(--main-color); margin-right: .3rem; border-radius: .3rem;">
+                    &#10015;
+                </span>
+                EDUKLINIK
+            </h1>
+            <span>
+                All rights reserved. &copy;2025 .
+                <span>
+                    EDUKLINIK LEARNING NEXUS
+                </span>
+            </span>
+        </div>
+        <div class="footer_nav">
+            <!-- this footer nav has been reversed meaning that na the last unordered list go dey he first now. Check the CSS for more details -->
+            <ul class="socials">
+                <li>
+                    <a href="www.eduklinik/facebook.com">
+                        <img class="social_icon" src="/images/facebook-logo.jpg" alt="This the social media icons image">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img class="social_icon" src="/images/instagram-logo.jpg" alt="This the social media icons image">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img class="social_icon" src="/images/youtube-logo.jpg" alt="This the social media icons image">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img class="social_icon" src="/images/facebook-logo.jpg" alt="This the social media icons image">
+                    </a>
+                </li>
+                <!-- <li>
+                    <a href="">
+                        <img class="social_icon" src="/images/" alt="This the social media icons image">
+                    </a>
+                </li> -->
+            </ul>
+            <ul class="contact">
+                <h1>
+                    Contact us
+                </h1>
+                <li>
+                    &#13333967; 234 ,Lagos-Ilorin, Ilorin , Nigeria.
+                </li>
+                <li>
+                    <b>
+                        Email us :
+                    </b>
+                    info@eduklinik.com
+                </li>
+                <li>
+                    <b>
+                        Call us :
+                    </b>
+                    +234-7077-456-4321
+                </li>
+            </ul>
+            <ul class="links_ref">
+                <h1>Quick links</h1>
+                <li>
+                    <a href="/">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="/course/">
+                        Courses
+                    </a>
+                </li>
+                <li>
+                    <a href="/eduklinikapp/quiz/quiz_search.html">
+                        Partake Quizzes
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        support center
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        Privacy policies
+                    </a>
+                </li>
+            </ul>
+            <ul class="subscribe_news">
+                <h1>Subscribe</h1>
+                <li>
+                    Subscribe to our news letter to stay updated and be the first to receive our news and
+                    notifications
+                </li>
+                <input type="email" placeholder="E-mail">
+                <button type="submit">
+                    subscribe
+                </button>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<section class="fixed_bottom_navbar">
+    <span>
+        <a href="/eduklinikapp/online_school.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                <path
+                    d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
+            </svg>
+        </a>
+        <small>
+            <a href="/online_school/" style="color: var(--main-color); font-size:.7rem ;">
+                For You
+            </a>
+        </small>
+    </span>
+    <span>
+        <a href="/eduklinikapp/courses/courseshome.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-award-fill" viewBox="0 0 16 16">
+                <path
+                    d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864z" />
+                <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z" />
+            </svg>
+        </a>
+        <small>
+            <a href="/course/" style="color: var(--main-color); font-size:.7rem ;">
+                Courses
+            </a>
+        </small>
+    </span>
+    <!-- <span>
+        <a href="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-plus-fill" viewBox="0 0 16 16">
+                <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0"/>
+              </svg>
+        </a>
+        <small>
+            <a href="/eduklinikapp/" style="color: var(--main-color); font-size:.7rem ;">
+                Post
+            </a>
+        </small>
+    </span> -->
+    <span>
+        <a href="/searh/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                viewBox="0 0 16 16">
+                <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg>
+        </a>
+        <small>
+            <a href="/search/" style="color: var(--main-color); font-size:.7rem ;">
+                Search
+            </a>
+        </small>
+    </span>
+    <span>
+         <a href="/dashboard/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-database-fill-dash" viewBox="0 0 16 16">
+                <path
+                    d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M11 12h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1M8 1c-1.573 0-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4s.875 1.755 1.904 2.223C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777C13.125 5.755 14 5.007 14 4s-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1" />
+                <path
+                    d="M2 7v-.839c.457.432 1.004.751 1.49.972C4.722 7.693 6.318 8 8 8s3.278-.307 4.51-.867c.486-.22 1.033-.54 1.49-.972V7c0 .424-.155.802-.411 1.133a4.51 4.51 0 0 0-4.815 1.843A12 12 0 0 1 8 10c-1.573 0-3.022-.289-4.096-.777C2.875 8.755 2 8.007 2 7m6.257 3.998L8 11c-1.682 0-3.278-.307-4.51-.867-.486-.22-1.033-.54-1.49-.972V10c0 1.007.875 1.755 1.904 2.223C4.978 12.711 6.427 13 8 13h.027a4.55 4.55 0 0 1 .23-2.002m-.002 3L8 14c-1.682 0-3.278-.307-4.51-.867-.486-.22-1.033-.54-1.49-.972V13c0 1.007.875 1.755 1.904 2.223C4.978 15.711 6.427 16 8 16c.536 0 1.058-.034 1.555-.097a4.5 4.5 0 0 1-1.3-1.905" />
+            </svg>
+        </a>
+       <small>
+            <a href="/dashboard/" style="color: var(--main-color); font-size:.7rem ;">
+                Dashboard
+            </a>
+        </small>
+    </span>
+</section>
+<script src="{% static '/eduklinikapp/scripts/onlineschool.js' %}"></script>
+
+{% endblock %}

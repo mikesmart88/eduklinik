@@ -25,6 +25,66 @@
 </head>
 <body>
 
+      <style>
+        .form, .form_2{
+            display: none !important;
+        }
+        .install-banner {
+          width: 100%;
+          background-color: #832e80;
+          color: white;
+          padding: 15px 20px;
+          position: fixed;
+          top: 0;
+          left: 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 1000;
+          font-family: Arial, sans-serif;
+          display: none;
+        }
+    
+        .install-banner .text {
+          font-size: 16px;
+        }
+    
+        .install-banner .actions {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+    
+        .install-banner button {
+          background-color: #c49831;
+          color: #fff;
+          border: none;
+          padding: 8px 16px;
+          border-radius: 4px;
+          cursor: pointer;
+          font-weight: bold;
+        }
+    
+        .install-banner .close-btn {
+          background: none;
+          color: white;
+          font-size: 20px;
+          border: none;
+          cursor: pointer;
+        }
+      </style>
+    </head>
+    <body>
+    
+      <div class="install-banner" id="installBanner">
+        <div class="textt">Install our app for the best experience!</div>
+        <div class="actions">
+          <button id="install_btn">Install App</button>
+          <button class="close-btn" onclick="document.getElementById('installBanner').style.display='none'">&times;</button>
+        </div>
+      </div>
+    
+
     <header class="ed_heder">
         <div class="logo_container" style="background-image: url(/eduklinikapp/static/eduklinikapp/images/ed_logo.png);">
         </div>
@@ -48,12 +108,12 @@
 
             <div class="register_login">
                 <button class="login">
-                    <a href="#login">
+                    <a href="/user/login">
                         Login
                     </a>
                 </button>
                 <button class="register">
-                    <a href="#register">
+                    <a href="/user/register">
                         Register
                     </a>
                 </button>
@@ -73,6 +133,7 @@
         </header>
 
     <main class="main_sect">
+        <wt-tkn id="us_tkn">{% csrf_token %}</wt-tkn>
         {% block content %} 
         {% endblock %}
     </main>
@@ -139,6 +200,32 @@
             </div>
         </div>
     </footer>
+
+    <script>
+
+        localStorage.setItem('isInstalled', 'true');
+
+        const isInstalled = localStorage.getItem('isInstalled');
+        console.log('isInstalled:', isInstalled);
+
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installBanner').style.display = 'flex';
+        });
+
+        document.getElementById('install_btn').addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const {outcome} = await deferredPrompt.userChoice;
+                console.log(`User response to the install prompt: ${outcome}`);
+                deferredPrompt = null;
+                document.getElementById('installBanner').style.display = 'none';
+            }
+        })
+
+    </script>
     
 </body>
 </html>

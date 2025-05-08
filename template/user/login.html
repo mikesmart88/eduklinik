@@ -17,16 +17,144 @@
 <meta name="twitter:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
 <meta property="twiter:card" content="summary_large_image" />
 <meta name="twitter:image:alt" content="mstreamapp logo" />
+<link rel="stylesheet" href="{% static 'eduklinikapp/styles/forms.css' %}">
 {% endblock %}
 
     {% block title %}Programs details section{% endblock %}
 
 {% block content %}
 
-<section id="program_page">
-    
-    
+<section class="form_sect">
+    <h2>
+        Welcome Back
+    </h2>
+
+    <section class="form_holder">
+        <article id="login_form">
+            <div class="form_box">
+                <label for="user_name">Username</label> <br>
+                <input type="text" name="user_name" id="username">
+                <span id="u_msg" style="font-size: 13px; color:#f64343;"></span>
+            </div>
+
+            <div class="form_box">
+                <label for="user_name">Password</label> <br>
+                <input type="password" name="passwd" id="password">
+                <span id="p_msg" style="font-size: 13px; color:#f64343;"></span>
+            </div>
+
+            <a href="">Forgot password</a>
+
+            <div class="form_box">
+                <button class="sub_btn" onclick="login_user()">
+                    Login
+                </button>
+            </div>
+        </article>
+        <span id="log_msg">
+
+        </span>
+        <br>
+
+        <p class="form_text">
+            Don't have an account? <a href="/user/register/">Create one</a>
+        </p>
+
+        <style>
+            .s_flash{
+                width: fit-content;
+                box-sizing: border-box;
+                overflow: hidden;
+                color: #13b713f4;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                 Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                 font-size: 14px;
+                 padding: 10px;
+                 border-radius: 7px;
+                 background-color: #05b4054a;
+                 margin: auto auto;
+            }
+            .e_flash{
+                width: fit-content;
+                box-sizing: border-box;
+                overflow: hidden;
+                color: #e81616f4;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                 Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                 font-size: 14px;
+                 padding: 10px;
+                 border-radius: 7px;
+                 background-color: #e8050557;
+                 margin: auto auto;
+            }
+        </style>
+
+    </section>
+    <script>
+
+        function $(c) {
+            return document.getElementById(c);
+        }
+
+        let _tkn = $('us_tkn').children[0].getAttribute('value')
+
+                function showmsg(clas, msg){
+                    $('log_msg').innerHTML = `<aside class="${clas}" id="${clas}">${msg}
+                <span onclick="close_msg(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" height="10px" viewBox="0 -960 960 960" width="10px" fill="currentcolor" style="cursor:pointer;">
+                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                </span>
+                </aside>`;
+                let _tps = $('log_msg').offsetTop;
+                const dist_tp2 =Number(_tps);
+                window.scrollTo({ top: dist_tp2, behavior: 'smooth'});
+                }
+
+                function close_msg(params) {
+                    let get = params.parentElement;
+                    get.style.display = 'none';
+                } 
+                
+
+        function login_user() {
+            let user = $('username'), password = $('password');
+            if(!user.value.match(/\w+/)){
+                get_errortag('username', 'u_msg', 'Enter a valid username')
+            }else{
+                var url = '/log_user/';
+                var form_data = new FormData();
+                form_data.append('uname', user.value);
+                form_data.append('passwd', password.value);
+                
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': _tkn
+                    },
+                    body: form_data,
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.S){
+                       showmsg('s_flash', data.S)
+                       setTimeout(() => {
+                        window.location.reload()
+                       }, 1500);
+                    }else if(data.E){
+                        showmsg('e_flash', data.E)
+                    }else{
+                        showmsg('e_flash', 'Post error occured')
+                    }
+                })
+                .catch((error) => {
+                    showmsg('e_flash', 'Can not get url or you are not connected to the internet..')
+                }) 
+            }
+        }
+
+    </script>
 </section>
+
 
 
 {% endblock %}

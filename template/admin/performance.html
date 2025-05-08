@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadata %}
+<meta name="description" content="" /> 
+<link rel="canonical" href="https://mstream.com{{request.path_info}}" />               
+<meta property="og:site_name" content="Eduklinik" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+<meta property="og:locale" content="en_us" />
+<meta property="og:url" content="https://mstream.com{{request.path_info}}" />
+<meta name="twitter:site" content="@CCI" />
+<meta name="twitter:title" content="" />
+<meta name="twitter:description" content="Mstream - Multiple Movies and Musics Stream, Explore Trendings and read blogs about your fevourite show" />
+<meta name="twitter:creator" content="@PythonMaster" />
+<meta name="twitter:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+<meta property="twiter:card" content="summary_large_image" />
+<meta name="twitter:image:alt" content="mstreamapp logo" />
+<link rel="stylesheet" href="{% static 'eduklinikapp/styles/dashboard.css' %}">
+
+{% endblock %}
+
+{% block title %}Eduklinik - User dashboard {% endblock %}
+
+{% block content %}
+
+{% include 'user/boards.html' %}
+
+<section class="content">
+    <wt-tkn id="us_tkn">{% csrf_token %}</wt-tkn>
+    
+    <div class="sect1">
+
+        <div class="ana_content">
+            <div class="ana_box">
+                <span class="course_img">
+                    <img src="{% static 'eduklinikapp/images/grad2.png' %}" alt="">
+                </span>
+                <span>
+                    Total Courses
+                </span>
+            </div>
+            <span class="count">
+                0
+            </span>
+        </div>
+
+        <div class="ana_content">
+            <div class="ana_box">
+                <span class="course_img">
+                    <img src="{% static 'eduklinikapp/images/bell.webp' %}" alt="">
+                </span>
+                <span>
+                    Total Notifications
+                </span>
+            </div>
+            <span class="count">
+                {{user.not_count}}
+            </span>
+        </div>
+
+        <div class="ana_content">
+            <div class="ana_box">
+                <span class="course_img">
+                    <img src="{% static 'eduklinikapp/images/quiz.png' %}" alt="">
+                </span>
+                <span>
+                    Total quizes
+                </span>
+            </div>
+            <span class="count">
+                0
+            </span>
+        </div>
+
+    </div>
+
+    <br>
+<section class="profile_view">
+    
+</section>
+<br>
+<section class="previour_course">
+    <h2>
+        Previous course
+    </h2>
+
+    {% for course in pop_cur %}
+                    <div class="boxes">
+                        <div class="box_image_container">
+                            <img class="box_image" src="{{course.c_img.url}}" alt="">
+                        </div>
+                        <div class="box_text">
+                            <span id="category">
+                                {{course.course_subject.sub_name}}
+                            </span>
+                            <div class="poster_date">
+                                <small>
+                                    Uploaded on <small id="upload_time">{{course.pub_date|date:"Y-m-d"}}</small> by <small id="uploader">{{course.up_by.name}}</small>
+                                </small>
+                            </div>
+                            <h2 id="Topic">
+                                {{course.meta_data}}
+                            </h2>
+                            <div class="time_learners">
+                                <div class="time">
+                                </div>
+                                <div class="learners">
+                                    &#10012;
+                                    <span>
+                                        {{course.participant}} Learners
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="more_start">
+                                <button class="more">
+                                    <a href="/course/single/{{course.c_str}}">
+                                        More info
+                                    </a>
+                                </button>
+                                <button class="start">
+                                    <a href="/course/single/{{course.c_str}}" style="color: #fff;">
+                                        Start learning
+                                    </a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+</section>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadata %}
+<meta name="description" content="" /> 
+<link rel="canonical" href="https://mstream.com{{request.path_info}}" />               
+<meta property="og:site_name" content="Eduklinik" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+<meta property="og:locale" content="en_us" />
+<meta property="og:url" content="https://mstream.com{{request.path_info}}" />
+<meta name="twitter:site" content="@CCI" />
+<meta name="twitter:title" content="" />
+<meta name="twitter:description" content="Mstream - Multiple Movies and Musics Stream, Explore Trendings and read blogs about your fevourite show" />
+<meta name="twitter:creator" content="@PythonMaster" />
+<meta name="twitter:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+<meta property="twiter:card" content="summary_large_image" />
+<meta name="twitter:image:alt" content="mstreamapp logo" />
+<link rel="stylesheet" href="{% static 'eduklinikapp/styles/dashboard.css' %}">
+
+{% endblock %}
+
+{% block title %}Eduklinik - User dashboard {% endblock %}
+
+{% block content %}
+
+{% include 'user/boards.html' %}
+
+<section class="content">
+    <wt-tkn id="us_tkn">{% csrf_token %}</wt-tkn>
+    
+
+</section>
+
+{% endblock %}

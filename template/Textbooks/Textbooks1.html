@@ -1,15 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
+{% block metadata %}
+<meta name="description" content="" /> 
+<link rel="canonical" href="https://mstream.com{{request.path_info}}" />               
+<meta property="og:site_name" content="Eduklinik" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+<meta property="og:locale" content="en_us" />
+<meta property="og:url" content="https://mstream.com{{request.path_info}}" />
+<meta name="twitter:site" content="@CCI" />
+<meta name="twitter:title" content="" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:creator" content="@PythonMaster" />
+<meta name="twitter:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+<meta property="twiter:card" content="summary_large_image" />
+<meta name="twitter:image:alt" content="mstreamapp logo" />
+<link rel="stylesheet" href="{% static 'eduklinikapp/styles/online_school.css' %}">
+<link rel="stylesheet" href="{% static 'eduklinikapp/styles/responsive.css' %}">
+{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>online school </title>
-    <link rel="stylesheet" href="/stylesheet/online_school.css">
-    <link rel="stylesheet" href="/stylesheet/responsive.css">
-</head>
+{% block title %}Courses intro {% endblock %}
 
-<body>
+
+{% block content %}
+
+<style>
+    .ed_heder{
+        display: none !important;
+    }
+    #footer{
+        display: none !important;
+    }
+</style>
     <aside id="aside">
         <header class="aside_header">
             <h1>
@@ -21,7 +45,7 @@
         </header>
         <ul>
             <li>
-                <a href="/eduklinikapp/online_school.html">
+                <a href="/">
                     Home
                 </a>
                 <span>
@@ -29,15 +53,15 @@
                 </span>
             </li>
             <li>
-                <a href="/eduklinikapp/online_school/profile.html">
+                <a href="/user/profile/">
                     My profile
                 </a>
                 <span>
                     &#10095;
                 </span>
             </li>
-             <li>
-                <a href="">
+            <li>
+                <a href="/dashboard/">
                     Dashboard
                 </a>
                 <span>
@@ -45,7 +69,7 @@
                 </span>
             </li>
             <li>
-                <a href="/eduklinikapp/online_school/about_onlineschool.html">
+                <a href="/">
                     About us
                 </a>
                 <span>
@@ -61,7 +85,7 @@
                 </span>
             </li>
             <li>
-                <a href="/eduklinikapp/online_school/rate_us.html">
+                <a href="/">
                     Rate us
                 </a>
                 <span>
@@ -79,7 +103,7 @@
                 </span>
             </div>
             <div class="Support">
-                <a href="">
+                <a href="/">
                     Support
                 </a>
                 <span>
@@ -101,27 +125,33 @@
                             d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
                     </svg>
                 </span>
-              <img class="home_image" src="/images/header_logo.png" alt="" width="40px">
+                <img class="home_image" src="{% static 'eduklinik/images/header_logo.png' %}" alt="" width="40px">
+                <!-- <h5>
+                    HOME
+                </h5> -->
             </div>
             <div class="main_header_search">
                 <input type="search" placeholder="What are you looking for?...">
                 <button class="search">
-                    <a id="searchfunction" href="/eduklinikapp/search.html">
+                    <a id="searchfunction" href="">
                         Search
                     </a>
                 </button>
             </div>
             <div class="main_header_end">
                 <div class="activated">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="search_svg" viewBox="0 0 16 16">
-                        <path
-                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                    </svg>
+                    <a href="/search/" style="color: var(--main-color);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="search_svg" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                        </svg>
+                        <!--  -->
+                    </a>
                 </div>
                 <div class="user">
                     <span id="display_profile">
-                        <img id="profile_image" class="user_image" src="/images/esther.jpg">
+                        <img {% if user.profile_pics %} src="{{user.profile_pics.image.url}}" {% else %} src="{% static 'eduklinikapp/images/nouser.png' %}" {% endif %} id="profile_image" class="user_image" >
                     </span>
                     <div class="myprofile">
                         <h1>
@@ -130,42 +160,31 @@
                         <span class="remove_profile">
                             X
                         </span>
-                        <img id="profile_image" src="/images/esther.jpg" alt="Profile image is here" width="100px"
-                            height="100px" style="border-radius: 50%;">
+                        <img {% if user.profile_pics %} src="{{user.profile_pics.image.url}}" {% else %} src="{% static 'eduklinikapp/images/nouser.png' %}" {% endif %} id="profile_image" class="user_image" >
                         <div class="profile_info">
                             <span>
                                 <b>
                                     Name:
-                                </b> Oloruntimileyin Esther
+                                </b> {{user.user.first_name}}.
                             </span>
                             <span>
                                 <b>
-                                    Gender:
-                                </b> Female
-                            </span>
-                            <span>
-                                <b>
-                                    Age:
-                                </b> 23
+                                    Date joined:
+                                </b> {{user.date_joined}}
                             </span>
                             <span>
                                 <b>
                                     Discipline:
-                                </b> Student
+                                </b> {{user.account_type}}
                             </span>
                             <span>
                                 <b>
-                                    id:
-                                </b> 10
-                            </span>
-                            <span>
-                                <b>
-                                    Hobbies:
-                                </b> Reading , Dancing and painting
+                                   ip address:
+                                </b> {{user.ip_adress}}
                             </span>
                         </div>
                         <button class="edit_profile">
-                            <a href="">
+                            <a href="/">
                                 Edit profile &#10095;
                             </a>
                         </button>
@@ -177,16 +196,19 @@
                         <path
                             d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
                     </svg>
+                    {% if user.not_count >= 0 %}
                     <small id="notifications_numbers">
-                        20
+                        {{user.not_count}}
                     </small>
+                    {% endif %}
                 </div>
             </div>
         </section>
-        <section class="materials_child_body">
+
+        <section class="materials_child_body" style="margin: 0%;">
             <courses class="nav">
                 <button class="course_nav_btn">
-                    <a href="/eduklinikapp/online_school.html">
+                    <a href="/course/">
                         Courses
                     </a>
                 </button>
@@ -197,73 +219,43 @@
                     &#10095;
                 </span>
                 <button class="course_nav_btn">
-                    <a href="/eduklinikapp/Textbooks/Textbooks1.html">
-                        Textbooks
+                    <a href="/textbook/">
+                        Textbook
                     </a>
                 </button>
             </courses>
             <div class="materials_sub_body" >
                 <div class="materials_sub_body_header">
                     <h1 style="color:var(--text-black);">
-                        Search for your <span style="border-bottom: 2px solid var(--main-color);">Textbooks</span> here.
+                        Search for your Textbooks here.
                     </h1>
                 </div>
-                <div class="lesson_notes_search">
-                    <input type="search" placeholder="Search for your Textbooks here">
-                    <button id="lesson_notes_search_btn">
-                        Search
-                    </button>
-                </div>
+                
+                {% if l_all %}
                 <div class="materials_sub_body_content">
-                    <!-- the following is the section for each boxes -->
-                    <div class="materials_boxes">
-                        <span class="file_subject">
-                            JAMB
-                        </span>
-                        <img id="lesson_thumbnail" src="/images/bg4.jpg"  style="padding: .5rem;">
-                        <div class="material_box_content">
-                            <h4 class="subject">
-                                Chemistry
-                            </h4>
-                            <h5 class="file_name">
-                                Introduction to organic chemistry
-                            </h5>
-                            <h6 class="author" style="color: var(--text-color2);">
-                                Author: Robert kiyosaki
-                            </h6>
-                            <div class="poster_date">
-                                <small>
-                                    Uploaded on <small id="upload_time">09-02-2025</small> by <small id="uploader">Mr Ojo
-                                        Temitope</small>
-                                </small>
-                            </div>
-                            <button class="download">
-                                <a href="" download="download">
-                                    Download file
-                                </a>
-                            </button>
-                        </div>
-                    </div>
+
+                    {% for lesson in l_all %}
+                
                     <!-- the following is materials file boxes -->
-                    <div class="materials_boxes">
+                    <div class="materials_boxes" style="color: #000;">
+                        {% if lesson.class_level is not None %}
                         <span class="file_subject">
-                            WAEC
+                            {{lesson.class_level}}
                         </span>
-                        <img id="lesson_thumbnail" src="/images/bg4.jpg"  style="padding: .5rem;">
+                        {% else %}
+
+                        {% endif %}
+                        <img id="lesson_thumbnail" src="{{lesson.lesson_img.url}}">
                         <div class="material_box_content">
                             <h4 class="subject">
-                                BIOLOGY
+                                {{lesson.under_course.course_name}}
                             </h4>
                             <h5 class="file_name">
-                                Introduction to the Ecosystem
+                               {{lesson.ltitle}}
                             </h5>
-                            <h6 class="author" style="color: var(--text-color2);">
-                                Author: Robert kiyosaki
-                            </h6>
                             <div class="poster_date">
                                 <small>
-                                    Uploaded on <small id="upload_time">09-02-2025</small> by <small id="uploader">Mr Ojo
-                                        Temitope</small>
+                                    Uploaded on <small id="upload_time">{{lesson.pub_date|date:"Y-m-d"}}</small> by <small id="uploader">{{lesson.add_by.name}}</small>
                                 </small>
                             </div>
                             <button class="download">
@@ -273,349 +265,33 @@
                             </button>
                         </div>
                     </div>
-                    <!-- the following is materials file boxes -->
-                    <div class="materials_boxes">
-                        <img id="lesson_thumbnail" src="/images/bg4.jpg"  style="padding: .5rem;"> 
-                        <div class="material_box_content">
-                            <h5 class="file_name">
-                                English
-                            </h5>
-                            <h5 class="file_name">
-                                parts of speech
-                            </h5>
-                            <h6 class="author" style="color: var(--text-color2);">
-                                Author: Robert kiyosaki
-                            </h6>
-                            <div class="poster_date">
-                                <small>
-                                    Uploaded on <small id="upload_time">09-02-2025</small> by <small id="uploader">Mr Ojo
-                                        Temitope</small>
-                                </small>
-                            </div>
-                            <button class="download">
-                                <a href="" download="download">
-                                    Download file
-                                </a>
-                            </button>
-                        </div>
-                    </div>
+
+                    {% endfor %}
                     <!--  -->
-                    <div class="materials_boxes">
-                        <span class="file_subject">
-                            BECE
-                        </span>
-                        <img id="lesson_thumbnail" src="/images/bg4.jpg"  style="padding: .5rem;">
-                        <div class="material_box_content">
-                            <h4 class="subject">
-                               Social Studies
-                            </h4>
-                            <h5 class="file_name">
-                                Drug Abuse
-                            </h5>
-                            <h6 class="author" style="color: var(--text-color2);">
-                                Author: Robert kiyosaki
-                            </h6>
-                            <div class="poster_date">
-                                <small>
-                                    Uploaded on <small id="upload_time">09-02-2025</small> by <small id="uploader">Mr Ojo
-                                        Temitope</small>
-                                </small>
-                            </div>
-                            <button class="download">
-                                <a href="" download="download">
-                                    Download file
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                    <!-- the following is materials file boxes -->
-                    <div class="materials_boxes">
-                        <span class="file_subject">
-                            WAEC
-                        </span>
-                        <img id="lesson_thumbnail" src="/images/bg4.jpg"  style="padding: .5rem;">
-                        <div class="material_box_content">
-                            <h4 class="subject">
-                                History
-                            </h4>
-                            <h6 class="author" style="color: var(--text-color2);">
-                             Author: Robert kiyosaki
-                            </h6>
-                            <h5 class="file_name">
-                                Pre-colonial Hausa/Fulani traditional society
-                            </h5>
-                            <div class="poster_date">
-                                <small>
-                                    Uploaded on <small id="upload_time">09-02-2025</small> by <small id="uploader">Mr Ojo
-                                        Temitope</small>
-                                </small>
-                            </div>
-                            <button class="download">
-                                <a href="" download="download">
-                                    Download file
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="materials_boxes">
-                        <img id="lesson_thumbnail" src="/images/bg4.jpg"  style="padding: .5rem;">
-                        <div class="material_box_content">
-                            <h5 class="file_name">
-                                English
-                            </h5>
-                            <h5 class="file_name">
-                                Idioms
-                            </h5>
-                            <h6 class="author" style="color: var(--text-color2);">
-                                Author: Robert kiyosaki
-                            </h6>
-                            <div class="poster_date">
-                                <small>
-                                    Uploaded on <small id="upload_time">09-02-2025</small> by <small id="uploader">Mr Ojo
-                                        Temitope</small>
-                                </small>
-                            </div>
-                            <button class="download">
-                                <a href="" download="download">
-                                    Download file
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="materials_boxes">
-                        <span class="file_subject">
-                           JAMB
-                        </span>
-                        <img id="lesson_thumbnail" src="/images/bg4.jpg"  style="padding: .5rem;">
-                        <div class="material_box_content">
-                            <h4 class="subject">
-                                Literature
-                            </h4>
-                            <h5 class="file_name">
-                                The lion and the Jewel
-                            </h5>
-                            <h6 class="author" style="color: var(--text-color2);">
-                                Author: Robert kiyosaki
-                            </h6>
-                            <div class="poster_date">
-                                <small>
-                                    Uploaded on <small id="upload_time">09-02-2025</small> by <small id="uploader">Mr Ojo
-                                        Temitope</small>
-                                </small>
-                            </div>
-                            <button class="download">
-                                <a href="" download="download">
-                                    Download file
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="materials_boxes">
-                        <span class="file_subject">
-                           Common entrance
-                        </span>
-                        <img id="lesson_thumbnail" src="/images/bg4.jpg"  style="padding: .5rem;">
-                        <div class="material_box_content">
-                            <h4 class="subject">
-                                English
-                            </h4>
-                            <h5 class="file_name">
-                                Letter writing
-                            </h5>
-                            <h6 class="author" style="color: var(--text-color2);">
-                                Author: Robert kiyosaki
-                            </h6>
-                            <div class="poster_date">
-                                <small>
-                                    Uploaded on <small id="upload_time">09-02-2025</small> by <small id="uploader">Mr Ojo
-                                        Temitope</small>
-                                </small>
-                            </div>
-                            <button class="download">
-                                <a href="" download="download">
-                                    Download file
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                    <!--The following is the boxes for the boxes that is having no   -->
-                    <div class="materials_boxes">
-                        <span class="file_subject">
-                            WAEC
-                        </span>
-                        <img id="lesson_thumbnail" src="/images/bg4.jpg"  style="padding: .5rem;">
-                        <div class="material_box_content">
-                            <h4 class="subject">
-                              English
-                            </h4>
-                            <h5 class="file_name">
-                                Figures of speech
-                            </h5>
-                            <h6 class="author" style="color: var(--text-color2);">
-                                Author: Robert kiyosaki
-                            </h6>
-                            <div class="poster_date">
-                                <small>
-                                    Uploaded on <small id="upload_time">09-02-2025</small> by <small id="uploader">Mr Ojo
-                                        Temitope</small>
-                                </small>
-                            </div>
-                            <button class="download">
-                                <a href="" download="download">
-                                    Download file
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="materials_boxes">
-                        <span class="file_subject">
-                            Common Entrance
-                        </span>
-                        <img id="lesson_thumbnail" src="/images/bg4.jpg"  style="padding: .5rem;">
-                        <div class="material_box_content">
-                            <h4 class="subject">
-                                Mathematics
-                            </h4>
-                            <h5 class="file_name">
-                                Open sentences
-                            </h5>
-                            <h6 class="author" style="color: var(--text-color2);">
-                                Author: Robert kiyosaki
-                            </h6>
-                            <div class="poster_date">
-                                <small>
-                                    Uploaded on <small id="upload_time">09-02-2025</small> by <small id="uploader">Mr Ojo
-                                        Temitope</small>
-                                </small>
-                            </div>
-                            <button class="download">
-                                <a href="" download="download">
-                                    Download file
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="materials_boxes">
-                        <img id="lesson_thumbnail" src="/images/bg4.jpg"  style="padding: .5rem;">
-                        <div class="material_box_content">
-                            <h4 class="subject">
-                                CRS
-                            </h4>
-                            <h5 class="file_name">
-                                Pauls missionary
-                            </h5>
-                            <h6 class="author" style="color: var(--text-color2);">
-                                Author: Robert kiyosaki
-                            </h6>
-                            <div class="poster_date">
-                                <small>
-                                    Uploaded on <small id="upload_time">09-02-2025</small> by <small id="uploader">Mr Ojo
-                                        Temitope</small>
-                                </small>
-                            </div>
-                            <button class="download">
-                                <a href="" download="download">
-                                    Download file
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="materials_boxes">
-                        <span class="file_subject">
-                            JAMB
-                        </span>
-                        <img id="lesson_thumbnail" src="/images/bg4.jpg"  style="padding: .5rem;">
-                        <div class="material_box_content">
-                            <h5 class="file_name">
-                                History
-                            </h5>
-                            <h6 class="author" style="color: var(--text-color2);">
-                                Author: Robert kiyosaki
-                            </h6>
-                            <h5 class="file_name">
-                              Thge fall of the singhai empire
-                            </h5>
-                            <div class="poster_date">
-                                <small>
-                                    Uploaded on <small id="upload_time">09-02-2025</small> by <small id="uploader">Mr Ojo
-                                        Temitope</small>
-                                </small>
-                            </div>
-                            <button class="download">
-                                <a href="" download="download">
-                                    Download file
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="materials_boxes">
-                        <img id="lesson_thumbnail" src="/images/bg4.jpg"  style="padding: .5rem;">
-                        <div class="material_box_content">
-                            <h4 class="subject">
-                                physics
-                            </h4>
-                            <h5 class="file_name">
-                               motion
-                            </h5>
-                            <h6 class="author" style="color: var(--text-color2);">
-                                Author: Robert kiyosaki
-                            </h6>
-                            <div class="poster_date">
-                                <small>
-                                    Uploaded on <small id="upload_time">09-02-2025</small> by <small id="uploader">Mr Ojo
-                                        Temitope</small>
-                                </small>
-                            </div>
-                            <button class="download">
-                                <a href="" download="download">
-                                    Download file
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="materials_boxes">
-                        <span class="file_subject">
-                            WAEC
-                        </span>
-                        <img id="lesson_thumbnail" src="/images/bg1.jpg" style="padding: .5rem;">
-                        <div class="material_box_content">
-                            <h4 class="subject">
-                                Government
-                            </h4>
-                            <h5 class="file_name">
-                                The LEGISLATURE.
-                            </h5>
-                            <h6 class="author" style="color: var(--text-color2);">
-                                Author: Robert kiyosaki
-                            </h6>
-                            <div class="poster_date">
-                                <small>
-                                    Uploaded on <small id="upload_time">09-02-2025</small> by <small id="uploader">Mr Ojo
-                                        Temitope</small>
-                                </small>
-                            </div>
-                            <button class="download">
-                                <a href="" download="download">
-                                    Download file
-                                </a>
-                            </button>
-                        </div>
+                    
                     </div>
                 </div>
-                <button class="next_page" style=" display: flex; justify-content: center; align-items: center; width: 50%; margin: 0 auto; padding: 1rem; background-color: var(--text-black); border-radius: .4rem; border: none; outline: none; cursor: pointer; color: var(--text-white);">
-                    <a href="/eduklinikapp/ebooks/ebooks2.html" style="color: var(--text-white);">
-                        NEXT  &#11122;
-                    </a>
-                </button>
+                {% endif %}
+
+                {% if page.has_previous %}
+            <button class="next_page" style=" display: flex; justify-content: center; align-items: center; width: 50%; margin: 0 auto; padding: 1rem; background-color: var(--text-black); border-radius: .4rem; border: none; outline: none; cursor: pointer; color: var(--text-white);">
+                <a href="{{request.path_info}}/?page={{ page.previous_page_number}}" style="color: var(--text-white);">
+                    << prev  &#11122;
+                </a>
+            </button>
+{% endif %}
+
+{% if page.has_next %}
+<button id="next">
+    <a href="{{request.path_info}}/?page={{ page.next_page_number}}">
+        Next >>
+    </a>
+</button>
+
+{% endif %}
+
             </div>
+
         </section>
         <div class="back_to_top" style="z-index:100000;">
             <a class="rotate_to_top" href="#top">
@@ -731,18 +407,15 @@
                         subscribe
                     </button>
                 </ul>
-
             </div>
         </section>
     </main>
     <section class="fixed_bottom_navbar">
         <span>
             <a href="/eduklinikapp/online_school.html">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-house-door-fill" viewBox="0 0 16 16">
-                    <path
-                        d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                    <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/>
+                  </svg>
             </a>
             <small>
                 <a href="/eduklinikapp/online_school.html" style="color: var(--main-color); font-size:.7rem ;">
@@ -752,12 +425,10 @@
         </span>
         <span>
             <a href="/eduklinikapp/courses/courseshome.html">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-award-fill" viewBox="0 0 16 16">
-                    <path
-                        d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864z" />
-                    <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z" />
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-award-fill" viewBox="0 0 16 16">
+                    <path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864z"/>
+                    <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z"/>
+                  </svg>
             </a>
             <small>
                 <a href="/eduklinikapp/courses/courseshome.html" style="color: var(--main-color); font-size:.7rem ;">
@@ -779,27 +450,22 @@
         </span> -->
         <span>
             <a href="/eduklinikapp/search.html">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
-                    viewBox="0 0 16 16">
-                    <path
-                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                  </svg>
             </a>
             <small>
                 <a href="/eduklinikapp/search.html" style="color: var(--main-color); font-size:.7rem ;">
-                    Search
+                   Search
                 </a>
             </small>
         </span>
         <span>
             <a href="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-database-fill-dash" viewBox="0 0 16 16">
-                    <path
-                        d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M11 12h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1M8 1c-1.573 0-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4s.875 1.755 1.904 2.223C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777C13.125 5.755 14 5.007 14 4s-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1" />
-                    <path
-                        d="M2 7v-.839c.457.432 1.004.751 1.49.972C4.722 7.693 6.318 8 8 8s3.278-.307 4.51-.867c.486-.22 1.033-.54 1.49-.972V7c0 .424-.155.802-.411 1.133a4.51 4.51 0 0 0-4.815 1.843A12 12 0 0 1 8 10c-1.573 0-3.022-.289-4.096-.777C2.875 8.755 2 8.007 2 7m6.257 3.998L8 11c-1.682 0-3.278-.307-4.51-.867-.486-.22-1.033-.54-1.49-.972V10c0 1.007.875 1.755 1.904 2.223C4.978 12.711 6.427 13 8 13h.027a4.55 4.55 0 0 1 .23-2.002m-.002 3L8 14c-1.682 0-3.278-.307-4.51-.867-.486-.22-1.033-.54-1.49-.972V13c0 1.007.875 1.755 1.904 2.223C4.978 15.711 6.427 16 8 16c.536 0 1.058-.034 1.555-.097a4.5 4.5 0 0 1-1.3-1.905" />
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-database-fill-dash" viewBox="0 0 16 16">
+                    <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M11 12h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1M8 1c-1.573 0-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4s.875 1.755 1.904 2.223C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777C13.125 5.755 14 5.007 14 4s-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1"/>
+                    <path d="M2 7v-.839c.457.432 1.004.751 1.49.972C4.722 7.693 6.318 8 8 8s3.278-.307 4.51-.867c.486-.22 1.033-.54 1.49-.972V7c0 .424-.155.802-.411 1.133a4.51 4.51 0 0 0-4.815 1.843A12 12 0 0 1 8 10c-1.573 0-3.022-.289-4.096-.777C2.875 8.755 2 8.007 2 7m6.257 3.998L8 11c-1.682 0-3.278-.307-4.51-.867-.486-.22-1.033-.54-1.49-.972V10c0 1.007.875 1.755 1.904 2.223C4.978 12.711 6.427 13 8 13h.027a4.55 4.55 0 0 1 .23-2.002m-.002 3L8 14c-1.682 0-3.278-.307-4.51-.867-.486-.22-1.033-.54-1.49-.972V13c0 1.007.875 1.755 1.904 2.223C4.978 15.711 6.427 16 8 16c.536 0 1.058-.034 1.555-.097a4.5 4.5 0 0 1-1.3-1.905"/>
+                  </svg>
             </a>
             <small>
                 <a href="/eduklinikapp/" style="color: var(--main-color); font-size:.7rem ;">
@@ -808,5 +474,5 @@
             </small>
         </span>
     </section>
-    <script src="/eduklinikapp/onlineschool.js"></script>
-</body>
+    <script src="{% static 'eduklinikapp/scripts/onlineschool.js' %}"></script>
+{% endblock %}

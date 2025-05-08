@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadata %}
+<meta name="description" content="" /> 
+<link rel="canonical" href="https://mstream.com{{request.path_info}}" />               
+<meta property="og:site_name" content="Eduklinik" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+<meta property="og:locale" content="en_us" />
+<meta property="og:url" content="https://mstream.com{{request.path_info}}" />
+<meta name="twitter:site" content="@CCI" />
+<meta name="twitter:title" content="" />
+<meta name="twitter:description" content="Mstream - Multiple Movies and Musics Stream, Explore Trendings and read blogs about your fevourite show" />
+<meta name="twitter:creator" content="@PythonMaster" />
+<meta name="twitter:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+<meta property="twiter:card" content="summary_large_image" />
+<meta name="twitter:image:alt" content="mstreamapp logo" />
+<link rel="stylesheet" href="{% static 'eduklinikapp/styles/dashboard.css' %}">
+
+{% endblock %}
+
+{% block title %}Eduklinik - User dashboard {% endblock %}
+
+{% block content %}
+
+<style>
+    .link:nth-child(1){
+        background-color: transparent !important; 
+        color: #303030d3 !important;
+    }
+    .link:nth-child(5){
+        color: #000 !important;
+        background-color: #0000004b !important;
+    }
+</style>
+
+{% include 'user/boards.html' %}
+
+<section class="content">
+    <wt-tkn id="us_tkn">{% csrf_token %}</wt-tkn>
+    
+    <div class="sect1">
+
+<section class="previour_course" style="margin-top: 0px; padding-top: 0px;">
+    <h2>
+        All course
+    </h2>
+    <br>
+    {% for course in pop_cur %}
+                    <div class="boxes">
+                        <div class="box_image_container">
+                            <img class="box_image" src="{{course.main_course.c_img.url}}" alt="">
+                        </div>
+                        <div class="box_text">
+                            <span id="category">
+                                {{course.main_course.course_subject.sub_name}}
+                            </span>
+                            <div class="poster_date">
+                                <small>
+                                    Uploaded on <small id="upload_time">{{course.main_course.pub_date|date:"Y-m-d"}}</small> by <small id="uploader">{{course.main_course.up_by.name}}</small>
+                                </small>
+                            </div>
+                            <h2 id="Topic">
+                                {{course.main_course.meta_data}}
+                            </h2>
+                            <div class="time_learners">
+                                <div class="time">
+                                </div>
+                                <div class="learners">
+                                    &#10012;
+                                    <span>
+                                        {{course.main_course.participant}} Learners
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="more_start">
+                                <button class="more">
+                                    <a href="/course/single/{{course.main_course.c_str}}">
+                                    info
+                                    </a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+</section>
+
+</section>
+
+{% endblock %}

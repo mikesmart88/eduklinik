@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadata %}
+<meta name="description" content="" /> 
+<link rel="canonical" href="https://mstream.com{{request.path_info}}" />               
+<meta property="og:site_name" content="Eduklinik" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+<meta property="og:locale" content="en_us" />
+<meta property="og:url" content="https://mstream.com{{request.path_info}}" />
+<meta name="twitter:site" content="@CCI" />
+<meta name="twitter:title" content="" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:creator" content="@PythonMaster" />
+<meta name="twitter:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+<meta property="twiter:card" content="summary_large_image" />
+<meta name="twitter:image:alt" content="mstreamapp logo" />
+<link rel="stylesheet" href="{% static 'eduklinikapp/styles/dashboard.css' %}">
+{% endblock %}
+
+{% block title %}Eduklinik - User dashboard {% endblock %}
+
+{% block content %}
+
+{% include 'admin/boards.html' %}
+
+<section class="content">
+    <wt-tkn id="us_tkn">{% csrf_token %}</wt-tkn>
+    <h2>
+        All Users
+    </h2>
+    
+    <section class="all_user_log">
+        {% if all %}
+        {% for user in all %}
+        <a href="/user_profile/{{user.user_token}}" class="user_direct">
+            <div class="users_holder">
+                <span class="img_s">
+                    <img {% if user.profile_pics %} src="{{user.profile_pics.image.url}}" {% else %} src="{% static 'eduklinikapp/images/nouser.png' %}" {% endif %} alt="">
+                </span>
+                <p>
+                    {{user.user.first_name}}
+                </p>
+               <small>
+                {{user.account_type}}
+               </small>
+            </div>
+        </a>
+
+        {% endfor %}
+        {% endif %}
+    </section>
+    
+    </section>
+
+{% endblock %}

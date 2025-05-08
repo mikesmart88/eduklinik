@@ -17,15 +17,524 @@
 <meta name="twitter:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
 <meta property="twiter:card" content="summary_large_image" />
 <meta name="twitter:image:alt" content="mstreamapp logo" />
+<link rel="stylesheet" href="{% static 'eduklinikapp/styles/forms.css' %}">
 {% endblock %}
 
     {% block title %}Eduklinik - User login {% endblock %}
 
 {% block content %}
 
-<section id="form_holder">
-    
-    
+
+
+<section class="form_sect">
+    <h2 style="margin-top: 50px !important;">
+        Create an account
+    </h2>
+
+    <section class="form_holder">
+        <article id="login_form">
+            <div class="form_box">
+                <label for="user_name">Username</label> <br>
+                <input type="text" name="user_name" id="username">
+                <span id="u_msg" style="font-size: 13px; color:#f64343; font-weight:500;"></span>
+            </div>
+
+            <div class="form_box">
+                <label for="full_name">Full name</label> <br>
+                <input type="text" name="full_name" id="fullname">
+                <span id="f_msg" style="font-size: 13px; color:#f64343;"></span>
+            </div>
+
+            <div class="form_box">
+                <label for="email">Email</label> <br>
+                <input type="email" name="email" id="email">
+                <span id="e_msg" style="font-size: 13px; color:#f64343;"></span>
+            </div>
+
+            <div class="form_box">
+                <label for="country">Country</label> <br>
+                <select name="country" id="country">
+                    <option value="">Select country</option>
+                    <option cr_c="+93" value="Afghanistan">Afghanistan</option>
+                <option cr_c="+358" value="Åland Islands">Åland Islands</option>
+                <option cr_c="+355" value="Albania">Albania</option>
+                <option cr_c="+213" value="Algeria">Algeria</option>
+                <option cr_c="+1" value="American Samoa">American Samoa</option>
+                <option cr_c="+244" value="Andorra">Andorra</option>
+                <option cr_c="+93" value="Angola">Angola</option>
+                <option cr_c="+1" value="Anguilla">Anguilla</option>
+                <option cr_c="+672" value="Antarctica">Antarctica</option>
+                <option cr_c="+1" value="Antigua and Barbuda">Antigua and Barbuda</option>
+                <option cr_c="+54" value="Argentina">Argentina</option>
+                <option cr_c="+374" value="Armenia">Armenia</option>
+                <option cr_c="+297" value="Aruba">Aruba</option> 
+                <option cr_c="+247" value="Ascension Island">Ascension Island</option> 
+                <option cr_c="+61" value="Australia">Australia</option>
+                <option cr_c="+672" value="Australian Antarctic Territory">Australian Antarctic Territory</option>
+                <option cr_c="+43" value="Austria">Austria</option>
+                <option cr_c="+994" value="Azerbaijan">Azerbaijan</option>
+                <option cr_c="+1" value="Bahamas">Bahamas</option>
+                <option cr_c="+973" value="Bahrain">Bahrain</option>
+                <option cr_c="+880" value="Bangladesh">Bangladesh</option>
+                <option cr_c="+1" value="Barbados">Barbados</option>
+                <option cr_c="+375" value="Belarus">Belarus</option>
+                <option cr_c="+32" value="Belgium">Belgium</option>
+                <option cr_c="+501" value="Belize">Belize</option>
+                <option cr_c="+229" value="Benin">Benin</option>
+                <option cr_c="+1" value="Bermuda">Bermuda</option>
+                <option cr_c="+975" value="Bhutan">Bhutan</option>
+                <option cr_c="+591" value="Bolivia">Bolivia</option>
+                <option cr_c="+599" value="Bolivia">Bonaire</option>
+                <option cr_c="+387" value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                <option cr_c="+267" value="Botswana">Botswana</option>
+                <option cr_c="+47" value="Bouvet Island">Bouvet Island</option>
+                <option cr_c="+55" value="Brazil">Brazil</option>
+                <option cr_c="+246" value="British Indian Ocean Territory">British Indian Ocean</option>
+                <option cr_c="+1" value="British Virgin Islands">British Virgin Islands</option>
+                <option cr_c="+673" value="Brunei">Brunei</option>
+                <option cr_c="+359" value="Bulgaria">Bulgaria</option>
+                <option cr_c="+226" value="Burkina Faso">Burkina Faso</option>
+                <option cr_c="+95" value="Burma">Burma</option>
+                <option cr_c="+257" value="Burundi">Burundi</option>
+                <option cr_c="+855" value="Cambodia">Cambodia</option>
+                <option cr_c="+237" value="Cameroon">Cameroon</option>
+                <option cr_c="+1" value="Canada">Canada</option>
+                <option cr_c="+34" value="Canary Islands">Canary Islands</option>
+                <option cr_c="+238" value="Cape Verde">Cape Verde</option>
+                <option cr_c="+1" value="Cayman Islands">Cayman Islands</option>
+                <option cr_c="+236" value="Central African Republic">Central African Republic</option>
+                <option cr_c="+34" value="Ceuta">Ceuta</option>
+                <option cr_c="+235" value="Chad">Chad</option>
+                <option cr_c="+246" value="Chagos Islands">Chagos Islands</option>
+                <option cr_c="+56" value="Chile">Chile</option>
+                <option cr_c="+86" value="China">China</option>
+                <option cr_c="+61" value="Christmas Island">Christmas Island</option>
+                <option cr_c="+61" value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+                <option cr_c="+57" value="Colombia">Colombia</option>
+                <option cr_c="+269" value="Comoros">Comoros</option>
+                <option cr_c="+243" value="Democratic Republic Of Congo">Democratic Republic Of Congo</option>
+                <option cr_c="+242" value="Republic Of Congo">Republic Of Congo</option>
+                <option cr_c="+682" value="Cook Islands">Cook Islands</option>
+                <option cr_c="+506" value="Costa Rica">Costa Rica</option>
+                <option cr_c="+385" value="Croatia">Croatia</option>
+                <option cr_c="+53" value="Cuba">Cuba</option>
+                <option cr_c="+599" value="Curaçao">Curaçao</option>
+                <option cr_c="+357" value="Cyprus">Cyprus</option>
+                <option cr_c="+420" value="Czech Republic">Czech Republic</option>
+                <option cr_c="+45" value="Denmark">Denmark</option>
+                <option cr_c="+246" value="Diego Garcia">Diego Garcia</option>
+                <option cr_c="+253" value="Djibouti">Djibouti</option>
+                <option cr_c="+1" value="Dominica">Dominica</option>
+                <option cr_c="+1" value="Dominican Republic">Dominican Republic</option>
+                <option cr_c="+670" value="East Timor">East Timor</option>
+                <option cr_c="+593" value="Ecuador">Ecuador</option>
+                <option cr_c="+20" value="Egypt">Egypt</option>
+                <option cr_c="+503" value="El Salvador">El Salvador</option>
+                <option cr_c="+240" value="Equatorial Guinea">Equatorial Guinea</option>
+                <option cr_c="+291" value="Eritrea">Eritrea</option>
+                <option cr_c="+372" value="Estonia">Estonia</option>
+                <option cr_c="+251" value="Ethiopia">Ethiopia</option>
+                <option cr_c="+268" value="Eswatini">Eswatini</option>
+                <option cr_c="+500" value="Falkland Islands">Falkland Islands</option>
+                <option cr_c="+298" value="Faroe Islands">Faroe Islands</option>
+                <option cr_c="+679" value="Fiji">Fiji</option>
+                <option cr_c="+358" value="Finland">Finland</option>
+                <option cr_c="+33" value="France">France</option>
+                <option cr_c="+594" value="French Guiana">French Guiana</option>
+                <option cr_c="+689" value="French Polynesia">French Polynesia</option>
+                <option cr_c="+262" value="French Southern Territories">French Southern Territories</option>
+                <option cr_c="+241" value="Gabon">Gabon</option>
+                <option cr_c="+220" value="Gambia">Gambia</option>
+                <option cr_c="+995" value="Georgia">Georgia</option>
+                <option cr_c="+49" value="Germany">Germany</option>
+                <option cr_c="+233" value="Ghana">Ghana</option>
+                <option cr_c="+350" value="Gibraltar">Gibraltar</option>
+                <option cr_c="+30" value="Greece">Greece</option>
+                <option cr_c="+299" value="Greenland">Greenland</option>
+                <option cr_c="+1" value="Grenada">Grenada</option>
+                <option cr_c="+590" value="Guadeloupe">Guadeloupe</option>
+                <option cr_c="+1" value="Guam">Guam</option>
+                <option cr_c="+502" value="Guatemala">Guatemala</option>
+                <option cr_c="+44" value="Guernsey">Guernsey</option>
+                <option cr_c="+224" value="Guinea">Guinea</option>
+                <option cr_c="+245" value="Guinea-Bissau">Guinea-Bissau</option>
+                <option cr_c="+592" value="Guyana">Guyana</option>
+                <option cr_c="+509" value="Haiti">Haiti</option>
+                <option cr_c="+1" value="Hawaii">Hawaii</option>
+                <option cr_c="+672" value="Heard Island and McDonald Islands">Heard Island and McDonald Islands</option>
+                <option cr_c="+504" value="Honduras">Honduras</option>
+                <option cr_c="+852" value="Hong Kong S.A.R., CHINA">Hong Kong S.A.R., China</option>
+                <option cr_c="+36" value="Hungary">Hungary</option>
+                <option cr_c="+354" value="Iceland">Iceland</option>
+                <option cr_c="+91" value="India">India</option>
+                <option cr_c="+62" value="Indonesia">Indonesia</option>
+                <option cr_c="+98" value="Iran">Iran</option>
+                <option cr_c="+964" value="Iraq">Iraq</option>
+                <option cr_c="+353" value="Ireland">Ireland</option>
+                <option cr_c="+44" value="Isle of Man">Isle of Man</option>
+                <option cr_c="+972" value="Israel">Israel</option>
+                <option cr_c="+39" value="Italy">Italy</option>
+                <option cr_c="+225" value="Ivory Coast">Ivory Coast</option>
+                <option cr_c="+1" value="Jamaica">Jamaica</option>
+                <option cr_c="+81" value="Japan">Japan</option>
+                <option cr_c="+44" value="Jersey">Jersey</option>
+                <option cr_c="+962" value="Jordan">Jordan</option>
+                <option cr_c="+7" value="Kazakhstan">Kazakhstan</option>
+                <option cr_c="+254" value="Kenya">Kenya</option>
+                <option cr_c="+686" value="Kiribati">Kiribati</option>
+                <option cr_c="+965" value="Kuwait">Kuwait</option>
+                <option cr_c="+996" value="Kyrgyzstan">Kyrgyzstan</option>
+                <option cr_c="+856" value="Laos">Laos</option>
+                <option cr_c="+371" value="Latvia">Latvia</option>
+                <option cr_c="+961" value="Lebanon">Lebanon</option>
+                <option cr_c="+266" value="Lesotho">Lesotho</option>
+                <option cr_c="+231" value="Liberia">Liberia</option>
+                <option cr_c="+218" value="Libya">Libya</option>
+                <option cr_c="+423" value="Liechtenstein">Liechtenstein</option>
+                <option cr_c="+370" value="Lithuania">Lithuania</option>
+                <option cr_c="+352" value="Luxembourg">Luxembourg</option>
+                <option cr_c="+853" value="Macau S.A.R., CHINA">Macau S.A.R., China</option>
+                <option cr_c="+389" value="Macedonia">Macedonia</option>
+                <option cr_c="+261" value="Madagascar">Madagascar</option>
+                <option cr_c="+265" value="Malawi">Malawi</option>
+                <option cr_c="+60" value="Malaysia">Malaysia</option>
+                <option cr_c="+960" value="Maldives">Maldives</option>
+                <option cr_c="+223" value="Mali">Mali</option>
+                <option cr_c="+356" value="Malta">Malta</option>
+                <option cr_c="+692" value="Marshall Islands">Marshall Islands</option>
+                <option cr_c="+596" value="Martinique">Martinique</option>
+                <option cr_c="+222" value="Mauritania">Mauritania</option>
+                <option cr_c="+230" value="Mauritius">Mauritius</option>
+                <option cr_c="+262" value="Mayotte">Mayotte</option>
+                <option cr_c="+52" value="Mexico">Mexico</option>
+                <option cr_c="+691" value="Micronesia">Micronesia</option>
+                <option cr_c="+373" value="Moldova">Moldova</option>
+                <option cr_c="+377" value="Monaco">Monaco</option>
+                <option cr_c="+976" value="Mongolia">Mongolia</option>
+                <option cr_c="+382" value="Montenegro">Montenegro</option>
+                <option cr_c="+1" value="Montserrat">Montserrat</option>
+                <option cr_c="+212" value="Morocco">Morocco</option>
+                <option cr_c="+258" value="Mozambique">Mozambique</option>
+                <option cr_c="+95" value="Myanmar">Myanmar</option>
+                <option cr_c="+264" value="Namibia">Namibia</option>
+                <option cr_c="+674" value="Nauru">Nauru</option>
+                <option cr_c="+977" value="Nepal">Nepal</option>
+                <option cr_c="+31" value="Netherlands">Netherlands</option>
+                <option cr_c="+687" value="New Caledonia">New Caledonia</option>
+                <option cr_c="+64" value="New Zealand">New Zealand</option>
+                <option cr_c="+505" value="Nicaragua">Nicaragua</option>
+                <option cr_c="+227" value="Niger">Niger</option>
+                <option cr_c="+234" value="Nigeria">Nigeria</option>
+                <option cr_c="+683" value="Niue">Niue</option>
+                <option cr_c="+672" value="Norfolk Island">Norfolk Island</option>
+                <option cr_c="+1" value="Northern Mariana Islands">Northern Mariana Islands</option>
+                <option cr_c="+850" value="North Korea">North Korea</option>
+                <option cr_c="+47" value="Norway">Norway</option>
+                <option cr_c="+968" value="Oman">Oman</option>
+                <option cr_c="+92" value="Pakistan">Pakistan</option>
+                <option cr_c="+680" value="Palau">Palau</option>
+                <option cr_c="+970 / +972" value="Palestine Territory">Palestine Territory</option>
+                <option cr_c="+507" value="Panama">Panama</option>
+                <option cr_c="+675" value="Papua New Guinea">Papua New Guinea</option>
+                <option cr_c="+595" value="Paraguay">Paraguay</option>
+                <option cr_c="+51" value="Peru">Peru</option>
+                <option cr_c="+63" value="Philippines">Philippines</option>
+                <option cr_c="+64" value="Pitcairn">Pitcairn</option>
+                <option cr_c="+48" value="Poland">Poland</option>
+                <option cr_c="+351" value="Portugal">Portugal</option>
+                <option cr_c="+1" value="Puerto Rico">Puerto Rico</option>
+                <option cr_c="+974" value="Qatar">Qatar</option>
+                <option cr_c="+262" value="Réunion">Réunion</option>
+                <option cr_c="+40" value="Romania">Romania</option>
+                <option cr_c="+7" value="Russia">Russia</option>
+                <option cr_c="+250" value="Rwanda">Rwanda</option>
+                <option cr_c="+590" value="Saint Barthélemy">Saint Barthélemy</option>
+                <option cr_c="+290" value="Saint Helena, Ascension and Tristan Da Chunha">Saint Helena, Ascension and Tristan Da Chunha</option>
+                <option cr_c="+1" value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                <option cr_c="+1" value="Saint Lucia">Saint Lucia</option>
+                <option cr_c="+590" value="Saint Martin (French Part)">Saint Martin (French Part)</option>
+                <option cr_c="+508" value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
+                <option cr_c="+1" value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+                <option cr_c="+685" value="Samoa">Samoa</option>
+                <option cr_c="+378" value="San Marino">San Marino</option>
+                <option cr_c="+239" value="Sao Tome and Principe">Sao Tome and Principe</option>
+                <option cr_c="+966" value="Saudi Arabia">Saudi Arabia</option>
+                <option cr_c="+221" value="Senegal">Senegal</option>
+                <option cr_c="+381" value="Serbia">Serbia</option>
+                <option cr_c="+248" value="Seychelles">Seychelles</option>
+                <option cr_c="+232" value="Sierra Leone">Sierra Leone</option>
+                <option cr_c="+65" value="Singapore">Singapore</option>
+                <option cr_c="+1" value="Sint Maarten (Dutch Part)">Sint Maarten (Dutch Part)</option>
+                <option cr_c="+421" value="Slovakia">Slovakia</option>
+                <option cr_c="+386" value="Slovenia">Slovenia</option>
+                <option cr_c="+677" value="Solomon Islands">Solomon Islands</option>
+                <option cr_c="+252" value="Somalia">Somalia</option>
+                <option cr_c="+27" value="South Africa">South Africa</option>
+                <option cr_c="+500" value="South Georgia and the South Sandwich Islands">South Georgia and the South Sandwich Islands</option>
+                <option cr_c="+82" value="South Korea">South Korea</option>
+                <option cr_c="+211" value="South Sudan">South Sudan</option>
+                <option cr_c="+34" value="Spain">Spain</option>
+                <option cr_c="+94" value="Sri Lanka">Sri Lanka</option>
+                <option cr_c="+249" value="Sudan">Sudan</option>
+                <option cr_c="+597" value="Suriname">Suriname</option>
+                <option cr_c="+47" value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+                <option cr_c="" value="Swaziland">Swaziland</option>
+                <option cr_c="+46" value="Sweden">Sweden</option>
+                <option cr_c="+41" value="Switzerland">Switzerland</option>
+                <option cr_c="+963" value="Syria">Syria</option>
+                <option cr_c="+886" value="Taiwan (Province of China)">Taiwan (Province of China)</option>
+                <option cr_c="+992" value="Tajikistan">Tajikistan</option>
+                <option cr_c="+255" value="Tanzania">Tanzania</option>
+                <option cr_c="+66" value="Thailand">Thailand</option>
+                <option cr_c="" value="Timor-Leste">Timor-Leste</option>
+                <option cr_c="+228" value="Togo">Togo</option>
+                <option cr_c="+690" value="Tokelau">Tokelau</option>
+                <option cr_c="+676" value="Tonga">Tonga</option>
+                <option cr_c="+1" value="Trinidad and Tobago">Trinidad and Tobago</option>
+                <option cr_c="+216" value="Tunisia">Tunisia</option>
+                <option cr_c="+90" value="Turkey">Turkey</option>
+                <option cr_c="+993" value="Turkmenistan">Turkmenistan</option>
+                <option cr_c="+1" value="Turks and Caicos Islands">Turks and Caicos Islands</option>
+                <option cr_c="+688" value="Tuvalu">Tuvalu</option>
+                <option cr_c="+1" value="U.S. Virgin Islands">U.S. Virgin Islands</option>
+                <option cr_c="+256" value="Uganda">Uganda</option>
+                <option cr_c="+380" value="Ukraine">Ukraine</option>
+                <option cr_c="+971" value="United Arab Emirates">United Arab Emirates</option>
+                <option cr_c="+44" value="United Kingdom">United Kingdom</option>
+                <option cr_c="+1" value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+                <option cr_c="+1" value="United States">United States</option>
+                <option cr_c="+598" value="Uruguay">Uruguay</option>
+                <option cr_c="+998" value="Uzbekistan">Uzbekistan</option>
+                <option cr_c="+678" value="Vanuatu">Vanuatu</option>
+                <option cr_c="+39" value="Vatican">Vatican</option>
+                <option cr_c="+58" value="Venezuela">Venezuela</option>
+                <option cr_c="+84" value="Vietnam">Vietnam</option>
+                <option cr_c="+681" value="Wallis and Futuna">Wallis and Futuna</option>
+                <option cr_c="+212" value="Western Sahara">Western Sahara</option>
+                <option cr_c="+967" value="Yemen">Yemen</option>
+                <option cr_c="+260" value="Zambia">Zambia</option>
+                <option cr_c="+263" value="Zimbabwe">Zimbabwe</option>
+                </select>
+                <span id="c_msg" style="font-size: 13px; color:#f64343;"></span>
+            </div>
+
+            <div class="form_box">
+                <label for="phone number">phone number</label> <br>
+                <input type="number" name="phone_no" id="number" placeholder="phone number whitout cuntry code">
+                <span id="ph_msg" style="font-size: 13px; color:#f64343;"></span>
+            </div>
+
+            <div class="form_box">
+                <label for="age">Age</label> <br>
+                <input type="number" name="age_no" id="age" placeholder="Enter your age">
+                <span id="age_msg" style="font-size: 13px; color:#f64343;"></span>
+            </div>
+
+            <div class="form_box">
+                <label for="acc_typer">account type</label> <br>
+                <select name="acc_type" id="acc_type">
+                    <option value="">---select account-----</option>
+                    <option value="Student">Student</option>
+                    <option value="Teacher">staff</option>
+                    <option value="Parent">Parent</option>
+                    <option value="Contributor">Contributor</option>
+                </select>
+                <span id="ac_msg" style="font-size: 13px; color:#f64343;"></span>
+            </div>
+
+            <div class="form_box">
+                <label for="password">Password</label> <br>
+                <input type="password" name="passwd" id="password">
+                <span id="p_msg" style="font-size: 13px; color:#f64343;"></span>
+            </div>
+
+            <div class="form_box">
+                <label for="password">Re-type password</label> <br>
+                <input type="password" name="repasswd" id="repassword">
+                <span id="rp_msg" style="font-size: 13px; color:#f64343;"></span>
+            </div>
+
+            <input type="hidden" name="" id="c_code">
+
+            <div class="form_box">
+                <button class="sub_btn" onclick="register_user()" >
+                    Confirm
+                </button>
+            </div>
+
+            <span id="log_msg">
+
+            </span>
+
+        </article>
+        <br>
+        <p class="form_text">
+            Already have an account? <a href="/user/login">login</a>
+        </p>
+        <br>
+        <br>
+        <style>
+            .s_flash{
+                width: fit-content;
+                box-sizing: border-box;
+                overflow: hidden;
+                color: #13b713f4;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                 Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                 font-size: 14px;
+                 padding: 10px;
+                 border-radius: 7px;
+                 background-color: #05b4054a;
+                 margin: auto auto;
+            }
+            .e_flash{
+                width: fit-content;
+                box-sizing: border-box;
+                overflow: hidden;
+                color: #e81616f4;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                 Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                 font-size: 14px;
+                 padding: 10px;
+                 border-radius: 7px;
+                 background-color: #e8050557;
+                 margin: auto auto;
+            }
+        </style>
+
+    </section>
+
+    <script>
+
+        function $(c) {
+            return document.getElementById(c);
+        }
+
+        let _tkn = $('us_tkn').children[0].getAttribute('value')
+
+        datalist = $('country')
+        datalist.addEventListener("change", () =>{
+            _sele_cur_inner = datalist.value;
+            var _cont_ls = datalist.children, _crc_val = '', _crname_val ='';
+            for (const elem of _cont_ls) {
+                const _it_map = new Map();
+                const _crc_map = new Map();
+                _it_map.set(`${elem.getAttribute('value')}`);
+                _crc_map.set(`${elem.getAttribute('cr_c')}`);
+                            
+                            _sele_opt = _it_map.has(_sele_cur_inner);
+                            for (const key of _it_map.keys()) {
+                                if(_sele_opt === true){
+                                    _crname_val = key;
+                                }
+                            }
+                            for (const _crkey of _crc_map.keys()) {
+                                if(_sele_opt === true){ 
+                                    _crc_val = _crkey;
+                                }
+                            }
+                        }
+                        $('c_code').value = _crc_val;
+                        console.log(_crc_val)
+                });
+
+                function get_errortag(input, msgbox, msg) {
+                    $(input).classList.add('highlight')
+                    $(msgbox).innerText = msg;
+                    setTimeout(() => {
+                        $(input).classList.remove('highlight');
+                        $(msgbox).innerText = ``;
+                    }, 5000);
+                    let _tps = $(input).offsetTop;
+                    const dist_tp =Number(_tps-130);
+                    window.scrollTo({ top: dist_tp, behavior: 'smooth' }); 
+                }
+
+                function showmsg(clas, msg){
+                    $('log_msg').innerHTML = `<aside class="${clas}" id="${clas}">${msg}
+                <span onclick="close_msg(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" height="10px" viewBox="0 -960 960 960" width="10px" fill="currentcolor" style="cursor:pointer;">
+                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                </span>
+                </aside>`;
+                let _tps = $('log_msg').offsetTop;
+                const dist_tp2 =Number(_tps);
+                window.scrollTo({ top: dist_tp2, behavior: 'smooth'});
+                }
+
+                function close_msg(params) {
+                    let get = params.parentElement;
+                    get.style.display = 'none';
+                } 
+                
+                function register_user() {
+                    var em =/^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/ 
+                    let username = $('username'), full_name = $('fullname'), phone = $('number'), email = $('email'), country = $('country'), c_code = $('c_code'), age = $('age'), password = $('password'), repas = $('repassword'), acc_type = $('acc_type');
+                    if (!username.value.match(/\w+/)){
+                        get_errortag('username', 'u_msg', 'Enter a valid username')
+                    }
+                    else if (!full_name.value.match(/\w+/)) {
+                        get_errortag('fullname', 'f_msg', 'Enter fullname')
+                    }
+                    else if(!email.value.match(em)){
+                        get_errortag('email', 'e_msg', 'Invalid email')
+                    }
+                    else if(!country.value.match(/\w+/)){
+                        get_errortag('country', 'c_msg', 'Select a valid country')
+                    }
+                    else if(!acc_type.value.match(/\w+/)){
+                        get_errortag('acc_type', 'ac_msg', 'Select a valid account type')
+                    }
+                    else if(!phone.value.match(/^\+?[1-9]\d{1,14}$/)){
+                        get_errortag('number', 'ph_msg', 'Enter a valid phone number')
+                    }
+                    else if(!password.value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/)){
+                        get_errortag('password', 'p_msg', 'Password must contain at least 6 characters, including uppercase, lowercase letters and numbers')
+                    }
+                    else if(repas.value!==password.value){
+                        get_errortag('repassword', 'rp_msg', 'Passwords does not match')
+                    }else{
+                        var url = '/new_user/';
+                        var form_data = new FormData();
+                        form_data.append('uname', username.value);
+                        form_data.append('fname', full_name.value);
+                        form_data.append('phone', phone.value);
+                        form_data.append('email', email.value);
+                        form_data.append('country', country.value);
+                        form_data.append('code', c_code.value);
+                        form_data.append('age', age.value);
+                        form_data.append('passwd', password.value);
+                        form_data.append('acct_type', acc_type.value);
+                        fetch(url, {
+                            method: 'POST',
+                            headers: {
+                                'X-CSRFToken': _tkn
+                            },
+                            body: form_data,
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if(data.S){
+                               showmsg('s_flash', data.S)
+                               setTimeout(() => {
+                                window.location.reload()
+                               }, 1500);
+                            }else if(data.E){
+                                showmsg('e_flash', data.E)
+                            }else{
+                                showmsg('e_flash', 'Post error occured')
+                            }
+                        })
+                        .catch((error) => {
+                            showmsg('e_flash', 'Can not get url or you are not connected to the internet..')
+                        }) 
+                    }
+                }
+                
+                
+
+    </script>
+
 </section>
 
 

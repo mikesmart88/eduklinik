@@ -16,14 +16,14 @@ body{
   }
 
 :root {
-    --main-color: rgb(131, 46, 128);
+    --main-color: #832e80;
     --text-color: linear-gradient(
       to bottom,
       rgb(131, 46, 128),
       hsl(42, 60%, 48%)
     );
     --background-color: #e7e7e7;
-    --text-color2: hsl(42, 60%, 48%);
+    --text-color2: #c49831;
     --text-color3: rgb(72, 72, 72);
     --text-black: black;
     --font-size: 100%;

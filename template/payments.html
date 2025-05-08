@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %} Card Payment Form {% endblock %}
+
+{% block content %}
+
+  <style>
+    .pay_form{
+        width: 100%;
+        height: 100vh;
+        box-sizing: border-box;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+         'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .card-form {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 500px;
+    }
+    .card-form h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .card-form input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .card-form button {
+      width: 100%;
+      background: #832e80;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .card-form button:hover {
+      background: #4338ca;
+    }
+
+    @media screen and (max-width: 750px) {
+        .card-form{
+            width: 95%;
+            padding: 15px;
+        }
+        .pay_form{
+           height: 100%;
+           padding: 30px 0px;
+        }
+    }
+  </style>
+
+
+  <section class="pay_form">
+    <div class="card-form">
+        <h2>Card Payment</h2>
+        <form id="paymentForm">
+          <input type="text" placeholder="Cardholder Name" required />
+          <input type="text" placeholder="Card Number" maxlength="16" required />
+          <input type="text" placeholder="MM/YY" maxlength="5" required />
+          <input type="text" placeholder="CVV" maxlength="4" required />
+          <button type="submit">Pay Now</button>
+        </form>
+      </div>
+    
+  </section>
+  <script>
+    document.getElementById('paymentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Payment submitted successfully!');
+    });
+  </script>
+
+ {% endblock %}

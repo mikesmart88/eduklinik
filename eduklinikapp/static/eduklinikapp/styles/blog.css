@@ -38,6 +38,11 @@
   text-decoration: underline;
   transition: all 0.6s ease;
 }
+
+.blog_body_post{
+  width: 450px;
+}
+
 .blog_body {
   height: auto;
   width: 70%;

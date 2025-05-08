@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadata %}
+<meta name="description" content="" /> 
+<link rel="canonical" href="https://mstream.com{{request.path_info}}" />               
+<meta property="og:site_name" content="Eduklinik" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+<meta property="og:locale" content="en_us" />
+<meta property="og:url" content="https://mstream.com{{request.path_info}}" />
+<meta name="twitter:site" content="@CCI" />
+<meta name="twitter:title" content="" />
+<meta name="twitter:description" content="Mstream - Multiple Movies and Musics Stream, Explore Trendings and read blogs about your fevourite show" />
+<meta name="twitter:creator" content="@PythonMaster" />
+<meta name="twitter:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+<meta property="twiter:card" content="summary_large_image" />
+<meta name="twitter:image:alt" content="mstreamapp logo" />
+<link rel="stylesheet" href="{% static 'eduklinikapp/styles/dashboard.css' %}">
+
+{% endblock %}
+
+{% block title %}Eduklinik - User dashboard {% endblock %}
+
+{% block content %}
+
+<style>
+    .link:nth-child(1){
+        background-color: transparent !important; 
+        color: #303030d3 !important;
+    }
+    .link:nth-child(3){
+        color: #000 !important;
+        background-color: #0000004b !important;
+    }
+</style>
+
+{% include 'admin/boards.html' %}
+
+<section class="content">
+    <wt-tkn id="us_tkn">{% csrf_token %}</wt-tkn>
+    <section class="noti_sect">
+        <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .noti_sect{
+        width: 100%;
+        height: fit-content;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .notification-bar {
+      background: linear-gradient(90deg, #7f00ff, #e100ff, #ff2d55);
+      color: white;
+      padding: 16px 24px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      max-width: 90%;
+      width: 60%;
+      z-index: 9999;
+      animation: slideFade 0.4s ease-out;
+    }
+
+    .notification-bar svg {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .notification-text {
+      flex: 1;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .close-btn:hover {
+      opacity: 0.7;
+    }
+
+    .null_not{
+        font-size: 2rem;
+        box-sizing: border-box;
+        overflow: hidden;
+        color: #2f2f2fbc;
+        font-weight: 700;
+    }
+
+    @keyframes slideFade {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -30px);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+    }
+    @media screen and (max-width:900px) {
+        .notification-bar{
+            width: 90%;
+        }
+    }
+    @media screen and (max-width:750px) {
+        .notification-text{
+            font-size: 13px;
+        }
+        .notification-bar{
+            padding: 12px;
+        }
+    }
+    @media screen  and (max-width:500px) {
+        .notification-text{
+            font-size: 11px;
+        }
+        .notification-bar{
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+  </style>
+
+  {% if noti %}
+
+  {% for msg in noti %}
+  <div class="notification-bar" id="notification">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m0-4h.01M12 9v2m0 4v.01M12 16h.01M9 12h3.01M12 12h.01M15 12h.01" />
+    </svg>
+    <span class="notification-text">{{msg.msg}}</span>
+    <button class="close-btn" onclick="document.getElementById('notification').remove();">&times;</button>
+  </div>
+  {% endfor %}
+
+  {% else %}
+
+  <div class="null_not">
+    No notification yet
+  </div>
+
+  {% endif %}
+          
+    </section>
+    </section>
+
+{% endblock %}

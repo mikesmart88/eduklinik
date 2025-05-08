@@ -12,10 +12,41 @@ from .functions import rand_string_generator, s_remove
 
 # Create your models here.
 
+class pro_image(models.Model):
+    image = models.ImageField('user image', null=False, blank=False, upload_to='profile pics')
+    is_edit = models.BooleanField('is edited', default=False)
+    
+    
+    def __str__(self):
+        return f'{self.image}'
+    
+    def save(self, *args, **kwargs):
+        if self.is_edit == False:
+           if self.image:
+                # editing the inage frame and moviefile
+                in_img = Image.open(self.image)
+                in_img = in_img.convert("RGB")
+
+                # resizing the frame
+
+                i = in_img
+                img_h = i.height-30 if i.height > 400 else i.height-10
+                img_w = i.width-30  if i.width > 400 else i.width-10
+                i = i.resize((img_w, img_h), PIL.Image.Resampling.LANCZOS)
+
+                i_io = BytesIO()
+                i.save(i_io, format='PNG')
+                self.image = InMemoryUploadedFile(i_io, None, f'Blk_{rand_string_generator(10)}.webp', 'image/webp', None, None)
+
+                self.is_edit = True 
+           else:
+               pass
+        return super(pro_image, self).save(*args, **kwargs)
+
 class profile(models.Model):
 
     acc_type = [
-        ('General','General'),
+        ('Student','Student'),
         ('Admin','Admin'),
         ('staff', 'Staff'),
         ('Parent', 'Parent'),
@@ -36,6 +67,10 @@ class profile(models.Model):
     refer_code = models.CharField('user referial code', null=True, blank=True, unique=True, max_length=100)
     browser = models.CharField('user access browser', null=True, blank=True, max_length=100)
     qr_code = models.ImageField('user qrcode', null=True, blank=True, upload_to='qrcodes')
+    cos_count = models.BigIntegerField('course count', default=0)
+    quz_count = models.BigIntegerField('quiz counr', default=0)
+    profile_pics = models.ForeignKey('pro_image', on_delete=models.CASCADE, null=True, blank=True)
+    age = models.IntegerField('user age ', default=0)  
     
     def __str__(self):
         return str(self.user)
@@ -53,46 +88,13 @@ class profile(models.Model):
         else:
             pass
         return super(profile, self).save(*args, **kwargs)
-
-class userimage(models.Model):
-    profile = models.ForeignKey('profile', on_delete=models.CASCADE)
-    pics = models.ImageField('user image', null=False, blank=False, upload_to='profile pics')
-    is_edit = models.BooleanField('is edited', default=False)
-    
-    def __str__(self):
-        return f'{self.profile} --- images'
-    
-    def save(self, *args, **kwargs):
-
-        if self.is_edit == False:
-           if self.pics:
-                # editing the inage frame and moviefile
-                in_img = Image.open(self.pics)
-                in_img = in_img.convert("RGB")
-
-                # resizing the frame
-
-                i = in_img
-                img_h = i.height-30 if i.height > 400 else i.height-10
-                img_w = i.width-30  if i.width > 400 else i.width-10
-                i = i.resize((img_w, img_h), PIL.Image.Resampling.LANCZOS)
-
-                i_io = BytesIO()
-                i.save(i_io, format='PNG')
-                self.pics = InMemoryUploadedFile(i_io, None, f'Blk_{self.profile}{rand_string_generator(10)}.webp', 'image/webp', None, None)
-
-                self.is_edit = True 
-           else:
-               pass
-        return super(userimage, self).save(*args, **kwargs)
-    
     
 class staff(models.Model):
     
     staff_typ = [
         ('Admin', 'Admin'),
         ('Teacher', 'Teacher'),
-        ('Totor', 'Tutor'),
+        ('Tutor', 'Tutor'),
         ('Contributor', 'Contributor'),
         ('Developer', 'Developer'),
     ]
@@ -142,7 +144,6 @@ class article(models.Model):
     def save(self, *args, **kwargs):
         if self.is_edited == False:
             self.post_str = f'Post_{self.title}_{rand_string_generator(10)}'
-            
             if self.image:
                 # editing the inage frame and moviefile
                 in_img = Image.open(self.image)
@@ -164,7 +165,11 @@ class article(models.Model):
         
         
 
-
+class subject(models.Model):
+    sub_name = models.CharField('cource_name eg mathematics english', null=True, max_length=200)
+    
+    def __str__(self):
+        return self.sub_name
 
 class course(models.Model):
     
@@ -174,20 +179,37 @@ class course(models.Model):
         ('Skill development services', 'Skill development services'),
         ('Specialized services', 'Specialized services'),
     ]
-    
-    course_name = models.CharField('cource_name eg mathematics english', null=False, max_length=200)
+    up_by = models.ForeignKey('staff', null=True, on_delete=models.PROTECT)
+    course_subject = models.ForeignKey('subject', null=True, related_name='course', on_delete=models.CASCADE)
+    course_name = models.CharField('course name assepts', null=True, blank=True, max_length=200)
     requiremwnt = models.CharField('requirments to partipate on this course', null=False, blank=True, max_length=1000)
     c_type = models.CharField('requirments to partipate on this course', null=False, blank=True, max_length=1000, choices=c_typ)
     lesson_count = models.BigIntegerField('number of leassons', default=0)
-    meta_data = models.CharField('course meta decription', null=False, max_length=200)
+    meta_data = models.CharField('course meta decription', null=True, max_length=200)
     participant = models.BigIntegerField('number of students', default=0)
     weeks = models.CharField('specify how long it should take to complete the course', null=False, max_length=200, default='1 week')
     c_img = models.ImageField('add a image to decribe the corse', null=True, blank=True, max_length=200)
+    pub_date = models.DateTimeField('date time of upload', default=timezone.now)
+    bio = models.TextField('decription and article abour this course', null=True)
+    tag = models.CharField('write tag and colms of what the skill give to the user eg *bacis knowleged, *health care', null=False, default='*basic,', max_length=200)
+    c_str = models.CharField('course spec id', null=True, blank=True, max_length=200, unique=True)
+    price = models.BigIntegerField('course price amount', default=0)
+    drive_link = models.URLField('drive link of the course', null=True, blank=True, max_length=1000000)
     
     def __str__(self):
-        return self.course_name
-
+        return f'{str(self.course_subject)}'
     
+    class Meta:
+        ordering = ['-pub_date']
+
+    def was_publised_recently(self):
+        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+    
+    def save(self, *args, **kwargs):
+        self.c_str = rand_string_generator(10)
+        return super(course, self).save(*args, **kwargs)
+        
+
 class lesson(models.Model):
     
     l_typ = [
@@ -197,22 +219,39 @@ class lesson(models.Model):
     ]
     
     cls = [
-        ('Basic6', 'Basic6'),
-        ('Jss1', 'Jss1'),
-        ('Jss2', 'Jss2'),
-        ('Jss3', 'Jss3'),
-        ('Ss1', 'Ss1'),
-        ('Ss2', 'Ss2'),
-        ('Ss3', 'Ss3'),
+        ('JAMB', 'JAMB'),
+        ('WAEC', 'WAEC'),
+        ('BECE', 'BECE'),
+        ('Common entrance', 'Common entrance'),
     ]
     
+    
+    l_attr = [
+        ('lesson note', 'lesson note'),
+        ('past question', 'past question'),
+        ('syllabue', 'syllabue'),
+        ('textbook', 'textbook'),
+        ('handout', 'handout'),
+    ]
+    
+    add_by = models.ForeignKey('staff', null=True, on_delete=models.PROTECT)
     under_course = models.ForeignKey('course', on_delete=models.CASCADE)
     ltitle = models.CharField('lesson name', blank=False, max_length=200)
     lesson_str = models.CharField('leason spec id', null=True, blank=True, max_length=200, unique=True)
-    lesson_img = models.CharField('add a image to decribe the lesson', null=False, blank=True, max_length=200)
+    lesson_img = models.ImageField('add a image to decribe the lesson', null=True, blank=True)
     lesson_level = models.CharField('leasson level', null=False, blank=True, choices=l_typ, default='Basic', max_length=200)
-    class_level = models.CharField('leasson class', null=False, blank=True, choices=cls, default='Basic6', max_length=200)
+    class_level = models.CharField('leasson class', null=True, blank=True, choices=cls, default='', max_length=200)
+    pub_date = models.DateTimeField('date time of upload', default=timezone.now)
+    file_package = models.FileField('lesson file package', null=True, blank=True, upload_to='lesson files')
+    attribute = models.CharField('leasson artibute', null=True, max_length=200, choices=l_attr)
+    price = models.BigIntegerField('course price amount', default=0)
+    class Meta:
+        ordering = ['-pub_date']
+
+    def was_publised_recently(self):
+        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
     
+
     def __str__(self):
         return f'{self.under_course} {self.ltitle} ---lesson'
     
@@ -235,8 +274,134 @@ class link(models.Model):
     
     def __str__(self):
         return self.link_name
+    
+class quize(models.Model):
+    quize_lesson = models.ForeignKey('lesson', verbose_name='leasson whit the quiz', on_delete=models.CASCADE)
+    quize_str = models.CharField('quiz id to track do not add this', null=True, blank=True, max_length=500)
+    
+    def __str__(self):
+        return f'{self.quize_lesson} ---- new lesson'
+    
+class quiz_question(models.Model):
+    link_to = models.ForeignKey('quize', verbose_name='to the quiz the question is lined to', on_delete=models.CASCADE)
+    question = models.CharField('quiz question', null=False, blank=False, max_length=2000)
+    option_A = models.CharField('option A', null=False, blank=False, max_length=500)
+    option_B = models.CharField('option B', null=False, blank=False, max_length=500)
+    option_C = models.CharField('option C', null=False, blank=False, max_length=500)
+    
+    def __str__(self):
+        return f'{self.link_to.quize_lesson} ------ question and option'
+    
+class user_answer(models.Model):
+    the_question = models.ForeignKey('quiz_question', verbose_name='the question', on_delete=models.CASCADE)
+    the_answer = models.CharField('the answer to the question', null=False, blank=False, max_length=500)
+    is_corrent = models.BooleanField('if the answer is correct if not pls leave as node and recore the score in the score board', default=False)
+    
+    def __str__(self):
+        return f''
+    
 
-            
+class course_payment(models.Model):
+    user = models.ForeignKey('profile', verbose_name='user payment get', on_delete=models.CASCADE)
+    cours = models.ForeignKey('course', on_delete=models.CASCADE)
+    amount = models.BigIntegerField('price to pay', default=0)
+    payment_form = models.CharField('payment method', null=True, max_length=200)
+    is_paid = models.BooleanField('if the course is paid', default=False)
+    
+    def __str__(self):
+        return f'{self.user} --- new purchase'
+    
+class transaction(models.Model):
+    tran_holder = models.ForeignKey('profile', on_delete=models.CASCADE)
+    decript = models.CharField('payment decription', name=False, max_length=200)
+    date = models.DateTimeField('date time of transaction', default=timezone.now)
+    status = models.BooleanField('payment status', default=False)
+    
+    def __str__(self):
+        return f'{self.tran_holder} ---- transaction'
+    
+class user_course(models.Model):
+    course_holder = models.ForeignKey('profile', verbose_name='user holding the course', on_delete=models.CASCADE)
+    main_course = models.ForeignKey('course', on_delete=models.CASCADE)
+    date = models.DateTimeField('date and time course was added', default=timezone.now)
+    
+    class Meta:
+        ordering = ['-date']
+
+    def was_publised_recently(self):
+        return self.date >= timezone.now() - datetime.timedelta(days=1)
+    
+    def __str__(self):
+        return f'{self.course_holder} ---courses'
+    
+    def save(self, *args, **kwargs):
         
+        pro = profile.objects.filter(user=self.course_holder.user).first()
+        if pro:
+            profile.objects.filter(user=self.course_holder.user).update(cos_count=F('cos_count') +1)
+            pro.refresh_from_db()
+        else:
+            pass
+        return super(user_course, self).save(*args, **kwargs)
+        
+    
+class notification(models.Model):
+    user = models.ForeignKey('profile', on_delete=models.CASCADE)
+    msg = models.TextField('not message', null=True, max_length=200)
+    is_new = models.BooleanField('if not is new', default=True)
+    add_date = models.DateTimeField('date added', default=timezone.now) 
+    
+    class Meta:
+        ordering = ['-add_date']
+
+    def was_publised_recently(self):
+        return self.add_date >= timezone.now() - datetime.timedelta(days=1)     
+    
+    def __str__(self):
+        return f'{self.user} ---- new notification'
+    
+    def save(self, *args, **kwargs):
+        if self.is_new == True:
+            pro = profile.objects.filter(user=self.user.user).first()
+            if pro:
+                profile.objects.filter(user=self.user.user).update(not_counnt=F('not_count') +1)
+                pro.refresh_from_db()
+            else:
+                pass
+            return super(notification, self).save(*args, **kwargs)
+        
+class c_notification(models.Model):
+    the_staff = models.ForeignKey('staff', on_delete=models.CASCADE)
+    msg = models.TextField('not message', null=True, max_length=200)
+    is_new = models.BooleanField('if not is new', default=True)      
+    add_date = models.DateTimeField('date added', default=timezone.now)
+    linked_to = models.URLField('place or page where the notification will direct to', null=True, blank=True )
+    
+    def __str__(self):
+        return f'{self.the_staff} ---- new notification'
+    
+    class Meta:
+        ordering = ['-add_date']
+
+    def was_publised_recently(self):
+        return self.add_date >= timezone.now() - datetime.timedelta(days=1)
+    
+    
+class tech_msg(models.Model):
+    teacher = models.ForeignKey('staff', on_delete=models.PROTECT)
+    student = models.ForeignKey('profile', on_delete=models.CASCADE)
+    img = models.ImageField('image post', null=True, blank=True)
+    msg = models.TextField('message', null=False, blank=False)
+    spec_str = models.CharField('linked to ', null=True, blank=True, max_length=200)
+    is_linked = models.BooleanField('if teacher is linked already', default=False)
+    video = models.FileField('video post', null=True, blank=True)
+    date = models.DateTimeField('date and time of post', default=timezone.now)
+    docs_file = models.FileField('document file', null=True, blank=True)
+    
+    def __str__(self):
+        return f'{self.teacher} --- {self.student} --- private leason'
+
+
+    
     
     

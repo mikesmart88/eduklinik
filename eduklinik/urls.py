@@ -18,10 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from eduklinikapp.views import webmanifest
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('eduklinikapp.urls')),
+    path('manifest.json/', webmanifest, name='PWA'),
 ]
 
 
