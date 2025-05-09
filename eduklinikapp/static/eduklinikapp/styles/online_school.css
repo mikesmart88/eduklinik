@@ -9,6 +9,7 @@ aside {
   justify-content: space-between;
   position: fixed;
   top: 0;
+  left: 0;
   color: #fff !important;
 }
 aside > .aside_header {
@@ -1395,4 +1396,12 @@ text-decoration: none;
 }
 .call > a {
   color: #000;
+}
+
+.asideshow{
+  left: 0px !important;
+}
+
+aside{
+  left: 0px !important;
 }
