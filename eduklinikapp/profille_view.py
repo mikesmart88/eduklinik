@@ -240,3 +240,10 @@ def login_user(request):
          print(err)
          return(json({'E': 'Invalid email or password!'}, safe=False))
 
+
+def userlogout(request):
+    if request.user.is_authenticated:
+        logout(request)
+        return redirect('/')
+    else:
+        pass

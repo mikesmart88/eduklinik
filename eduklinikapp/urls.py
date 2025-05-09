@@ -34,6 +34,7 @@ urlpatterns = [
     #ajax
     path('new_user/', profille_view.user_register, name='new user registration'),
     path('log_user/', profille_view.login_user, name='user lofin'),
+    path('logout/', profille_view.userlogout, name='user logout'),
     
     #admin
     path('user_manager/', profille_view.user_manage, name='user management'),
