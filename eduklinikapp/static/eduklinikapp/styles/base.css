@@ -1635,3 +1635,24 @@ body{
   .contact_us_content > .message > a {
     color: var(--background-color);
   }
+
+  .fixed_bottom_navbar{
+    left: 0px !important;
+    background-color: #fff !important;
+  }
+
+  @media screen and (max-width:750px) {
+    #top{
+      padding: 1rem 0px  !important;
+    }
+    main > .main-body{
+      padding: 1rem 0px;
+    } 
+  }
+
+  @media screen and (max-width:1100px) {
+    #top{
+      margin-left: 0px !important;
+      width: 100%;
+    }
+  }

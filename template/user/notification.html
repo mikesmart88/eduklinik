@@ -18,21 +18,20 @@
 <meta property="twiter:card" content="summary_large_image" />
 <meta name="twitter:image:alt" content="mstreamapp logo" />
 <link rel="stylesheet" href="{% static 'eduklinikapp/styles/online_school.css' %}">
-<link rel="stylesheet" href="{% static 'eduklinikapp/styles/responsive.css' %}">
-
+<link rel="stylesheet" href="{% static 'eduklinikapp/styles/base.css' %}">
 {% endblock %}
 
-{% block title %}Eduklinik - User dashboard {% endblock %}
+{% block title %}online school {% endblock %}
 
 {% block content %}
 
 <style>
-  .ed_heder{
-      display: none !important;
-  }
-  #footer{
-      display: none !important;
-  }
+    .head{
+        display: none !important;
+    }
+    .foot{
+        display: none !important;
+    }
   .main-body{
       color: #000 !important;
   }

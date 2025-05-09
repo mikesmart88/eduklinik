@@ -21,11 +21,19 @@
 <meta name="twitter:image:alt" content="mstreamapp logo" />
 <link rel="stylesheet" href="{% static 'eduklinikapp/styles/online_school.css' %}">
 <link rel="stylesheet" href="{% static 'eduklinikapp/styles/responsive.css' %}">
+<link rel="stylesheet" href="{% static 'eduklinikapp/styles/base.css' %}">
 {% endblock %}
-
 
 {% block content %}
 
+<style>
+    .head{
+        display: none !important;
+    }
+    .foot{
+        display: none !important;
+    }
+</style>
 <style>
     main > .main-body {
         height: auto;

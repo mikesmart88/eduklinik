@@ -57,7 +57,7 @@
         <br>
 
         <p class="form_text">
-            Don't have an account? <a href="/user/register/">Create one</a>
+            Don't have an account? <a href="/user/register">Create one</a>
         </p>
 
         <style>
@@ -114,6 +114,18 @@
                     let get = params.parentElement;
                     get.style.display = 'none';
                 } 
+
+                function get_errortag(input, msgbox, msg) {
+                    $(input).classList.add('highlight')
+                    $(msgbox).innerText = msg;
+                    setTimeout(() => {
+                        $(input).classList.remove('highlight');
+                        $(msgbox).innerText = ``;
+                    }, 5000);
+                    let _tps = $(input).offsetTop;
+                    const dist_tp =Number(_tps-130);
+                    window.scrollTo({ top: dist_tp, behavior: 'smooth' }); 
+                }
                 
 
         function login_user() {
