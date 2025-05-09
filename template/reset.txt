@@ -1,0 +1,1069 @@
+{% load static %}
+{% block metadata %}
+<meta name="description" content="" /> 
+<link rel="canonical" href="https://mstream.com{{request.path_info}}" />               
+<meta property="og:site_name" content="Eduklinik" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+<meta property="og:locale" content="en_us" />
+<meta property="og:url" content="https://mstream.com{{request.path_info}}" />
+<meta name="twitter:site" content="@CCI" />
+<meta name="twitter:title" content="" />
+<meta name="twitter:description" content="Mstream - Multiple Movies and Musics Stream, Explore Trendings and read blogs about your fevourite show" />
+<meta name="twitter:creator" content="@PythonMaster" />
+<meta name="twitter:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
+<meta property="twiter:card" content="summary_large_image" />
+<meta name="twitter:image:alt" content="mstreamapp logo" />
+{% endblock %}
+
+{% block title %}Eduklinik nexus - Homepage  {% endblock %}
+
+{% block content %}
+
+<section class="form">
+    <form action="">
+        <h1>Welcome back !</h1>
+        <span class="remove_form">*</span>
+        <input type="email" placeholder="Enter your email or number here" required>
+        <input type="password" placeholder="Enter your password here" required>
+        <div class="formBtn_div">
+            <button class="formBtn">
+                <a href="/eduklinikapp/online_school.html">Log in</a>
+            </button>
+            <small>
+                <a href="">
+                    Forgot password ?
+                </a>
+            </small>
+        </div>
+        <h3>Dont have an account? <a class="Register_redirect" href="#">Register</a></h3>
+        <div class="sect-2">
+            <h4>Log in with </h4>
+        </div>
+        <div class="icons">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-linkedin" viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+                </svg>
+            </span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-facebook" viewBox="0 0 16 16">
+                    <path
+                        d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
+                </svg></span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-twitter-x" viewBox="0 0 16 16">
+                    <path
+                        d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
+                </svg></span>
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z" />
+                </svg>
+            </span>
+        </div>
+    </form>
+</section>
+<section class="form_2">
+    <form action="">
+        <h1>Get started !</h1>
+        <span class="remove_form_2">*</span>
+        <input type="name" placeholder="Name (surname first)" required>
+        <input type="email" placeholder="E-mail" required>
+        <input class="date" type="date" placeholder="DOB" required>
+        <input type="password" placeholder="Enter your password here" required>
+        <!-- <div class="gender">
+            <label for="male">
+                <input type="checkbox" name="gender" id="male">
+                <span>Male</span>
+            </label>
+            <label for="female">
+                <input type="checkbox" name="gender" id="female">
+                <span>Female</span>
+            </label>
+        </div> -->
+        <button class="form_2_register">
+            <a href="/eduklinikapp/online_school.html">
+                Register
+            </a>
+        </button>
+        <h3>Already have an account ? <a class="login_redirect" href="#">Login</a></h3>
+    </form>
+</section>
+</header>
+<main>
+<section class="programs" id="Programs">
+    <div class="program_sect_1">
+        <div>
+            <h1>Welcome to </h1>
+            <span class="text">Eduklinik Learning Nexus</span>
+        </div>
+        <p>At Eduklinik Learning Nexus, we are committed to transforming education through innovation and
+            excellence. <br>
+            Explore our consultancy services and enroll in our flagship Eduklinik Online School to redefine
+            your
+            learning experience.
+        </p>
+    </div>
+    <div class="program_sect_2">
+        <div class="program_sect_2_logo" style="background-image: url(/eduklinikapp/static/eduklinikapp/images/ed_logo.png);">
+        </div>
+        <em>"Innovating Education for Innovation"</em>
+        <button class="program-btn">
+            <a href="#programs">Explore Consultancy Services</a>
+            <span style="color: white;"> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                    fill="currentColor" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                </svg>
+            </span>
+        </button>
+        <button class="program-btn" id="enrol_btn2">
+            <a href="#register">Enroll in Online School</a>
+            <span style="color: white;"> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                    fill="currentColor" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                </svg>
+            </span>
+        </button>
+    </div>
+</section>
+<section class="about_us">
+    <div class="our_vision">
+        <div class="our_vision_header">
+            <h1>About us</h1>
+        </div>
+        <div class="vision_first_body">
+            <h2>Our vision is to empower learners and educators through innovative strategies. </h2>
+            <p>To know more about
+                our history,
+                mission, and the dedicated team driving Eduklinik forward.
+            </p>
+            <button class="about_btn">
+                <a href="/eduklinikapp/blog_singles/what is Eduklinik learning Nexus.html">
+                    Learn more
+                </a>
+                <span style="color: white;"> <svg xmlns="http://www.w3.org/2000/svg" width="20 " height="20"
+                        fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </div>
+</section>
+<section class="services">
+    <div class="services_wrapper">
+        <div class="services_header">
+            <h1>Services</h1>
+        </div>
+        <div class="services_content">
+            <!-- add service from backend here  -->
+             {% if core %}
+
+            <div class="services_body_1 slide_services">
+
+                <div class="services_body_1_header">
+                    <h2>Core Academic Tracks</h2>
+                </div>
+
+                <div class="services_body_1_content">
+
+                    <!-- use this box 1 error: restyle padding and edges -->
+
+                    {% for course in core %}
+
+                    <div class="services_body_1_first services_div"> 
+                        <div class="services_images services_images1" style="background-image: url({{course.c_img.url}});">
+                        </div>
+                        <div class="services_texts">
+                            <div class="main_text">
+                                <span>{{course.lesson_count}} lesson | {{course.weeks}}</span>
+                                <span>{{course.course_subject.sub_name}}</span>
+                                <span>{{course.meta_data}}</span>
+                            </div>
+                            <div class="student_comment">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10"
+                                        fill="currentColor" class="bi bi-backpack2" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4.04 7.43a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.14 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.14" />
+                                        <path fill-rule="evenodd"
+                                            d="M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z" />
+                                        <path
+                                            d="M6 2.341V2a2 2 0 1 1 4 0v.341c2.33.824 4 3.047 4 5.659v1.191l1.17.585a1.5 1.5 0 0 1 .83 1.342V13.5a1.5 1.5 0 0 1-1.5 1.5h-1c-.456.607-1.182 1-2 1h-7a2.5 2.5 0 0 1-2-1h-1A1.5 1.5 0 0 1 0 13.5v-2.382a1.5 1.5 0 0 1 .83-1.342L2 9.191V8a6 6 0 0 1 4-5.659M7 2v.083a6 6 0 0 1 2 0V2a1 1 0 0 0-2 0M3 13.5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5V8A5 5 0 0 0 3 8zm-1-3.19-.724.362a.5.5 0 0 0-.276.447V13.5a.5.5 0 0 0 .5.5H2zm12 0V14h.5a.5.5 0 0 0 .5-.5v-2.382a.5.5 0 0 0-.276-.447L14 10.309Z" />
+                                    </svg>
+                                    <small>{{course.participant}} students</small>
+                                </span>
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10"
+                                        fill="currentColor" class="bi bi-chat-left-dots"
+                                        viewBox="0 0 16 16">
+                                        <path
+                                            d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                                        <path
+                                            d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                                    </svg>
+
+                                    <small>20</small>
+                                </span>
+                            </div>
+                        </div>
+                    </div> 
+
+                    {% endfor %}
+
+                    <!--end here -->
+
+                </div> 
+
+            </div>
+
+            {% else %}
+
+            {% endif %}
+
+                <!-- core academic track service ends here -->
+
+                <!-- Examination  -->
+                 {% if exam %}
+            <div class="services_body_2 slide_services">
+                <div class="services_body_2_header">
+
+                    <h2>Examination Preparation</h2>
+                </div>
+
+                <div class="services_body_2_content">
+                    <!-- use this box 1 error: restyle padding and edges -->
+
+                   {% for course in exam %}
+                   <div class="services_body_1_first services_div">
+                    <div class="services_images services_images5">
+                    </div>
+                    <div class="services_texts">
+                        <div class="main_text">
+                            <span>{{course.lesson_count}} lessons | {{course.weeks}}</span>
+                            <span>{{course.course_subject.sub_name}}</span>
+                            <span>{{course.meta_data}}</span>
+                        </div>
+                        <div class="student_comment">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10"
+                                    fill="currentColor" class="bi bi-backpack2" viewBox="0 0 16 16">
+                                    <path
+                                        d="M4.04 7.43a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.14 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.14" />
+                                    <path fill-rule="evenodd"
+                                        d="M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z" />
+                                    <path
+                                        d="M6 2.341V2a2 2 0 1 1 4 0v.341c2.33.824 4 3.047 4 5.659v1.191l1.17.585a1.5 1.5 0 0 1 .83 1.342V13.5a1.5 1.5 0 0 1-1.5 1.5h-1c-.456.607-1.182 1-2 1h-7a2.5 2.5 0 0 1-2-1h-1A1.5 1.5 0 0 1 0 13.5v-2.382a1.5 1.5 0 0 1 .83-1.342L2 9.191V8a6 6 0 0 1 4-5.659M7 2v.083a6 6 0 0 1 2 0V2a1 1 0 0 0-2 0M3 13.5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5V8A5 5 0 0 0 3 8zm-1-3.19-.724.362a.5.5 0 0 0-.276.447V13.5a.5.5 0 0 0 .5.5H2zm12 0V14h.5a.5.5 0 0 0 .5-.5v-2.382a.5.5 0 0 0-.276-.447L14 10.309Z" />
+                                </svg>
+                                <small>{{course.participant}} student</small>
+                            </span>
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10"
+                                    fill="currentColor" class="bi bi-chat-left-dots"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                                    <path
+                                        d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                                </svg>
+
+                                <small>20</small>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+                   {% endfor %}
+
+                </div>
+            </div>
+            {% endif %}
+
+            {% if skill %}
+            <div class="services_body_3 slide_services">
+                <div class="services_body_3_header">
+                    <h2>Skill Development services</h2>
+                </div>
+
+                <div class="services_body_3_content">
+
+                    {% for course in skill %}
+
+                    
+                    <div class="services_body_1_first services_div">
+                        <div class="services_images services_images9">
+                        </div>
+                        <div class="services_texts">
+                            <div class="main_text">
+                                <span>{{course.lesson_count}} lessons | {{course.weeks}}</span>
+                                <span>{{course.course_subject.sub_name}} </span>
+                                <span>{{course.meta_data}}</span>
+                            </div>
+                            <div class="student_comment">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10"
+                                        fill="currentColor" class="bi bi-backpack2" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4.04 7.43a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.14 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.14" />
+                                        <path fill-rule="evenodd"
+                                            d="M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z" />
+                                        <path
+                                            d="M6 2.341V2a2 2 0 1 1 4 0v.341c2.33.824 4 3.047 4 5.659v1.191l1.17.585a1.5 1.5 0 0 1 .83 1.342V13.5a1.5 1.5 0 0 1-1.5 1.5h-1c-.456.607-1.182 1-2 1h-7a2.5 2.5 0 0 1-2-1h-1A1.5 1.5 0 0 1 0 13.5v-2.382a1.5 1.5 0 0 1 .83-1.342L2 9.191V8a6 6 0 0 1 4-5.659M7 2v.083a6 6 0 0 1 2 0V2a1 1 0 0 0-2 0M3 13.5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5V8A5 5 0 0 0 3 8zm-1-3.19-.724.362a.5.5 0 0 0-.276.447V13.5a.5.5 0 0 0 .5.5H2zm12 0V14h.5a.5.5 0 0 0 .5-.5v-2.382a.5.5 0 0 0-.276-.447L14 10.309Z" />
+                                    </svg>
+                                    <small>{{course.participant}} students</small>
+                                </span>
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10"
+                                        fill="currentColor" class="bi bi-chat-left-dots"
+                                        viewBox="0 0 16 16">
+                                        <path
+                                            d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                                        <path
+                                            d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                                    </svg>
+
+                                    <small>20</small>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                    <!-- end skill -->
+                </div>
+            </div>
+
+            {% endif %}
+
+            {% if spec %}
+
+            <div class="services_body_4 slide_services">
+                <div class="services_body_4_header">
+                    <h2>Specialized services</h2>
+                </div>
+                <div class="services_body_4_content">
+
+                    {% for course in spec %}
+
+                    <div class="services_body_1_first services_div">
+                        <div class="services_images services_images13">
+                        </div>
+                        <div class="services_texts">
+                            <div class="main_text">
+                                <span>{{course.lesson_count}} lessons | {{course.weeks}}</span>
+                                <span>{{course.course_subject.sub_name}}</span>
+                                <span>{{course.meta_data}}</span>
+                            </div>
+                            <div class="student_comment">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10"
+                                        fill="currentColor" class="bi bi-backpack2" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4.04 7.43a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.14 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.14" />
+                                        <path fill-rule="evenodd"
+                                            d="M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z" />
+                                        <path
+                                            d="M6 2.341V2a2 2 0 1 1 4 0v.341c2.33.824 4 3.047 4 5.659v1.191l1.17.585a1.5 1.5 0 0 1 .83 1.342V13.5a1.5 1.5 0 0 1-1.5 1.5h-1c-.456.607-1.182 1-2 1h-7a2.5 2.5 0 0 1-2-1h-1A1.5 1.5 0 0 1 0 13.5v-2.382a1.5 1.5 0 0 1 .83-1.342L2 9.191V8a6 6 0 0 1 4-5.659M7 2v.083a6 6 0 0 1 2 0V2a1 1 0 0 0-2 0M3 13.5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5V8A5 5 0 0 0 3 8zm-1-3.19-.724.362a.5.5 0 0 0-.276.447V13.5a.5.5 0 0 0 .5.5H2zm12 0V14h.5a.5.5 0 0 0 .5-.5v-2.382a.5.5 0 0 0-.276-.447L14 10.309Z" />
+                                    </svg>
+                                    <small>{{course.participant}} students</small>
+                                </span>
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10"
+                                        fill="currentColor" class="bi bi-chat-left-dots"
+                                        viewBox="0 0 16 16">
+                                        <path
+                                            d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                                        <path
+                                            d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                                    </svg>
+
+                                    <small>20</small>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                    <!-- send spec -->
+
+                </div>
+            </div>
+
+        </div>
+        {% endif %}
+
+        <div class="buttons">
+            <button class="btn1"><a href="#gr" onclick="showPrev()"
+                    style="font-weight: 900;">&#10094;</a></button>
+            <button class="btn2"><a href="#gr" onclick="showNext()"
+                    style="font-weight: 900;">&#10095;</a></button>
+        </div>
+
+        <!-- <div class="getstarted_online" style="display: flex; align-items: center; justify-content: center; height: 30px;">
+            <button style=" padding: .7rem; border: 0; outline: 0; background-color: var(--text-color2); border-radius: .3rem; ">
+               <a href="/eduklinikapp/online_school.html" style="color: white;">
+                Get started 
+               </a>
+            </button>
+        </div> -->
+
+    </div>
+</section>
+
+<!-- this is the ending of the section for the services section -->
+
+<section class="our_programme" id="programs">
+    <div class="our_programme_header">
+        <h1>Programs</h1>
+        <small>we aim to make studying <span>EASY</span> , <span>SIMPLE</span> and <span>ACCESSIBLE</span>
+            to everyone</small>
+    </div>
+    <div class="our_programme_comtent">
+
+        <div class="programmes programme1">
+            <h1>Staff Training and Professional Development</h1>
+            <p>Equipped with vast majority of doctorate degree staff holders . we offer tainings that helps
+                facilitate growth and development in diverse fields of professions</p>
+            <div class="programmes_buttons">
+                <button>
+                    <a href="">Learn more</a>
+                    <span style="color: rgb(255, 255, 255);"> <svg xmlns="http://www.w3.org/2000/svg"
+                            width="20 " height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <div class="programmes programme2">
+            <h1>School Assessment and Quality Assurance</h1>
+            <p>Equipped with vast majority of doctorate degree staff holders . we offer tainings that helps
+                facilitate growth and development in diverse fields of professions</p>
+            <div class="programmes_buttons">
+                <button>
+                    <a href="">Learn more</a>
+                    <span style="color: rgb(255, 255, 255);"> <svg xmlns="http://www.w3.org/2000/svg"
+                            width="20 " height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <div class="programmes programme3">
+            <h1>Examination Registration Services</h1>
+            <p>Equipped with vast majority of doctorate degree staff holders . we offer tainings that helps
+                facilitate growth and development in diverse fields of professions</p>
+            <div class="programmes_buttons">
+                <button>
+                    <a href="">Learn more</a>
+                    <span style="color: rgb(255, 255, 255);"> <svg xmlns="http://www.w3.org/2000/svg"
+                            width="20 " height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                        </svg>
+                    </span>
+                </button>
+                <!-- <button class="programmes_call">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+                        </svg>
+                    </span>
+                    <a href="callto:+234 507 768">
+                        Book a call
+                    </a>
+                </button> -->
+            </div>
+        </div>
+
+        <div class="programmes programme4">
+            <h1>Digital Transformation Consultancy for Schools</h1>
+            <p>Equipped with vast majority of doctorate degree staff holders . we offer tainings that helps
+                facilitate growth and development in diverse fields of professions</p>
+            <div class="programmes_buttons">
+                <button>
+                    <a href="/eduklinikapp/homepage.html">Learn more</a>
+                    <span style="color: black;"> <svg xmlns="http://www.w3.org/2000/svg" width="20 "
+                            height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                        </svg>
+                    </span>
+                </button>
+                <!-- <button class="programmes_call">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+                        </svg>
+                    </span>
+                    <a href="callto:+234 507 768">
+                        Book a call
+                    </a>
+                </button> -->
+            </div>
+        </div>
+
+        <div class="programmes programme5">
+            <h1>Corporate Training Programs</h1>
+            <p>Equipped with vast majority of doctorate degree staff holders . we offer tainings that helps
+                facilitate growth and development in diverse fields of professions</p>
+            <div class="programmes_buttons">
+                <button>
+                    <a href="">Learn more</a>
+                    <span style="color: rgb(255, 255, 255);"> <svg xmlns="http://www.w3.org/2000/svg"
+                            width="20 " height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                        </svg>
+                    </span>
+                </button>
+                <!-- <button class="programmes_call">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+                        </svg>
+                    </span>
+                    <a href="callto:+234 507 768">
+                        Book a call
+                    </a>
+                </button> -->
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<section class="tutors" id="tutors">
+    <div class="tutors-header">
+        <h1>Meet our professors</h1>
+    </div>
+    <div class="tutor_left">
+        <h1>Meet top tutors driving <span>EDUKLINIK</span>forward</h1>
+        <h2>&#10095;</h2>
+    </div>
+    <div class="tutors_content">
+
+        <div class="tutors_person1 tutor_person">
+            <div class="person1_image person_image" style="background-image: url(/eduklinikapp/static/eduklinikapp/images/staff3.jpg);">
+            </div>
+            <div class="person_text">
+                <b>Adebisi Bilikis</b>
+                <p>Board Member</p>
+                <h4>
+                    After vast years in the field of education ,Mrs Balikis is a passion driven and a very
+                    enthusiastic tutor with proficiency in intense educational delivery.
+                </h4>
+            </div>
+        </div>
+
+        <div class="tutors_person2 tutor_person">
+            <div class="person2_image person_image" style="background-image: url(/eduklinikapp/static/eduklinikapp/images/staff1.jpg);">
+            </div>
+            <div class="person_text">
+                <b>Mrs Saka Ganiyat</b>
+                <p>H.O.D Mathematics</p>
+                <h4>Mrs saka ganiyat is a self diven enthusiast who leverages her understanding on the vast
+                    web of education into perfect delivery second to none.
+                </h4>
+            </div>
+        </div>
+
+        <div class="tutors_person3 tutor_person">
+            <div class="person3_image person_image" style="background-image: url(/eduklinikapp/static/eduklinikapp/images/staff2.jpg);">
+            </div>
+            <div class="person_text">
+                <b>Dev Femi Ojo</b>
+                <p>H.O.D Programming</p>
+                <h4>Having held dinstinctive scores in masters and phd programmes . Dev Femi is an
+                    enthusiastic and talent driven software expert.
+
+                </h4>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="ceo">
+    <div class="ceo_image" style="background-image: url(/eduklinikapp/static/eduklinikapp/images/consultant.jpg);">
+    </div>
+    <div class="ceo_text">
+        <h1>Dr Ayinde Yusuf</h1>
+        <h2>B.SC / M.SC linguistics , University of Ilorin.</h2>
+        <h3>CEO and FOUNDER (EDUKLINIK LEARNING NEXUS)</h3>
+    </div>
+</section>
+
+<section class="choose">
+    <div class="choose_header">
+        <h1>Why choose us ?</h1>
+    </div>
+    <!-- <span class="absolute1"></span> -->
+    <!-- <span class="absolute2"></span> -->
+    <!-- <span class="absolute3"></span> -->
+    <!-- <span class="absolute4">hey</span> -->
+    <div class="choose_content">
+        <div class="choose_text">
+
+            <div>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                    </svg>
+                </span>
+                <span>
+                    Over 300 newly graduated students
+                </span>
+            </div>
+            <!-- second -->
+            <div>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                    </svg>
+                </span>
+                <span>
+                    Best Teachers
+                </span>
+            </div>
+            <!-- third -->
+            <div>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                    </svg>
+                </span>
+                <span>
+                    Top professionals in the world
+                </span>
+            </div>
+            <!-- fourth -->
+            <div>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                    </svg>
+                </span>
+                <span>
+                    Best online teaching assistant courses
+                </span>
+            </div>
+            <!-- fifth -->
+            <div>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                    </svg>
+                </span>
+                <span>
+                    Over 50 universities worldwide
+                </span>
+            </div>
+            <!-- sixth -->
+            <div>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                    </svg>
+                </span>
+                <span>
+                    Expand your knowledge
+                </span>
+            </div>
+        </div>
+        <div class="choose_image" style="background-image: url(/eduklinikapp/static/eduklinikapp/images/23technologies.jpg);">
+        </div>
+
+    </div>
+
+</section>
+
+{% if home_blog %}
+<section class="blog" id="blog">
+    <div class="blog_header">
+        <small>Our Blog</small>
+        <h1>Get latest News and Stories</h1>
+    </div>
+    <div class="blog_main">
+
+        {% for post in home_blog %}
+        <div class="blog_main_container">
+            <div class="blog_post_image blog_post_image_1" style="background-image: url({{post.image.url}});">
+            </div>
+            <div class="blog_post_text">
+                <h2>{{post.title}} </span></h2>
+                <h3>{{post.context}}</h3>
+                <a class="read_more" href="blog.html">Read more</a>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="blog_main_container">
+            <div class="blog_post_image blog_post_image_2">
+            </div>
+            <div class="blog_post_text" id="pinned">
+                <h2>What do we offer in <span>EDUKLINIK LEARNING NEXUS ?</span></h2>
+                <h3>This article explores several aspect that you need to know about the organisation</h3>
+                <a class="read_more" href="blog.html">Read more</a>
+            </div>
+        </div>
+
+        <div class="blog_main_container">
+            <div class="blog_post_image blog_post_image_3">
+            </div>
+            <div class="blog_post_text">
+                <h2>A digital Asset in the 21st Century ?</span></h2>
+                <h3>Do you know that people are making waves delving into digital marketing ? this is now
+                    something very rampant in the entrepreneurship market</h3>
+                <a class="read_more" href="blog.html">Read more</a>
+            </div>
+        </div>
+
+    </div>
+    <button class="explore_more">
+        <a href="/eduklinikapp/blog.html">
+            Explore more
+        </a>
+        <span>
+            <svg style="color: white;" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+            </svg>
+        </span>
+    </button>
+</section>
+{% endif %}
+
+<!-- section for the partners comes next -->
+<section class="partners">
+    <div class="partners_header">
+        <h1>Partners & Service Providers</h1>
+    </div>
+    <div class="partners_body">
+        <div class="partners_1">ACESS B<em>ank</em></div>
+        <div class="partners_2" style="color: var(--main-color);">CBN</div>
+        <div class="partners_3" style="color: var(--main-color);">VISA</div>
+        <div class="partners_4">SPACE X</div>
+        <div class="partners_5">META </div>
+    </div>
+    <button class="partners_btn">
+        <a href="mailto:info@eduklinik@gmail.com">
+            Book a call
+        </a>
+    </button>
+</section>
+<!-- this is the end of the partners section The contact section follows below -->
+<section class="contact_us">
+    <div class="contact_us_header">
+        <h1>Message us</h1>
+        <h2>We're more than happy to hear from you and receive your suggestions</h2>
+    </div>
+    <div class="contact_us_content">
+        <label for="name">
+            <input type="text" placeholder="Fullname">
+        </label>
+        <label for="subject">
+            <input type="text" placeholder="Subject">
+        </label>
+        <label for="email">
+            <input type="email" placeholder="E-mail">
+        </label>
+        <textarea name="messade" id="Message" cols="30" rows="10" placeholder="Message"></textarea>
+        <button class="message">
+            <a href="#">
+                Send message
+            </a>
+        </button>
+    </div>
+</section>
+
+</main>
+
+<script src="{% static 'eduklinikapp/scripts/homepage.js' %}"></script>
+
+
+{% endblock %}
+
+
+
+=====base======
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">{% block metadata %} {% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff" />
+    <meta name="author" content="@CCI" />
+    <meta name="msapplication-TileColor" content="#fff" />
+    <meta name="msapplication-TileImage" content="{% static 'eduklinikapp/images/favicon-32x32.png' %}" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="manifest" href="/manifest.json/" crossorigin="use-credentials" />
+    <link rel="search" type="application/opensearchdescription+xml" href="" title="">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'eduklinikapp/images/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'eduklinikapp/images/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'eduklinikapp/images/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'eduklinikapp/images/site.webmanifest' %}">
+    <link rel="stylesheet" href="{% static 'eduklinikapp/styles/base.css' %}">
+    <link rel="stylesheet" href="{% static 'eduklinikapp/styles/responsive.css' %}">
+    <title>{% block title %} {% endblock %} </title>
+</head>
+<body>
+
+      <style>
+        .form, .form_2{
+            display: none !important;
+        }
+        .install-banner {
+          width: 100%;
+          background-color: #832e80;
+          color: white;
+          padding: 15px 20px;
+          position: fixed;
+          top: 0;
+          left: 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 1000;
+          font-family: Arial, sans-serif;
+          display: none;
+        }
+    
+        .install-banner .text {
+          font-size: 16px;
+        }
+    
+        .install-banner .actions {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+    
+        .install-banner button {
+          background-color: #c49831;
+          color: #fff;
+          border: none;
+          padding: 8px 16px;
+          border-radius: 4px;
+          cursor: pointer;
+          font-weight: bold;
+        }
+    
+        .install-banner .close-btn {
+          background: none;
+          color: white;
+          font-size: 20px;
+          border: none;
+          cursor: pointer;
+        }
+
+        #header{
+            width: 100%;
+            height: fit-content;
+            max-width: 100%;
+            background-color: whitesmoke;
+            padding: 20px 10px;
+            overflow: hidden;
+            position: fixed;
+            z-index: 200;
+        }
+
+      </style>
+    </head>
+    <body>
+    
+     <!-- <div class="install-banner" id="installBanner">
+        <div class="textt">Install our app for the best experience!</div>
+        <div class="actions">
+          <button id="install_btn">Install App</button>
+          <button class="close-btn" onclick="document.getElementById('installBanner').style.display='none'">&times;</button>
+        </div>
+      </div>-->
+    
+
+    <header id="#header">
+        <div class="logo_container" style="background-image: url(/eduklinikapp/static/eduklinikapp/images/ed_logo.png);">
+        </div>
+        <div class="hamburger-menu" id="hamburger_menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+            </svg>
+        </div>
+        <section class="responsive-dropdown">
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/programs/#programs">Programs</a></li>
+                    <li><a href="/online_school/" id="enrol_btn">Online-school</a></li>
+                    <li><a href="#tutors">Tutors</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a class="contact_active" href="#footer">Contact-us</a></li>
+                </ul>
+            </nav>
+
+            <div class="register_login">
+                <button class="login">
+                    <a href="/user/login">
+                        Login
+                    </a>
+                </button>
+                <button class="register">
+                    <a href="/user/register">
+                        Register
+                    </a>
+                </button>
+            </div>
+            <span class="remove_nav">*</span>
+            <span class="menu_info">
+                All rights reserved. <br>
+                EDUKLINIK LEARNING NEXUS ,2025. <br> <br>
+                <a style="color: rgb(136, 47, 115); text-decoration: underline;" href="">
+                    Privacy policy
+                </a>
+                <a style="color:  rgb(136, 47, 115); text-decoration: underline;" href="">
+                    Terms and conditions
+                </a>
+            </span> 
+
+        </header>
+
+    <main class="main_sect">
+        <wt-tkn id="us_tkn">{% csrf_token %}</wt-tkn>
+        {% block content %} 
+        {% endblock %}
+    </main>
+
+    <footer id="footer">
+        <div class="foot_about">
+            <div></div>
+            <p>
+                At Eduklinik Learning Nexus, we are committed to transforming education through innovation and
+                excellence.
+                Explore our <a class="footer_link" href="#">consultancy services</a> and enroll in our flagship
+                Eduklinik <a class="footer_link" href="#">Online School</a> to redefine
+                your learning experience.
+            </p>
+        </div>
+        <div class="foot_links">
+            <h1>Quick links</h1>
+            <ul>
+                <li><span>&#10095;</span><a href="#top">Home</a></li>
+                <li><span>&#10095;</span><a href="#" id="enrol_btn">Online-school</a></li>
+                <li><span>&#10095;</span><a href="#">Login/Register</a></li>
+                <li><span>&#10095;</span><a href="#blog">Our Blog</a></li>
+                <li><span>&#10095;</span><a href="#">Events</a></li>
+                <li><span>&#10095;</span><a href="#programs">consultancy</a></li>
+            </ul>
+        </div>
+        <div class="subscriibe">
+            <h1>Subscribe to our news letter</h1>
+            <p>Get latest news , updates , tips and tricks in your inbox</p>
+            <div>
+                <input type="email" placeholder="E-mail" required>
+                <button class="submit">
+                    <a href="">Submit</a>
+                </button>
+            </div>
+            <button class="call">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+                    </svg>
+                </span>
+                <a href="callto:+234 507 768">
+                    Book a call
+                </a>
+            </button>
+        </div>
+        <div class="contacts">
+            <h1>Contact us</h1>
+            <div>
+                <span>
+                    <h2>Address</h2>
+                    <p>Eduklinik HQ, Ilorin, Nigeria</p>
+                </span>
+                <span>
+                    <h2>E-mail</h2>
+                    <p><a href="mailto:info@eduklinik@gmail.com">info@eduklinik.com</a> &#10095;</p>
+                </span>
+                <span>
+                    <h2>Phone</h2>
+                    <p><a class="calling_footer" href="tel:+234 123 456 7890">+234 123 456 7890</a> &#10095;</p>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+        localStorage.setItem('isInstalled', 'true');
+
+        const isInstalled = localStorage.getItem('isInstalled');
+        console.log('isInstalled:', isInstalled);
+
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installBanner').style.display = 'flex';
+        });
+
+        document.getElementById('install_btn').addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const {outcome} = await deferredPrompt.userChoice;
+                console.log(`User response to the install prompt: ${outcome}`);
+                deferredPrompt = null;
+                document.getElementById('installBanner').style.display = 'none';
+            }
+        })
+
+    </script>
+    
+</body>
+</html>
+
+

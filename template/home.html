@@ -1,820 +1,610 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block metadata %}
-<meta name="description" content="" /> 
-<link rel="canonical" href="https://mstream.com{{request.path_info}}" />               
-<meta property="og:site_name" content="Eduklinik" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="" />
-<meta property="og:description" content="" />
-<meta property="og:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
-<meta property="og:locale" content="en_us" />
-<meta property="og:url" content="https://mstream.com{{request.path_info}}" />
-<meta name="twitter:site" content="@CCI" />
-<meta name="twitter:title" content="" />
-<meta name="twitter:description" content="Mstream - Multiple Movies and Musics Stream, Explore Trendings and read blogs about your fevourite show" />
-<meta name="twitter:creator" content="@PythonMaster" />
-<meta name="twitter:image" content="https://mstream.com{% static 'streamapp/images/mstream_icon.png' %}" />
-<meta property="twiter:card" content="summary_large_image" />
-<meta name="twitter:image:alt" content="mstreamapp logo" />
-{% endblock %}
+{% block metadata %} {% endblock %}
 
-{% block title %}Eduklinik nexus - Homepage  {% endblock %}
+{% block title %}Home - eduklinik{% endblock %}
 
 {% block content %}
 
-<section class="form">
-    <form action="">
-        <h1>Welcome back !</h1>
-        <span class="remove_form">*</span>
-        <input type="email" placeholder="Enter your email or number here" required>
-        <input type="password" placeholder="Enter your password here" required>
-        <div class="formBtn_div">
-            <button class="formBtn">
-                <a href="/eduklinikapp/online_school.html">Log in</a>
-            </button>
-            <small>
-                <a href="">
-                    Forgot password ?
-                </a>
-            </small>
+<style>
+
+   .home-page{
+    width: 100%;
+    height: fit-content;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    min-height: 100vh;
+   }
+
+   .hero-section{
+    width: 100%;
+    height: fit-content;
+    box-sizing: border-box;
+    overflow: hidden;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #cdcdcd;
+    background-image: radial-gradient(at center center,
+    #fff 20%,
+    #320d2b 50%,
+    #0000003b 100%);
+   }
+
+   .hero-section h2{
+    font-size: 2.5rem;
+    box-sizing: border-box;
+    text-align: center;
+   }
+
+   .hero_search{
+    width: 60%;
+    height: 70px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #373737;
+   }
+
+   .hero_search input{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    border: 1px solid #666666d1;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #373737e7;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+     Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   }
+   
+
+   .images{
+    width: 90%;
+    height: fit-content;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+   }
+
+   .images img{
+    width: auto;
+    height: 100%;
+    min-width: 100%;
+   }
+
+   .explore_sect{
+    width: 100%;
+    height: fit-content;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    background-image: url(/eduklinikapp/static/eduklinikapp/images/kids.avif);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+   }
+
+   .explore{
+    width: 100%;
+    height: fit-content;
+    box-sizing: border-box;
+    overflow: hidden;
+    min-height: 300px;
+    background-color: #0000008e;
+    color: aliceblue;
+    padding: 20px 30px;
+   }
+
+   .card_holder{
+    width: 90%;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    height: fit-content;
+    margin: auto auto;
+   }
+
+   .ex_card{
+    width: 200px;
+    height: 150px;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 20px;
+    color: #3a3a3a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    border: 2px solid #fcb819c3;
+   }
+
+   .card_icon{
+    width: 50px;
+    height: 50px;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
+
+   .card_icon img{
+    width: auto;
+    height: 100%;
+    min-width: 100%;
+   }
+
+   .t_cource_sect{
+    width: 100%;
+    height: fit-content;
+    box-sizing: border-box;
+    overflow: hidden;
+    color: #000;
+    min-height: 300px;
+    padding: 20px 50px;
+    background-color: #fff;
+   }
+
+   .t_cource_sect h2{
+    font-size: 2rem;
+    text-align: center;
+    background-origin: border-box;
+    overflow: hidden;
+   }
+
+   .course{
+    width: fit-content;
+    height: fit-content;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    min-width: 100%;
+   }
+
+   .c_box{
+    height: 350px;
+    box-sizing: border-box;
+    overflow: hidden;
+    width: 260px;
+    box-shadow: 0px 0px 10px #585656ec;
+    border-radius: 20px;
+   }
+
+   .c_img{
+    width: 100%;
+    height: 45%;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+   }
+
+   .c_img img{
+    width: auto;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    min-width: 100%;
+   }
+
+   .title{
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: fit-content;
+   }
+
+   .title h1{
+    font-size: 14px;
+    color: #484848e1;
+    margin: 5px 0px;
+   }
+
+   .title h2{
+    font-size: 15px !important;
+    text-align: left !important;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0px;
+    height: 50px;
+   }
+
+   .time_check{
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+   }
+
+   .time_check span{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    gap: 5px;
+    width: calc(100% / 2.2);
+    font-weight: 500;
+    color: #5b5b5beb;
+   }
+
+   .time_check span svg{
+    width: 15px;
+    height: 15px;
+   }
+
+   .buttons{
+    width: 100%;
+    height: fit-content;
+    box-sizing: border-box;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   }
+
+   .buttons a{
+    text-decoration: none;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: .3s linear;
+   }
+
+   .buttons a:nth-child(1):hover{
+    background-color:#320d2b;
+    color: #fff;
+   }
+
+   .buttons a:nth-child(2):hover{
+    border: 2px solid #320d2b;
+    color: #320d2b;
+    background-color: transparent;
+   }
+
+   .buttons a:nth-child(1){
+    border: 2px solid #320d2b;
+    color: #320d2b;
+   }
+
+   .buttons a:nth-child(2){
+    background-color:#320d2b;
+    color: #fff;
+   }
+
+   @media screen and (max-width:800px) {
+    .card_holder{
+        width: 100%;
+    }
+    
+   }
+
+   @media screen and (max-width:750px) {
+    .hero-section h2{
+        font-size: 1.5rem;
+    }
+    .images{
+        margin-top: 40px;
+    }
+    .hero_search{
+        width: 80%;
+        height: 60px;
+    }
+    .hero_search input{
+        font-size: 1rem;
+    }
+    .explore{
+        padding: 10px;
+    }
+    .ex_card{
+        width: 150px;
+        height: 100px;
+    }
+    .card_icon{
+        width: 25px;
+        height: 25px;
+    }
+    .ex_card b{
+        font-size: 12.5px;
+    }
+    .t_cource_sect{
+        padding: 20px;
+    }
+    .course{
+        padding: 12px;
+    }
+    .to_last_sect{
+        padding: 10px !important;
+    }
+    .to_last_sect h2{
+        font-size: 1rem !important;
+    }
+    .to_last_sect p{
+        font-size: 14px;
+    }
+    .t_cource_sect h2{
+        font-size: 1.2rem;
+    }
+   }
+
+   @media screen and (max-width:500px) {
+    .hero-section h2{
+        font-size: 1.2rem;
+        width: 95%;
+    }
+    .ex_card{
+        width: 130px;
+    }
+    .ex_card b{
+        font-size: 11.5px; 
+    }
+   }
+
+
+    </style>
+
+<div class="home-page">
+
+    <section class="hero-section">
+        <h2>
+            Your Gateway to Skill-Building and Career Growth
+        </h2>
+        <a href="/search/" class="hero_search">
+            <input type="text" placeholder=" What are you intrested in today" readonly>
+        </a>
+
+        <div class="images"> 
+                <img src="{% static 'eduklinikapp/images/the_banner.svg' %}" alt="">
         </div>
-        <h3>Dont have an account? <a class="Register_redirect" href="#">Register</a></h3>
-        <div class="sect-2">
-            <h4>Log in with </h4>
+
+    </section>
+
+    <section class="explore_sect">
+        <div class="explore">
+            <h2>
+                What you will explore
+            </h2>
+            <div class="card_holder">
+
+                <div class="ex_card">
+                    <span class="card_icon">
+                        <img src="{% static 'eduklinikapp/images/english.png' %}" alt="">
+                    </span>
+                    <b>
+                        English Language
+                    </b>
+                </div>
+
+                <div class="ex_card">
+                    <span class="card_icon">
+                        <img src="{% static 'eduklinikapp/images/maths.png' %}" alt="">
+                    </span>
+                    <b>
+                        Mathematics
+                    </b>
+                </div>
+
+                <div class="ex_card">
+                    <span class="card_icon">
+                        <img src="{% static 'eduklinikapp/images/lang.png' %}" alt="">
+                    </span>
+                    <b>
+                        Languages
+                    </b>
+                </div>
+
+                <div class="ex_card">
+                    <span class="card_icon">
+                        <img src="{% static 'eduklinikapp/images/itech.png' %}" alt="">
+                    </span>
+                    <b>
+                        IT
+                    </b>
+                </div>
+
+                <div class="ex_card">
+                    <span class="card_icon">
+                        <img src="{% static 'eduklinikapp/images/school.webp' %}" alt="">
+                    </span>
+                    <b>
+                        Online school
+                    </b>
+                </div>
+
+                <div class="ex_card">
+                    <span class="card_icon">
+                        <img src="{% static 'eduklinikapp/images/pv.jpg' %}" alt="">
+                    </span>
+                    <b>
+                        Private lesson
+                    </b>
+                </div>
+
+                <div class="ex_card">
+                    <span class="card_icon">
+                        <img src="{% static 'eduklinikapp/images/file.png' %}" alt="">
+                    </span>
+                    <b>
+                        Downloadable content
+                    </b>
+                </div>
+
+            </div>
         </div>
-        <div class="icons">
-            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-linkedin" viewBox="0 0 16 16">
-                    <path
-                        d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
-                </svg>
-            </span>
-            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-facebook" viewBox="0 0 16 16">
-                    <path
-                        d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
-                </svg></span>
-            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-twitter-x" viewBox="0 0 16 16">
-                    <path
-                        d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
-                </svg></span>
-            <span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                    <path
-                        d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z" />
-                </svg>
-            </span>
+    </section>
+
+    <section class="t_cource_sect">
+        <h2>
+            Trending Courses
+        </h2>
+
+        <section class="sroola">
+            <style>
+                .sroola{
+                    width: 100%;
+                    height: fit-content;
+                    box-sizing: border-box;
+                    overflow-y: hidden;
+                }
+            </style>
+            <article class="course">
+                {% for course in pop_cur %}
+        
+                <div class="c_box">
+                    <div class="c_img">
+                        <img src="{{course.c_img.url}}" alt="">
+                    </div>
+        
+                    <div class="title">
+                        <h1>
+                            {{course.course_name}}
+                        </h1>
+                        <h2>
+                            {{course.meta_data}}
+                        </h2>
+                    </div>
+                    <div class="time_check">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentcolor"><path d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z"/></svg> {{course.pub_date|date:"Y-m-d"}}
+                        </span>
+        
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentcolor"><path d="M480-120 200-272v-240L40-600l440-240 440 240v320h-80v-276l-80 44v240L480-120Zm0-332 274-148-274-148-274 148 274 148Zm0 241 200-108v-151L480-360 280-470v151l200 108Zm0-241Zm0 90Zm0 0Z"/></svg> {{course.participant}} student
+                        </span>
+                    </div>
+        
+                    <div class="buttons">
+                        <a href="">More info</a>
+                        <a href="">Start Learning</a>
+                    </div>
+        
+                </div>
+                {% endfor %}
+        
+                </article>
+        </section>
+
+        <style>
+            .all{
+                width: 100%;
+                height: fit-content;
+                background-origin: border-box;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 20px;
+            }
+            .all a{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-sizing: border-box;
+                width: fit-content;
+                height: fit-content;
+                padding: 10px;
+                border: 2px solid #320d2b;
+                color: #320d2b;
+                border-radius: 10px;
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 500;
+                transition: .3s linear;
+            }
+
+            .all a:hover{
+                background-color: #320d2b;
+                color: #fff;
+            }
+        </style>
+        <div class="all"> 
+            <a href="/course/">Explore More course</a>
         </div>
-    </form>
-</section>
-<section class="form_2">
-    <form action="">
-        <h1>Get started !</h1>
-        <span class="remove_form_2">*</span>
-        <input type="name" placeholder="Name (surname first)" required>
-        <input type="email" placeholder="E-mail" required>
-        <input class="date" type="date" placeholder="DOB" required>
-        <input type="password" placeholder="Enter your password here" required>
-        <!-- <div class="gender">
-            <label for="male">
-                <input type="checkbox" name="gender" id="male">
-                <span>Male</span>
-            </label>
-            <label for="female">
-                <input type="checkbox" name="gender" id="female">
-                <span>Female</span>
-            </label>
-        </div> -->
-        <button class="form_2_register">
-            <a href="/eduklinikapp/online_school.html">
-                Register
-            </a>
-        </button>
-        <h3>Already have an account ? <a class="login_redirect" href="#">Login</a></h3>
-    </form>
-</section>
-</header>
-<main>
-<section class="programs" id="Programs">
-    <div class="program_sect_1">
-        <div>
-            <h1>Welcome to </h1>
-            <span class="text">Eduklinik Learning Nexus</span>
-        </div>
-        <p>At Eduklinik Learning Nexus, we are committed to transforming education through innovation and
-            excellence. <br>
-            Explore our consultancy services and enroll in our flagship Eduklinik Online School to redefine
-            your
-            learning experience.
+    </section>
+
+    <style>
+        .to_last_sect{
+            width: 100%;
+            height: fit-content;
+            box-sizing: border-box;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            padding: 30px 20px;
+            background-color: #e6e6e6;
+        }
+
+        .to_last_sect h2{
+            font-size: 2rem;
+        }
+        .to_last_sect p{
+            font-weight: 500;
+        }
+
+        .to_last_sect a{
+           text-decoration: none;
+            color: #320d2b;
+            font-weight: 500;
+        }
+
+    </style>
+
+    <section class="to_last_sect">
+        <h2>
+            Don't know where to start? or what to learn
+        </h2>
+        <p>
+            Looking for a skills to start or course that you have been looking for
         </p>
-    </div>
-    <div class="program_sect_2">
-        <div class="program_sect_2_logo" style="background-image: url(/eduklinikapp/static/eduklinikapp/images/ed_logo.png);">
-        </div>
-        <em>"Innovating Education for Innovation"</em>
-        <button class="program-btn">
-            <a href="#programs">Explore Consultancy Services</a>
-            <span style="color: white;"> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                    fill="currentColor" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-                </svg>
-            </span>
-        </button>
-        <button class="program-btn" id="enrol_btn2">
-            <a href="#register">Enroll in Online School</a>
-            <span style="color: white;"> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                    fill="currentColor" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-                </svg>
-            </span>
-        </button>
-    </div>
-</section>
-<section class="about_us">
-    <div class="our_vision">
-        <div class="our_vision_header">
-            <h1>About us</h1>
-        </div>
-        <div class="vision_first_body">
-            <h2>Our vision is to empower learners and educators through innovative strategies. </h2>
-            <p>To know more about
-                our history,
-                mission, and the dedicated team driving Eduklinik forward.
-            </p>
-            <button class="about_btn">
-                <a href="/eduklinikapp/blog_singles/what is Eduklinik learning Nexus.html">
-                    Learn more
-                </a>
-                <span style="color: white;"> <svg xmlns="http://www.w3.org/2000/svg" width="20 " height="20"
-                        fill="currentColor" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-                    </svg>
-                </span>
-            </button>
-        </div>
-    </div>
-</section>
-<section class="services">
-    <div class="services_wrapper">
-        <div class="services_header">
-            <h1>Services</h1>
-        </div>
-        <div class="services_content">
-            <!-- add service from backend here  -->
-             {% if core %}
-
-            <div class="services_body_1 slide_services">
-
-                <div class="services_body_1_header">
-                    <h2>Core Academic Tracks</h2>
-                </div>
-
-                <div class="services_body_1_content">
-
-                    <!-- use this box 1 error: restyle padding and edges -->
-
-                    {% for course in core %}
-
-                    <div class="services_body_1_first services_div"> 
-                        <div class="services_images services_images1" style="background-image: url({{course.c_img.url}});">
-                        </div>
-                        <div class="services_texts">
-                            <div class="main_text">
-                                <span>{{course.lesson_count}} lesson | {{course.weeks}}</span>
-                                <span>{{course.course_subject.sub_name}}</span>
-                                <span>{{course.meta_data}}</span>
-                            </div>
-                            <div class="student_comment">
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10"
-                                        fill="currentColor" class="bi bi-backpack2" viewBox="0 0 16 16">
-                                        <path
-                                            d="M4.04 7.43a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.14 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.14" />
-                                        <path fill-rule="evenodd"
-                                            d="M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z" />
-                                        <path
-                                            d="M6 2.341V2a2 2 0 1 1 4 0v.341c2.33.824 4 3.047 4 5.659v1.191l1.17.585a1.5 1.5 0 0 1 .83 1.342V13.5a1.5 1.5 0 0 1-1.5 1.5h-1c-.456.607-1.182 1-2 1h-7a2.5 2.5 0 0 1-2-1h-1A1.5 1.5 0 0 1 0 13.5v-2.382a1.5 1.5 0 0 1 .83-1.342L2 9.191V8a6 6 0 0 1 4-5.659M7 2v.083a6 6 0 0 1 2 0V2a1 1 0 0 0-2 0M3 13.5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5V8A5 5 0 0 0 3 8zm-1-3.19-.724.362a.5.5 0 0 0-.276.447V13.5a.5.5 0 0 0 .5.5H2zm12 0V14h.5a.5.5 0 0 0 .5-.5v-2.382a.5.5 0 0 0-.276-.447L14 10.309Z" />
-                                    </svg>
-                                    <small>{{course.participant}} students</small>
-                                </span>
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10"
-                                        fill="currentColor" class="bi bi-chat-left-dots"
-                                        viewBox="0 0 16 16">
-                                        <path
-                                            d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
-                                        <path
-                                            d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
-                                    </svg>
-
-                                    <small>20</small>
-                                </span>
-                            </div>
-                        </div>
-                    </div> 
-
-                    {% endfor %}
-
-                    <!--end here -->
-
-                </div> 
-
-            </div>
-
-            {% else %}
-
-            {% endif %}
-
-                <!-- core academic track service ends here -->
-
-                <!-- Examination  -->
-                 {% if exam %}
-            <div class="services_body_2 slide_services">
-                <div class="services_body_2_header">
-
-                    <h2>Examination Preparation</h2>
-                </div>
-
-                <div class="services_body_2_content">
-                    <!-- use this box 1 error: restyle padding and edges -->
-
-                   {% for course in exam %}
-                   <div class="services_body_1_first services_div">
-                    <div class="services_images services_images5">
-                    </div>
-                    <div class="services_texts">
-                        <div class="main_text">
-                            <span>{{course.lesson_count}} lessons | {{course.weeks}}</span>
-                            <span>{{course.course_subject.sub_name}}</span>
-                            <span>{{course.meta_data}}</span>
-                        </div>
-                        <div class="student_comment">
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10"
-                                    fill="currentColor" class="bi bi-backpack2" viewBox="0 0 16 16">
-                                    <path
-                                        d="M4.04 7.43a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.14 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.14" />
-                                    <path fill-rule="evenodd"
-                                        d="M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z" />
-                                    <path
-                                        d="M6 2.341V2a2 2 0 1 1 4 0v.341c2.33.824 4 3.047 4 5.659v1.191l1.17.585a1.5 1.5 0 0 1 .83 1.342V13.5a1.5 1.5 0 0 1-1.5 1.5h-1c-.456.607-1.182 1-2 1h-7a2.5 2.5 0 0 1-2-1h-1A1.5 1.5 0 0 1 0 13.5v-2.382a1.5 1.5 0 0 1 .83-1.342L2 9.191V8a6 6 0 0 1 4-5.659M7 2v.083a6 6 0 0 1 2 0V2a1 1 0 0 0-2 0M3 13.5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5V8A5 5 0 0 0 3 8zm-1-3.19-.724.362a.5.5 0 0 0-.276.447V13.5a.5.5 0 0 0 .5.5H2zm12 0V14h.5a.5.5 0 0 0 .5-.5v-2.382a.5.5 0 0 0-.276-.447L14 10.309Z" />
-                                </svg>
-                                <small>{{course.participant}} student</small>
-                            </span>
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10"
-                                    fill="currentColor" class="bi bi-chat-left-dots"
-                                    viewBox="0 0 16 16">
-                                    <path
-                                        d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
-                                    <path
-                                        d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
-                                </svg>
-
-                                <small>20</small>
-                            </span>
-                        </div>
-                    </div>
-
-                </div>
-                   {% endfor %}
-
-                </div>
-            </div>
-            {% endif %}
-
-            {% if skill %}
-            <div class="services_body_3 slide_services">
-                <div class="services_body_3_header">
-                    <h2>Skill Development services</h2>
-                </div>
-
-                <div class="services_body_3_content">
-
-                    {% for course in skill %}
-
-                    
-                    <div class="services_body_1_first services_div">
-                        <div class="services_images services_images9">
-                        </div>
-                        <div class="services_texts">
-                            <div class="main_text">
-                                <span>{{course.lesson_count}} lessons | {{course.weeks}}</span>
-                                <span>{{course.course_subject.sub_name}} </span>
-                                <span>{{course.meta_data}}</span>
-                            </div>
-                            <div class="student_comment">
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10"
-                                        fill="currentColor" class="bi bi-backpack2" viewBox="0 0 16 16">
-                                        <path
-                                            d="M4.04 7.43a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.14 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.14" />
-                                        <path fill-rule="evenodd"
-                                            d="M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z" />
-                                        <path
-                                            d="M6 2.341V2a2 2 0 1 1 4 0v.341c2.33.824 4 3.047 4 5.659v1.191l1.17.585a1.5 1.5 0 0 1 .83 1.342V13.5a1.5 1.5 0 0 1-1.5 1.5h-1c-.456.607-1.182 1-2 1h-7a2.5 2.5 0 0 1-2-1h-1A1.5 1.5 0 0 1 0 13.5v-2.382a1.5 1.5 0 0 1 .83-1.342L2 9.191V8a6 6 0 0 1 4-5.659M7 2v.083a6 6 0 0 1 2 0V2a1 1 0 0 0-2 0M3 13.5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5V8A5 5 0 0 0 3 8zm-1-3.19-.724.362a.5.5 0 0 0-.276.447V13.5a.5.5 0 0 0 .5.5H2zm12 0V14h.5a.5.5 0 0 0 .5-.5v-2.382a.5.5 0 0 0-.276-.447L14 10.309Z" />
-                                    </svg>
-                                    <small>{{course.participant}} students</small>
-                                </span>
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10"
-                                        fill="currentColor" class="bi bi-chat-left-dots"
-                                        viewBox="0 0 16 16">
-                                        <path
-                                            d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
-                                        <path
-                                            d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
-                                    </svg>
-
-                                    <small>20</small>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    {% endfor %}
-
-                    <!-- end skill -->
-                </div>
-            </div>
-
-            {% endif %}
-
-            {% if spec %}
-
-            <div class="services_body_4 slide_services">
-                <div class="services_body_4_header">
-                    <h2>Specialized services</h2>
-                </div>
-                <div class="services_body_4_content">
-
-                    {% for course in spec %}
-
-                    <div class="services_body_1_first services_div">
-                        <div class="services_images services_images13">
-                        </div>
-                        <div class="services_texts">
-                            <div class="main_text">
-                                <span>{{course.lesson_count}} lessons | {{course.weeks}}</span>
-                                <span>{{course.course_subject.sub_name}}</span>
-                                <span>{{course.meta_data}}</span>
-                            </div>
-                            <div class="student_comment">
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10"
-                                        fill="currentColor" class="bi bi-backpack2" viewBox="0 0 16 16">
-                                        <path
-                                            d="M4.04 7.43a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.14 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.14" />
-                                        <path fill-rule="evenodd"
-                                            d="M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z" />
-                                        <path
-                                            d="M6 2.341V2a2 2 0 1 1 4 0v.341c2.33.824 4 3.047 4 5.659v1.191l1.17.585a1.5 1.5 0 0 1 .83 1.342V13.5a1.5 1.5 0 0 1-1.5 1.5h-1c-.456.607-1.182 1-2 1h-7a2.5 2.5 0 0 1-2-1h-1A1.5 1.5 0 0 1 0 13.5v-2.382a1.5 1.5 0 0 1 .83-1.342L2 9.191V8a6 6 0 0 1 4-5.659M7 2v.083a6 6 0 0 1 2 0V2a1 1 0 0 0-2 0M3 13.5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5V8A5 5 0 0 0 3 8zm-1-3.19-.724.362a.5.5 0 0 0-.276.447V13.5a.5.5 0 0 0 .5.5H2zm12 0V14h.5a.5.5 0 0 0 .5-.5v-2.382a.5.5 0 0 0-.276-.447L14 10.309Z" />
-                                    </svg>
-                                    <small>{{course.participant}} students</small>
-                                </span>
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10"
-                                        fill="currentColor" class="bi bi-chat-left-dots"
-                                        viewBox="0 0 16 16">
-                                        <path
-                                            d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
-                                        <path
-                                            d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
-                                    </svg>
-
-                                    <small>20</small>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    {% endfor %}
-                    <!-- send spec -->
-
-                </div>
-            </div>
-
-        </div>
-        {% endif %}
-
-        <div class="buttons">
-            <button class="btn1"><a href="#gr" onclick="showPrev()"
-                    style="font-weight: 900;">&#10094;</a></button>
-            <button class="btn2"><a href="#gr" onclick="showNext()"
-                    style="font-weight: 900;">&#10095;</a></button>
-        </div>
-
-        <!-- <div class="getstarted_online" style="display: flex; align-items: center; justify-content: center; height: 30px;">
-            <button style=" padding: .7rem; border: 0; outline: 0; background-color: var(--text-color2); border-radius: .3rem; ">
-               <a href="/eduklinikapp/online_school.html" style="color: white;">
-                Get started 
-               </a>
-            </button>
-        </div> -->
-
-    </div>
-</section>
-
-<!-- this is the ending of the section for the services section -->
-
-<section class="our_programme" id="programs">
-    <div class="our_programme_header">
-        <h1>Programs</h1>
-        <small>we aim to make studying <span>EASY</span> , <span>SIMPLE</span> and <span>ACCESSIBLE</span>
-            to everyone</small>
-    </div>
-    <div class="our_programme_comtent">
-
-        <div class="programmes programme1">
-            <h1>Staff Training and Professional Development</h1>
-            <p>Equipped with vast majority of doctorate degree staff holders . we offer tainings that helps
-                facilitate growth and development in diverse fields of professions</p>
-            <div class="programmes_buttons">
-                <button>
-                    <a href="">Learn more</a>
-                    <span style="color: rgb(255, 255, 255);"> <svg xmlns="http://www.w3.org/2000/svg"
-                            width="20 " height="20" fill="currentColor" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-                        </svg>
-                    </span>
-                </button>
-            </div>
-        </div>
-
-        <div class="programmes programme2">
-            <h1>School Assessment and Quality Assurance</h1>
-            <p>Equipped with vast majority of doctorate degree staff holders . we offer tainings that helps
-                facilitate growth and development in diverse fields of professions</p>
-            <div class="programmes_buttons">
-                <button>
-                    <a href="">Learn more</a>
-                    <span style="color: rgb(255, 255, 255);"> <svg xmlns="http://www.w3.org/2000/svg"
-                            width="20 " height="20" fill="currentColor" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-                        </svg>
-                    </span>
-                </button>
-            </div>
-        </div>
-
-        <div class="programmes programme3">
-            <h1>Examination Registration Services</h1>
-            <p>Equipped with vast majority of doctorate degree staff holders . we offer tainings that helps
-                facilitate growth and development in diverse fields of professions</p>
-            <div class="programmes_buttons">
-                <button>
-                    <a href="">Learn more</a>
-                    <span style="color: rgb(255, 255, 255);"> <svg xmlns="http://www.w3.org/2000/svg"
-                            width="20 " height="20" fill="currentColor" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-                        </svg>
-                    </span>
-                </button>
-                <!-- <button class="programmes_call">
-                    <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
-                        </svg>
-                    </span>
-                    <a href="callto:+234 507 768">
-                        Book a call
-                    </a>
-                </button> -->
-            </div>
-        </div>
-
-        <div class="programmes programme4">
-            <h1>Digital Transformation Consultancy for Schools</h1>
-            <p>Equipped with vast majority of doctorate degree staff holders . we offer tainings that helps
-                facilitate growth and development in diverse fields of professions</p>
-            <div class="programmes_buttons">
-                <button>
-                    <a href="/eduklinikapp/homepage.html">Learn more</a>
-                    <span style="color: black;"> <svg xmlns="http://www.w3.org/2000/svg" width="20 "
-                            height="20" fill="currentColor" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-                        </svg>
-                    </span>
-                </button>
-                <!-- <button class="programmes_call">
-                    <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
-                        </svg>
-                    </span>
-                    <a href="callto:+234 507 768">
-                        Book a call
-                    </a>
-                </button> -->
-            </div>
-        </div>
-
-        <div class="programmes programme5">
-            <h1>Corporate Training Programs</h1>
-            <p>Equipped with vast majority of doctorate degree staff holders . we offer tainings that helps
-                facilitate growth and development in diverse fields of professions</p>
-            <div class="programmes_buttons">
-                <button>
-                    <a href="">Learn more</a>
-                    <span style="color: rgb(255, 255, 255);"> <svg xmlns="http://www.w3.org/2000/svg"
-                            width="20 " height="20" fill="currentColor" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-                        </svg>
-                    </span>
-                </button>
-                <!-- <button class="programmes_call">
-                    <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
-                        </svg>
-                    </span>
-                    <a href="callto:+234 507 768">
-                        Book a call
-                    </a>
-                </button> -->
-            </div>
-        </div>
-
-    </div>
-
-</section>
-<section class="tutors" id="tutors">
-    <div class="tutors-header">
-        <h1>Meet our professors</h1>
-    </div>
-    <div class="tutor_left">
-        <h1>Meet top tutors driving <span>EDUKLINIK</span>forward</h1>
-        <h2>&#10095;</h2>
-    </div>
-    <div class="tutors_content">
-
-        <div class="tutors_person1 tutor_person">
-            <div class="person1_image person_image" style="background-image: url(/eduklinikapp/static/eduklinikapp/images/staff3.jpg);">
-            </div>
-            <div class="person_text">
-                <b>Adebisi Bilikis</b>
-                <p>Board Member</p>
-                <h4>
-                    After vast years in the field of education ,Mrs Balikis is a passion driven and a very
-                    enthusiastic tutor with proficiency in intense educational delivery.
-                </h4>
-            </div>
-        </div>
-
-        <div class="tutors_person2 tutor_person">
-            <div class="person2_image person_image" style="background-image: url(/eduklinikapp/static/eduklinikapp/images/staff1.jpg);">
-            </div>
-            <div class="person_text">
-                <b>Mrs Saka Ganiyat</b>
-                <p>H.O.D Mathematics</p>
-                <h4>Mrs saka ganiyat is a self diven enthusiast who leverages her understanding on the vast
-                    web of education into perfect delivery second to none.
-                </h4>
-            </div>
-        </div>
-
-        <div class="tutors_person3 tutor_person">
-            <div class="person3_image person_image" style="background-image: url(/eduklinikapp/static/eduklinikapp/images/staff2.jpg);">
-            </div>
-            <div class="person_text">
-                <b>Dev Femi Ojo</b>
-                <p>H.O.D Programming</p>
-                <h4>Having held dinstinctive scores in masters and phd programmes . Dev Femi is an
-                    enthusiastic and talent driven software expert.
-
-                </h4>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<section class="ceo">
-    <div class="ceo_image" style="background-image: url(/eduklinikapp/static/eduklinikapp/images/consultant.jpg);">
-    </div>
-    <div class="ceo_text">
-        <h1>Dr Ayinde Yusuf</h1>
-        <h2>B.SC / M.SC linguistics , University of Ilorin.</h2>
-        <h3>CEO and FOUNDER (EDUKLINIK LEARNING NEXUS)</h3>
-    </div>
-</section>
-
-<section class="choose">
-    <div class="choose_header">
-        <h1>Why choose us ?</h1>
-    </div>
-    <!-- <span class="absolute1"></span> -->
-    <!-- <span class="absolute2"></span> -->
-    <!-- <span class="absolute3"></span> -->
-    <!-- <span class="absolute4">hey</span> -->
-    <div class="choose_content">
-        <div class="choose_text">
-
-            <div>
-                <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                        viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-                    </svg>
-                </span>
-                <span>
-                    Over 300 newly graduated students
-                </span>
-            </div>
-            <!-- second -->
-            <div>
-                <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                        viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-                    </svg>
-                </span>
-                <span>
-                    Best Teachers
-                </span>
-            </div>
-            <!-- third -->
-            <div>
-                <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                        viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-                    </svg>
-                </span>
-                <span>
-                    Top professionals in the world
-                </span>
-            </div>
-            <!-- fourth -->
-            <div>
-                <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                        viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-                    </svg>
-                </span>
-                <span>
-                    Best online teaching assistant courses
-                </span>
-            </div>
-            <!-- fifth -->
-            <div>
-                <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                        viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-                    </svg>
-                </span>
-                <span>
-                    Over 50 universities worldwide
-                </span>
-            </div>
-            <!-- sixth -->
-            <div>
-                <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                        viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-                    </svg>
-                </span>
-                <span>
-                    Expand your knowledge
-                </span>
-            </div>
-        </div>
-        <div class="choose_image" style="background-image: url(/eduklinikapp/static/eduklinikapp/images/23technologies.jpg);">
-        </div>
-
-    </div>
-
-</section>
-
-{% if home_blog %}
-<section class="blog" id="blog">
-    <div class="blog_header">
-        <small>Our Blog</small>
-        <h1>Get latest News and Stories</h1>
-    </div>
-    <div class="blog_main">
-
-        {% for post in home_blog %}
-        <div class="blog_main_container">
-            <div class="blog_post_image blog_post_image_1" style="background-image: url({{post.image.url}});">
-            </div>
-            <div class="blog_post_text">
-                <h2>{{post.title}} </span></h2>
-                <h3>{{post.context}}</h3>
-                <a class="read_more" href="blog.html">Read more</a>
-            </div>
-        </div>
-        {% endfor %}
-
-        <div class="blog_main_container">
-            <div class="blog_post_image blog_post_image_2">
-            </div>
-            <div class="blog_post_text" id="pinned">
-                <h2>What do we offer in <span>EDUKLINIK LEARNING NEXUS ?</span></h2>
-                <h3>This article explores several aspect that you need to know about the organisation</h3>
-                <a class="read_more" href="blog.html">Read more</a>
-            </div>
-        </div>
-
-        <div class="blog_main_container">
-            <div class="blog_post_image blog_post_image_3">
-            </div>
-            <div class="blog_post_text">
-                <h2>A digital Asset in the 21st Century ?</span></h2>
-                <h3>Do you know that people are making waves delving into digital marketing ? this is now
-                    something very rampant in the entrepreneurship market</h3>
-                <a class="read_more" href="blog.html">Read more</a>
-            </div>
-        </div>
-
-    </div>
-    <button class="explore_more">
-        <a href="/eduklinikapp/blog.html">
-            Explore more
+        <br>
+        <a href="">
+            Explore now &rightarrow;
         </a>
-        <span>
-            <svg style="color: white;" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                fill="currentColor" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-            </svg>
-        </span>
-    </button>
-</section>
-{% endif %}
+    </section>
 
-<!-- section for the partners comes next -->
-<section class="partners">
-    <div class="partners_header">
-        <h1>Partners & Service Providers</h1>
-    </div>
-    <div class="partners_body">
-        <div class="partners_1">ACESS B<em>ank</em></div>
-        <div class="partners_2" style="color: var(--main-color);">CBN</div>
-        <div class="partners_3" style="color: var(--main-color);">VISA</div>
-        <div class="partners_4">SPACE X</div>
-        <div class="partners_5">META </div>
-    </div>
-    <button class="partners_btn">
-        <a href="mailto:info@eduklinik@gmail.com">
-            Book a call
-        </a>
-    </button>
-</section>
-<!-- this is the end of the partners section The contact section follows below -->
-<section class="contact_us">
-    <div class="contact_us_header">
-        <h1>Message us</h1>
-        <h2>We're more than happy to hear from you and receive your suggestions</h2>
-    </div>
-    <div class="contact_us_content">
-        <label for="name">
-            <input type="text" placeholder="Fullname">
-        </label>
-        <label for="subject">
-            <input type="text" placeholder="Subject">
-        </label>
-        <label for="email">
-            <input type="email" placeholder="E-mail">
-        </label>
-        <textarea name="messade" id="Message" cols="30" rows="10" placeholder="Message"></textarea>
-        <button class="message">
-            <a href="#">
-                Send message
-            </a>
-        </button>
-    </div>
-</section>
-
-</main>
-
-<script src="{% static 'eduklinikapp/scripts/homepage.js' %}"></script>
-
-
+</div>
 {% endblock %}

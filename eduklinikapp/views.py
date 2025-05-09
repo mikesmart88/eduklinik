@@ -19,13 +19,15 @@ def home(request):
     exam = models.course.objects.filter(c_type='Examination preperation')[:4]
     skill = models.course.objects.filter(c_type='Skill development services')[:4]
     spec = models.course.objects.filter(c_type='Specialized services')[:4]
+    p_course = models.course.objects.annotate(high=Max('participant')).order_by('-pub_date')[:5]
     blog_view = models.article.objects.annotate(high=Max('views')).filter().order_by('-pub_date')[:3]
     context = {
         'core': core,
         'exam': exam,
         'skill': skill,
         'spec': spec,
-        'home_bog': blog_view
+        'home_bog': blog_view,
+        'pop_cur': p_course,
     }
     
     return render(request, 'home.html', context=context)
