@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views, search_views, profille_view
+from . import views, search_views, profille_view, payment
 
 urlpatterns = [
     path('', views.home, name='homepage'),
@@ -8,6 +8,9 @@ urlpatterns = [
     path('blog/', views.blog, name='blog pages'),
     path('user/register', views.register_view, name='user register page'),
     path('payment/pay/<cstr>', views.payment, name='payment page'),
+    path('lesson/pay/<cstr>',views.lesson_pay, name='lesson payment'),
+     path('lesson/verify-payment/<cstr>/', payment.lesson_verify_payment, name='verify payment'),
+    path('verify-payment/<cstr>/', payment.verify_payment, name='verify payment'),
     path('search/', search_views.search, name='systerm search'),
     path('about/', views.about, name='about page'),
     path('contact/', views.contact, name='contact us'),

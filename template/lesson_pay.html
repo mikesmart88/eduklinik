@@ -112,7 +112,7 @@
       email: email,
       amount: amount,
       callback: function(response) {
-        window.location.href = '/verify-payment/{{main.c_str}}?reference=' + response.reference;
+        window.location.href = '/lesson/verify-payment/{{main.lesson_str}}?reference=' + response.reference;
       },
       onClose: function() {
         alert('Transaction canceled');

@@ -10,6 +10,7 @@ from django.views.decorators.http import require_GET as re_ge
 from django.contrib.auth.decorators import login_required as l_g
 from django.core.paginator import Paginator, EmptyPage
 from .functions import loop_mode
+from django.conf import settings
 
 
 # Create your views here.
@@ -255,8 +256,23 @@ def handout(request):
     
 def payment(request, cstr):
     main = models.course.objects.filter(c_str=cstr).first()
-    return render(request, 'payments.html')
+    print(main.price)
+    context = {
+        'main': main,
+        'amount': main.price,
+        'paystack_pub_key': settings.PAYSTACK_PUBLIC_KEY,
+    }
+    return render(request, 'payments.html', context=context)
 
+def lesson_pay(request, cstr):
+    main = models.lesson.objects.filter(lesson_str=cstr).first()
+    print(main.price)
+    context = {
+        'main':main,
+        'amount': main.price,
+        'paystack_pub_key': settings.PAYSTACK_PUBLIC_KEY,
+    }
+    return render(request, 'lesson_pay.html', context=context)
 
 def webmanifest(request):
     return render(request, 'seo/manifest.json', content_type='application/json')

@@ -242,7 +242,7 @@ class lesson(models.Model):
     lesson_level = models.CharField('leasson level', null=False, blank=True, choices=l_typ, default='Basic', max_length=200)
     class_level = models.CharField('leasson class', null=True, blank=True, choices=cls, default='', max_length=200)
     pub_date = models.DateTimeField('date time of upload', default=timezone.now)
-    file_package = models.FileField('lesson file package', null=True, blank=True, upload_to='lesson files')
+    file_package = models.FileField('lesson file package', null=True, blank=True, upload_to='lesson_files')
     attribute = models.CharField('leasson artibute', null=True, max_length=200, choices=l_attr)
     price = models.BigIntegerField('course price amount', default=0)
     class Meta:
@@ -312,7 +312,8 @@ class course_payment(models.Model):
         return f'{self.user} --- new purchase'
     
 class transaction(models.Model):
-    tran_holder = models.ForeignKey('profile', on_delete=models.CASCADE)
+    amount = models.BigIntegerField('amount paid', default=0)
+    email = models.EmailField('user email', null=True, blank=True)
     decript = models.CharField('payment decription', name=False, max_length=200)
     date = models.DateTimeField('date time of transaction', default=timezone.now)
     status = models.BooleanField('payment status', default=False)
