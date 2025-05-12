@@ -195,6 +195,7 @@ class course(models.Model):
     c_str = models.CharField('course spec id', null=True, blank=True, max_length=200, unique=True)
     price = models.BigIntegerField('course price amount', default=0)
     drive_link = models.URLField('drive link of the course', null=True, blank=True, max_length=1000000)
+    course_tralle = models.FileField('course trailer shot vedio', null=True, blank=True, upload_to='free_file')
     
     def __str__(self):
         return f'{str(self.course_subject)}'
@@ -232,19 +233,23 @@ class lesson(models.Model):
         ('syllabue', 'syllabue'),
         ('textbook', 'textbook'),
         ('handout', 'handout'),
+        ('pdf-ebook', 'pdf-ebook'),
     ]
     
     add_by = models.ForeignKey('staff', null=True, on_delete=models.PROTECT)
-    under_course = models.ForeignKey('course', on_delete=models.CASCADE)
+    under_course = models.ForeignKey('course', null=True, on_delete=models.CASCADE)
     ltitle = models.CharField('lesson name', blank=False, max_length=200)
+    lesson_dic = models.TextField('write note and description of the lesson if in single', null=True, blank=True)
     lesson_str = models.CharField('leason spec id', null=True, blank=True, max_length=200, unique=True)
     lesson_img = models.ImageField('add a image to decribe the lesson', null=True, blank=True)
+    lesson_tralle = models.FileField('lesson trailer shot vedio', null=True, blank=True, upload_to='free_file')
     lesson_level = models.CharField('leasson level', null=False, blank=True, choices=l_typ, default='Basic', max_length=200)
     class_level = models.CharField('leasson class', null=True, blank=True, choices=cls, default='', max_length=200)
     pub_date = models.DateTimeField('date time of upload', default=timezone.now)
     file_package = models.FileField('lesson file package', null=True, blank=True, upload_to='lesson_files')
     attribute = models.CharField('leasson artibute', null=True, max_length=200, choices=l_attr)
     price = models.BigIntegerField('course price amount', default=0)
+    actton_btn = models.CharField('add a text to show in the button do not add the if file is cassifiled as the rest of others this is mainly for the single lesson page', null=True, blank=True, max_length=200)
     class Meta:
         ordering = ['-pub_date']
 

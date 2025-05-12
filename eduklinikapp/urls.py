@@ -26,6 +26,7 @@ urlpatterns = [
     path('syllabuse/', views.syllabuses, name='syllabuse page'),
     path('textbook/', views.textbook, name="text book page"),
     path('handout/', views.handout, name="handout page"),
+    path('file/single/<l_str>', views.singlelesson, name='single note page'),
     # dashboard
     path('dashboard/', profille_view.dashboard, name='user dashboard'),
     path('user/profile/', profille_view.profile, name='user profile'),

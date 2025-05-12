@@ -287,5 +287,20 @@ def about(request):
 def contact(request):
     return render(request, 'contact.html')
 
+def singlelesson(request, l_str):
+    if request.user.is_authenticated:
+        user = request.user
+        current_user = models.profile.objects.filter(user=user).first()
+        main = models.lesson.objects.filter(lesson_str=l_str).first()
+        
+        context = {
+            'user': current_user,
+            'main':main,
+        }
+        return render(request, 'lessonnotes/booksingle.html', context=context)
+    else:
+        return redirect('/user/login')
+    
+
 
     

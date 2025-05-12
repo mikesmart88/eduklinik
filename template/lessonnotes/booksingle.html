@@ -213,8 +213,8 @@
 
         <courses class="nav" style="margin-top: 5rem; height: auto;">
             <button class="course_nav_btn">
-                <a href="/course/">
-                    Courses
+                <a href="/online_school/">
+                    online school
                 </a>
             </button>
             <span style="color: var(--main-color); font-weight: 900;">
@@ -222,8 +222,8 @@
             </span>
 
             <button class="course_nav_btn">
-                <a href="/course/{{main.course_subject.sub_name}}">
-                    {{main.course_subject.sub_name}}
+                <a href="/">
+                    books
                 </a>
             </button>
             <span style="color: var(--main-color); font-weight: 900;">
@@ -232,7 +232,7 @@
 
             <button class="course_nav_btn">
                 <a href="">
-                    {{main.meta_data}}
+                    {{main.attribute}}
                 </a>
             </button>
         </courses>
@@ -252,42 +252,28 @@
         </style>
         <section class="singlebody" style="color: #000 !important;">
             <div class="singlebody_details_top">
-                {% if main.course_tralle %}
-                <video src="{{main.course_tralle.url}}"></video>
+                {% if main.lesson_tralle %}
+                <video src="{{main.lesson_tralle.url}}"></video>
                 {% else %}
-                <img src="{{main.c_img.url}}" alt="This is an image of the lesson your're about to take"
+                <img src="{{main.lesson_img.url}}" alt="This is an image of the lesson your're about to take"
                     class="single_image" style="cursor: pointer;">
                 {% endif %}
                 <div class="single_course_information">
                     <h1 class="coursename">
-                        {{main.meta_data}}
+                        {{main.ltitle}}
                     </h1>
                     <span>
-                        <b style="color: var(--main-color);">
-                            &#10038; {{main.participant}}
-                        </b>
-                        learners are already learning
+                        people are already reading
                     </span>
                     <span>
-                        &#10032; Uploaded by <b id="uploader" style="color: var(--main-color);">{{main.up_by.name}}</b>
+                        &#10032; Uploaded by <b id="uploader" style="color: var(--main-color);">{{main.add_by.name}}</b>
                     </span>
                     <p>
                         &#10030; 
-                        {{main.bio}}
+                        {{main.lesson_dic}}
                     </p>
-                    <div class="learnable">
-                        <h4>
-                            What you will learn in this course
-                        </h4>
-                        <ul>
-                            <p>
-                                {{main.tag}}
-                            </p>
-                        </ul>
-                    </div>
-                </div>
             </div>
-            <div class="singlebody_details_middle">
+            <!--<div class="singlebody_details_middle">
                 <h1 class="coursename2">
                     &#10027; Knowledge and Skills you will learn
                 </h1>
@@ -306,15 +292,14 @@
                     </button>
                     <button id="Skills" type="menu">
                         Arithmetics
-                    </button>
+                    </button>-->
                 </div>
-                <button type="submit" class="learning">
-                    Start learning &#11122;
+                <button type="submit" class="learning" onclick="window.location.href='/lesson/pay/{{main.lesson_str}}';">
+                    {{main.actton_btn}} &#11122;
                 </button>
             </div>
 
             {% if relative %}
-
             <div class="same_tutor">
                 <h1 style="margin-bottom: 1rem;">Learners who took this course also enrolled in &#11122;</h1>
                 <div class="same_boxes_wrapper">
