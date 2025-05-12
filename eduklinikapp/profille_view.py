@@ -20,6 +20,7 @@ def dashboard(request):
         user_cour = models.user_course.objects.filter(course_holder=current_user).order_by('-date')[:10]
         user_curcn = models.user_course.objects.filter(course_holder=current_user).count()
         private_count = models.tech_msg.objects.filter(student=current_user).count()
+        cann_count = models.c_notification.objects.all().count()
         c_ann = models.c_notification.objects.order_by('-add_date')[:5]
         context = {
             'user': current_user,
@@ -27,6 +28,7 @@ def dashboard(request):
             'curs_con': user_curcn,
             'tech_count': private_count,
             'anounce': c_ann,
+            'cnt': cann_count,
         }
         return render(request, 'user/dashboard.html', context=context)
     else:

@@ -202,16 +202,16 @@
                         <path
                             d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
                     </svg>
-                    {% if user.not_count >= 0 %}
+                    {% if cnt >= 0 %}
                     <small id="notifications_numbers">
-                        {{user.not_count}}
+                        {{cnt}}
                     </small>
                     {% endif %}
                 </div>
             </div>
         </section>
 
-        <courses class="nav" style="margin-top: 5rem; height: auto;">
+        <courses class="nav" style="margin-top: 1rem; height: auto;">
             <button class="course_nav_btn">
                 <a href="/online_school/">
                     online school
@@ -244,10 +244,16 @@
                 text-transform: uppercase;
             }
             .singlebody_details_top video{
-                width: 100%;
+                width: 50%;
                 height: 100%;
                 box-sizing: border-box;
-                min-width: 100%;
+                min-width: 50%;
+            }
+            @media screen and  (max-width:1000px) {
+                .singlebody_details_top video{
+                    width: 100%;
+                    min-width: 100%;
+                }
             }
         </style>
         <section class="singlebody" style="color: #000 !important;">
@@ -294,11 +300,13 @@
                         Arithmetics
                     </button>-->
                 </div>
-                <button type="submit" class="learning" onclick="window.location.href='/lesson/pay/{{main.lesson_str}}';">
+                <button type="submit" style="color: #fff;" class="learning" onclick="window.location.href='/lesson/pay/{{main.lesson_str}}';">
                     {{main.actton_btn}} &#11122;
                 </button>
+                <br>
+                <br>
             </div>
-
+            <br>
             {% if relative %}
             <div class="same_tutor">
                 <h1 style="margin-bottom: 1rem;">Learners who took this course also enrolled in &#11122;</h1>
@@ -532,6 +540,23 @@
             </small>
         </span>
     </section>
+
+    <style>
+        .online_footer{
+            position: absolute !important;
+            right: 0px;
+            width: calc(100% - 300px);
+        }
+        @media screen and (max-width:1100px) {
+            #top{
+                margin-left: 0px !important;
+                width: 100% !important;
+            }
+            .online_footer{
+                width: 100%;
+            }
+        }
+    </style>
 
     <script src="{% static 'educklinikapp/eduklinikapp/onlineschool.js' %}"></script>
 {% endblock %}

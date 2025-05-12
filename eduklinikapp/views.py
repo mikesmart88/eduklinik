@@ -60,9 +60,11 @@ def online_school(request):
         user = request.user
         current_user = models.profile.objects.filter(user=user).first()
         c_ann = models.c_notification.objects.order_by('-add_date')[:3]
+        cann_count = models.c_notification.objects.all().count()
         context = {
             'user': current_user,
             'anounce': c_ann,
+            'cnt': cann_count,
         }
         return render(request, 'online_school.html', context=context)
     else:
@@ -74,11 +76,13 @@ def course(request):
         current_user = models.profile.objects.filter(user=user).first()
         p_course = models.course.objects.annotate(high=Max('participant')).order_by('-pub_date')[:10]
         cart_sub = models.subject.objects.prefetch_related('course').all()
+        cann_count = models.c_notification.objects.all().count()
         context = {
             'user': current_user,
             'pop_cur': p_course,
             'subject': cart_sub,
             'subjects': cart_sub,
+            'cnt': cann_count,
         }
         return render(request, 'courses/courseshome.html', context=context)
     else:
@@ -88,6 +92,7 @@ def popular_course(request):
     if request.user.is_authenticated:
         user = request.user
         current_user = models.profile.objects.filter(user=user).first()
+        cann_count = models.c_notification.objects.all().count()
         p_course = models.course.objects.annotate(high=Max('participant')).order_by('-pub_date').all()
         page_n = request.GET.get('page', 1)
         p = Paginator(p_course, 15)
@@ -98,6 +103,7 @@ def popular_course(request):
         context = {
             'user': current_user,
             'pop_cur': page,
+            'cnt': cann_count,
         }
         return render(request, 'courses/popular.html', context=context)
     else:
@@ -108,6 +114,7 @@ def spec_cource(request, course):
         user = request.user
         current_user = models.profile.objects.filter(user=user).first()
         sub = models.subject.objects.filter(sub_name=course).first()
+        cann_count = models.c_notification.objects.all().count()
         main_course = models.course.objects.filter(course_subject=sub).all()
         page_n = request.GET.get('page', 1)
         p = Paginator(main_course, 15)
@@ -118,6 +125,7 @@ def spec_cource(request, course):
         context = {
             'user': current_user,
             'pop_cur': page,
+            'cnt': cann_count,
         }
         return render(request, 'courses/popular.html', context=context)
     else:
@@ -128,12 +136,14 @@ def get_course(request, str):
         user = request.user
         current_user = models.profile.objects.filter(user=user).first()
         main_course = models.course.objects.filter(c_str=str).first()
+        cann_count = models.c_notification.objects.all().count()
         get_sub = models.subject.objects.filter(sub_name=main_course.course_subject).first()
         related = models.course.objects.filter(course_subject=get_sub).exclude(c_str=main_course.c_str).order_by('-pub_date')[:5]
         context = {
             'user': current_user,
             'main':main_course,
-            'relative':related
+            'relative':related,
+            'cnt': cann_count,
         }
         return render(request, 'courses/singlecourse.html', context=context)
     else:
@@ -154,6 +164,7 @@ def blog(request):
         'popular': popular_post,
         'all_post': post,
         'page': page,
+        
     }
     return render(request, 'blog.html', context=context)
 
@@ -161,6 +172,7 @@ def lesson_note(request):
     if request.user.is_authenticated:
         user = request.user
         current_user = models.profile.objects.filter(user=user).first()
+        cann_count = models.c_notification.objects.all().count()
         all_leson = models.lesson.objects.filter(attribute='lesson note').all()
         page_n = request.GET.get('page', 1)
         p = Paginator(all_leson, 15)
@@ -171,6 +183,7 @@ def lesson_note(request):
         context = {
             'user': current_user,
             'l_all': page,
+            'cnt': cann_count,
         }
         return render(request, 'lessonnotes/lesson.html', context=context)
     else:
@@ -180,6 +193,7 @@ def pass_quest(request):
     if request.user.is_authenticated:
         user = request.user
         current_user = models.profile.objects.filter(user=user).first()
+        cann_count = models.c_notification.objects.all().count()
         all_leson = models.lesson.objects.filter(attribute='past question').all()
         page_n = request.GET.get('page', 1)
         p = Paginator(all_leson, 15)
@@ -190,6 +204,7 @@ def pass_quest(request):
         context = {
             'user': current_user,
             'l_all': page,
+            'cnt': cann_count,
         }
         return render(request, 'pastquestions/pastquestion1.html', context=context)
     else:
@@ -200,6 +215,7 @@ def syllabuses(request):
     if request.user.is_authenticated:
         user = request.user
         current_user = models.profile.objects.filter(user=user).first()
+        cann_count = models.c_notification.objects.all().count()
         all_leson = models.lesson.objects.filter(attribute='syllabue').all()
         page_n = request.GET.get('page', 1)
         p = Paginator(all_leson, 15)
@@ -210,6 +226,7 @@ def syllabuses(request):
         context = {
             'user': current_user,
             'l_all': page,
+            'cnt': cann_count,
         }
         return render(request, 'syllabuses/syllabuses1.html', context=context)
     else:
@@ -219,6 +236,7 @@ def textbook(request):
     if request.user.is_authenticated:
         user = request.user
         current_user = models.profile.objects.filter(user=user).first()
+        cann_count = models.c_notification.objects.all().count()
         all_leson = models.lesson.objects.filter(attribute='textbook').all()
         page_n = request.GET.get('page', 1)
         p = Paginator(all_leson, 15)
@@ -229,6 +247,7 @@ def textbook(request):
         context = {
             'user': current_user,
             'l_all': page,
+            'cnt': cann_count,
         }
         return render(request, 'Textbooks/Textbooks1.html', context=context)
     else:
@@ -238,6 +257,7 @@ def handout(request):
     if request.user.is_authenticated:
         user = request.user
         current_user = models.profile.objects.filter(user=user).first()
+        cann_count = models.c_notification.objects.all().count()
         all_leson = models.lesson.objects.filter(attribute='handout').all()
         page_n = request.GET.get('page', 1)
         p = Paginator(all_leson, 15)
@@ -248,6 +268,7 @@ def handout(request):
         context = {
             'user': current_user,
             'l_all': page,
+            'cnt': cann_count,
         }
         return render(request, 'handouts/handout1.html', context=context)
     else:
@@ -280,22 +301,26 @@ def webmanifest(request):
 
 @re_ge
 def about(request):
-    return render(request, 'about.html')
+    cann_count = models.c_notification.objects.all().count()
+    return render(request, 'about.html', {'cnt': cann_count,})
 
 
 @re_ge
 def contact(request):
-    return render(request, 'contact.html')
+    cann_count = models.c_notification.objects.all().count()
+    return render(request, 'contact.html', {'cnt': cann_count,})
 
 def singlelesson(request, l_str):
     if request.user.is_authenticated:
         user = request.user
         current_user = models.profile.objects.filter(user=user).first()
         main = models.lesson.objects.filter(lesson_str=l_str).first()
-        
+        cann_count = models.c_notification.objects.all().count()
         context = {
             'user': current_user,
             'main':main,
+            'cnt': cann_count,
+            
         }
         return render(request, 'lessonnotes/booksingle.html', context=context)
     else:

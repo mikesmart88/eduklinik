@@ -204,9 +204,9 @@
                         <path
                             d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
                     </svg>
-                    {% if user.not_count >= 0 %}
+                    {% if cnt >= 0 %}
                     <small id="notifications_numbers">
-                        {{user.not_count}}
+                        {{cnt}}
                     </small>
                     {% endif %}
                 </div>
@@ -337,7 +337,7 @@
                 </h1>
                 <div class="announcements_content">
                     {% for i in anounce %}
-                    <div class="anouncements_1">
+                    <div class="anouncements_1" onclick="window.location.href='/notification/';">
                         <h3 style="color: #000;">
                             {{i.msg}}
                         </h3>
@@ -346,7 +346,7 @@
                             <img {% if i.the_staff.staff_holder %} src="{{i.the_staff.staff_holder.profile_pics.image.url}}" {% else %} src="eduklinikapp/images/nouser.png" {% endif %} alt="" height="auto"
                                 style="border-radius: 50%;"class="poster_image" >
                             <div class="announcemet_poster_info">
-                                <p>
+                                <p style="color: #000;">
                                     Posted by <span id="uploader" style="color: var(--text-color2); font-weight:600;">{{i.the_staff.name}}</span>
                                 </p>
                                 <p>
@@ -548,10 +548,18 @@
     </section>
 
     <style>
+        .online_footer{
+            position: absolute !important;
+            right: 0px;
+            width: calc(100% - 300px);
+        }
         @media screen and (max-width:1100px) {
             #top{
                 margin-left: 0px !important;
                 width: 100% !important;
+            }
+            .online_footer{
+                width: 100%;
             }
         }
     </style>

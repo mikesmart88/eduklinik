@@ -392,6 +392,8 @@ class c_notification(models.Model):
     def was_publised_recently(self):
         return self.add_date >= timezone.now() - datetime.timedelta(days=1)
     
+        
+    
     
 class tech_msg(models.Model):
     teacher = models.ForeignKey('staff', on_delete=models.PROTECT)
