@@ -28,10 +28,13 @@
 {% block content %}
 
 <style>
-    .head{
+    #header{
         display: none !important;
     }
-    .foot{
+    #footer{
+        display: none !important;
+    }
+    .developer{
         display: none !important;
     }
 </style>
@@ -245,7 +248,7 @@
                 </div>
             </div>
             <div class="materials">
-                <h1>
+                <h1 style="color: #000;">
                     Study materials
                 </h1>
                 <div class="materials_content">
@@ -324,7 +327,7 @@
             </div>
             <div class="announcements">
                 <p>
-                    <small>
+                    <small style="color: #000;">
                         Keep up to date
                     </small>
                     <span>
@@ -546,13 +549,11 @@
             </small>
         </span>
     </section>
+    <br>
+    <br>
 
     <style>
-        .online_footer{
-            position: absolute !important;
-            right: 0px;
-            width: calc(100% - 300px);
-        }
+        
         @media screen and (max-width:1100px) {
             #top{
                 margin-left: 0px !important;
@@ -560,6 +561,10 @@
             }
             .online_footer{
                 width: 100%;
+                padding-bottom: 10px !important;
+            }
+            main{
+                padding: 0rem 0rem !important;
             }
         }
     </style>

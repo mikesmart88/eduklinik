@@ -18,6 +18,7 @@
 <meta property="twiter:card" content="summary_large_image" />
 <meta name="twitter:image:alt" content="mstreamapp logo" />
 <link rel="stylesheet" href="{% static 'eduklinikapp/styles/forms.css' %}">
+<link rel="stylesheet" href="{% static 'eduklinikapp/styles/responsive.css' %}">
 {% endblock %}
 
     {% block title %}Eduklinik - User login {% endblock %}
@@ -335,7 +336,6 @@
                 <select name="acc_type" id="acc_type">
                     <option value="">---select account-----</option>
                     <option value="Student">Student</option>
-                    <option value="Teacher">staff</option>
                     <option value="Parent">Parent</option>
                     <option value="Contributor">Contributor</option>
                 </select>
@@ -371,6 +371,7 @@
         <p class="form_text">
             Already have an account? <a href="/user/login">login</a>
         </p>
+        <br>
         <br>
         <br>
         <style>

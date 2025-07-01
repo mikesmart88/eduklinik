@@ -33,7 +33,6 @@ class pro_image(models.Model):
                 img_h = i.height-30 if i.height > 400 else i.height-10
                 img_w = i.width-30  if i.width > 400 else i.width-10
                 i = i.resize((img_w, img_h), PIL.Image.Resampling.LANCZOS)
-
                 i_io = BytesIO()
                 i.save(i_io, format='PNG')
                 self.image = InMemoryUploadedFile(i_io, None, f'Blk_{rand_string_generator(10)}.webp', 'image/webp', None, None)

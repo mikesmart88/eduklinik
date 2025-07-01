@@ -141,7 +141,7 @@ main {
 }
 main > .main-header {
   height: 60px;
-  width: calc(100% - 320px);
+  width: calc(100% - 300px);
   box-shadow: var(--box-shadow);
   display: flex;
   position: fixed;
@@ -154,12 +154,17 @@ main > .main-header {
   right: 0;
   box-sizing: border-box;
 }
+main{
+  top:  1.5rem !important;
+  padding: 0px !important;
+}
 #top{
   margin-left: 300px;
   margin-top: 0px !important;
   width: calc(100% - 300px);
   padding-top: 1rem !important;
   color: #fff !important;
+  height: fit-content !important;
 }
 main > .main-header > .menu {
   height: 100%;
@@ -182,6 +187,17 @@ main > .main-header > .menu {
   width: 20px;
   border-radius: 50%;
 }
+
+ #header{
+        display: none !important;
+    }
+    #footer{
+        display: none !important;
+    }
+    .developer{
+        display: none !important;
+    }
+
 .notifications {
   position: relative;
   display: flex;
@@ -190,6 +206,9 @@ main > .main-header > .menu {
   /* background-color: var(--main-color); */
   padding: 0.3rem;
   color: #000;
+}
+.fixed_bottom_navbar{
+    background-color: #fff !important;
 }
 .notifications > small {
   background-color: red;
@@ -479,6 +498,7 @@ main > .main-body {
 .popular_header > h2 {
   font-size: 1rem;
 }
+
 .view_all {
   padding: 0.3rem;
   border: none;

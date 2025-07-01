@@ -23,6 +23,13 @@ body{
     position: fixed;
     border-bottom: 1px solid #4f4c4c2c;
     z-index: 500;
+    top: 0px !important;
+}
+.developer{
+    display: none !important;
+}
+#footer{
+    display: none !important;
 }
 .navagation{
     width: 80%;

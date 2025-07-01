@@ -6,38 +6,40 @@
     border-radius: 0.3rem;
   }
   header {
-    height: 8%;
+    height: 8% !important;
+    z-index: 2 !important;
   }
   .logo_container {
     width: 100%;
+  }
+  main > .programs {
+    border-radius: 2rem;
   }
   .program_sect_1 span:before {
     animation: animate 4s steps(15) infinite;
   }
   .responsive-dropdown {
-    display: flex;
-    position: absolute;
+    display: block;
+    position: fixed;
     background: linear-gradient(to bottom, rgb(69, 1, 66), hsl(42, 60%, 48%));
     height: auto;
     border-radius: 0.4rem;
     width: 80%;
     z-index: 1;
     padding: 1rem 0rem;
-    top: 100%;
+    top: 0;
     left: 100%;
     margin-left: 20%;
     gap: 2rem;
-    transition: 0.6s all linear;
-    transform: scale(0.4);
-    opacity: 0.2;
-    border-bottom: 3px solid var(--background-color);
+    /* transition: 0.6s all linear; */
+    opacity: 0;
+    border-bottom: 3px solid black;
     /* transform: translatex(45%); */
   }
   .nav_show {
     display: flex;
     left: 0;
     opacity: 1;
-    transform: scale(1);
     transition: 0.6s all ease-out;
   }
   .responsive-dropdown,
@@ -49,7 +51,7 @@
   }
   nav ul li a {
     color: var(--background-color);
-    font-family: sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-size: 0.7rem;
   }
   .register,
@@ -143,7 +145,7 @@
     font-size: 100%;
   }
   .form {
-    top: 100%;
+    top: 0;
     width: 100%;
     left: 0;
     height: 100vh;
@@ -169,7 +171,7 @@
     font-size: 1rem;
   }
   .form_2 {
-    top: 100%;
+    top: 0;
     width: 100%;
     left: 0;
     z-index: 100;
@@ -179,17 +181,34 @@
     width: 50%;
   }
   .our_programme_comtent {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: auto;
   }
-  .programmes {
-    padding: 0.4rem;
-    width: 100%;
-    gap: 0.4rem;
+  /* subdcription */
+  .subscription {
+    height: auto;
   }
+  .subscription_content {
+    flex-wrap: wrap;
+  }
+  .subscription_divs {
+    padding: 1rem 0.4rem;
+  }
+  .subscription > small {
+    font-size: 0.8rem;
+  }
+  .subscription > h1 {
+    font-size: 1.5rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .subscription_divs > h1,
+  .subscription_divs > p {
+    font-size: 1.3rem;
+  }
+
+  /* programmes sect */
   .programmes > h1 {
     font-size: 80%;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 900;
   }
   .programmes > button > a {
@@ -198,8 +217,37 @@
   .services {
     padding: 0;
   }
+
   .services_header > h1 {
     font-size: 1.2rem;
+  }
+  .services_header > span[class="pointer"] {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 10%;
+    top: 30%;
+    z-index: 1;
+    align-items: center;
+    color: var(--background-color);
+    background-color: var(--text-black);
+    border-radius: 0.5rem;
+    width: auto;
+    padding: 0.5rem;
+    animation: scrollin infinite 2s 0s ease;
+  }
+  @keyframes scrollin {
+    0% {
+      opacity: 0;
+      transform: translatey(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translatey(0px);
+    }
+  }
+  .services_header > span[class="pointer"] > svg {
+    transform: rotate(270deg);
   }
   .services_content {
     width: 100%;
@@ -209,7 +257,7 @@
   .services_body_3_content,
   .services_body_4_content {
     gap: 1rem;
-    padding: 1rem 0.8rem;
+    padding: 1rem 2rem;
     height: calc(100% - 30%);
     flex-wrap: wrap;
   }
@@ -253,22 +301,38 @@
   }
   .programmes {
     height: auto;
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .icon {
+    font-size: 3rem;
+  }
+  .our_programme {
+    width: 90%;
   }
   .our_programme_header {
     text-align: center;
   }
   .our_programme_comtent {
-    grid-gap: 0.4rem;
-  }
-  .programmes > .programmes_buttons > button {
-    border-radius: 0.4rem;
-    padding: 0.4rem 0rem;
+    grid-gap: 1.5rem;
   }
   .programmes > h1,
   .programmes > p {
     color: rgb(228, 201, 120);
-    font-size: 70%;
+    font-size: 90%;
+    text-align: center;
+    font-weight: 600;
   }
+  .programmes > h1 {
+    font-size: 1.2rem;
+  }
+  .gmi {
+    width: auto;
+  }
+
+  /* tutors */
   .tutors {
     flex-wrap: wrap;
     margin-top: 0;
@@ -284,6 +348,7 @@
     display: none;
     margin-top: 0;
     visibility: hidden;
+    text-align: center;
   }
   .tutors > .tutor_left > h2 {
     transform: rotate(90deg);
@@ -291,30 +356,26 @@
   .tutors_content {
     width: 100%;
     height: calc(100% - 10%);
-    gap: 0.4rem;
+    gap: 1rem;
     padding: 0.5rem;
     box-shadow: none;
     flex-wrap: wrap;
   }
   .tutor_person {
-    height: 300px;
-    width: 70%;
+    height: 400px;
+    width: 80%;
     margin: 0 auto;
     box-shadow: var(--box-shadow);
-    border-radius: 0.3rem;
+    border-radius: 1rem;
   }
   .person_image {
     height: 60%;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    background-color: rgb(115, 132, 115);
-    /* border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem; */
+    object-fit: cover;
   }
   .tutor_person:hover,
   .tutor_person:active,
   .tutor_person:focus {
-    transform: scale(1.1);
+    transform: scale(1.01);
     transition: all 0.6s ease;
   }
   .person_text {
@@ -327,36 +388,33 @@
   }
   .person_text > b,
   .person_text > p {
-    font-size: 60%;
+    font-size: 90%;
     color: var(--text-color2);
     font-family: Arial, Helvetica, sans-serif;
   }
   .person_text > h4 {
-    font-size: 0.7rem !important ;
+    font-size: 0.9rem !important ;
     font-weight: 450;
   }
   .ceo {
     height: 400px;
   }
   .ceo_image {
-    width: 50%;
+    width: 60%;
     height: 50%;
   }
   .ceo_text {
     height: 50%;
     text-align: center;
   }
-  .ceo_text > h1 {
-    color: var(--text-black);
-    font-size: 1.4rem;
-  }
   .ceo_text > h2,
   .ceo_text > h3 {
     font-size: 1rem;
   }
+  /* choose styling */
   .choose {
     width: 100%;
-    height: 1000px;
+    height: auto;
   }
   .choose_header {
     height: 10%;
@@ -364,21 +422,25 @@
   }
   .choose_header > h1 {
     font-size: 1.3rem;
-    border-bottom: 2px solid var(--text-black);
+    border-bottom: 2px solid var(--main-color);
+    padding: 0.5rem 0rem;
   }
   .choose_content {
     height: calc(100% - 10%);
     flex-wrap: wrap;
     height: auto;
   }
-  .choose_text,
-  .choose_image {
+  .choose_text {
     width: 100%;
-    height: 100%;
+    height: auto;
+  }
+  .choose_image {
+    height: 300px;
+    width: 100%;
   }
   .choose_content > .choose_text > div > span:nth-child(2n) {
     font-size: 1.1rem;
-    font-family: sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 500;
   }
   .contact_us {
@@ -483,8 +545,16 @@
   .partners_body {
     font-size: 1.5rem;
   }
-  .blog_image {
-    height: 300px;
+  /* blog page */
+  .blog_hero {
+    height: 450px;
+  }
+  .blog_image_texts {
+    width: 100%;
+    padding: 1rem;
+  }
+  .blog_hero > .blog_image_texts > h1 {
+    font-size: 2rem;
   }
   .blog_image > .blog_image_holder > h1 {
     font-size: 1.2rem;
@@ -627,17 +697,17 @@
     min-width: 230px;
     border-radius: 0.7rem;
   }
-  .boxes > .box_text{
-    padding: .1rem .5rem;
+  .boxes > .box_text {
+    padding: 0.1rem 0.5rem;
   }
-  .more_start{
-    margin-top: .4rem;
+  .more_start {
+    margin-top: 0.4rem;
   }
   .boxes > .box_text > .time_learners,
   .boxes > .box_text > h2 {
     margin-top: 0.01rem;
     margin-bottom: 0.5rem;
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
   .boxes > .box_text > div:nth-child(2) {
     margin-top: 0.1rem;
@@ -833,49 +903,48 @@
     grid-template-columns: 1fr 1fr 1fr;
     overflow-x: scroll;
     scrollbar-width: none;
-    padding: .5rem;
+    padding: 0.5rem;
   }
   .materials_boxes {
-    height:300px;
+    height: 300px;
   }
   /* styling the search section */
-  .search_results{
+  .search_results {
     margin-top: 1rem;
     padding: 0;
   }
   .search_results > h5 {
-    font-size: .5rem;
+    font-size: 0.5rem;
     padding-left: 1rem;
   }
-  .popular_searches_header{
-    padding: .7rem;
+  .popular_searches_header {
+    padding: 0.7rem;
   }
-  .popular_searches_header > h3{
-    font-size:1rem ;
+  .popular_searches_header > h3 {
+    font-size: 1rem;
   }
-  .popular_searches{
+  .popular_searches {
     padding: 0;
   }
-  .see_also_content{
+  .see_also_content {
     flex-wrap: wrap;
   }
-  .see_one , .see_two{
+  .see_one,
+  .see_two {
     width: 100%;
     justify-content: space-between;
   }
   /* onlineschool contact us  */
-  .contact_content > div{
+  .contact_content > div {
     flex-wrap: wrap;
   }
-  .tell_us{
+  .tell_us {
     width: 90%;
   }
   /* dashboard for student section */
-  .top > .div_container{
+  .top > .div_container {
     width: 100%;
   }
-
-
 }
 
 /* query for the next small screen size */
@@ -905,20 +974,19 @@
     width: 80%;
     z-index: 1;
     padding: 1rem 0rem;
-    top: 100%;
+    top: 0;
     left: 100%;
     margin-left: 20%;
     gap: 2rem;
     transition: 0.6s all ease;
-    transform: scale(0.4);
     opacity: 0.2;
     /* transform: translatex(45%); */
   }
+
   .nav_show {
     display: flex;
     left: 0;
     opacity: 1;
-    transform: scale(1);
     transition: 0.6s all ease-out;
   }
   .responsive-dropdown,
@@ -999,6 +1067,7 @@
     padding: 1rem 1rem;
     text-align: center;
   }
+
   .our_vision_header {
     height: 10%;
   }
@@ -1016,7 +1085,7 @@
     font-size: 1.3rem;
   }
   .form {
-    top: 100%;
+    top: 0;
     width: 100%;
     left: 0;
     /* height: 400px; */
@@ -1042,7 +1111,7 @@
     font-size: 1rem;
   }
   .form_2 {
-    top: 100%;
+    top: 0;
     width: 100%;
     left: 0;
     z-index: 100;
@@ -1050,20 +1119,57 @@
   .form_2_register {
     width: 60%;
   }
+
+  /* subscription */
+
+  .subscription {
+    height: auto;
+  }
+  .subscription_content {
+    flex-wrap: wrap;
+  }
+  .subscription_divs {
+    padding: 1rem 0.4rem;
+  }
+  .subscription > small {
+    font-size: 0.8rem;
+  }
+  .subscription > h1 {
+    font-size: 1.5rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .subscription_divs > h1,
+  .subscription_divs > p {
+    font-size: 1rem;
+  }
+  /*  programme*/
+  .our_programme {
+    width: 100%;
+  }
   .our_programme_comtent {
     grid-template-columns: repeat(2, 1fr);
   }
   .programmes {
-    padding: 0.4rem;
-    width: 100%;
-    gap: 0.4rem;
+    height: auto;
+    gap: 0.3rem;
+    padding: 0.3rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .programmes > h1,
+  .programmes > p {
+    color: rgb(228, 201, 120);
+    font-size: 70%;
+    text-align: center;
+    font-weight: 600;
   }
   .programmes > h1 {
-    font-size: 80%;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    font-weight: 900;
+    font-size: 1.2rem;
   }
+  .gmi {
+    width: auto;
+  }
+  /* services */
   .services {
     padding: 0;
   }
@@ -1151,12 +1257,6 @@
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
   }
-  .person_image:hover,
-  .person_image:active,
-  .person_image:focus {
-    transform: scale(1.3);
-    transition: all 0.6s ease;
-  }
   .person_text {
     height: calc(100% - 50%);
     padding: 0.4rem;
@@ -1166,10 +1266,12 @@
   .person_text > b,
   .person_text > p {
     font-size: 0.7rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
   .person_text > h4 {
     font-size: 0.8rem;
-    font-weight: 450;
+    font-weight: 600;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
   .ceo {
     height: 400px;
@@ -1181,22 +1283,21 @@
   .ceo_text {
     height: 50%;
     text-align: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
   .ceo_text > h1 {
-    color: var(--text-black);
-    font-size: 1.4rem;
+    font-size: 1rem;
   }
   .ceo_text > h2,
   .ceo_text > h3 {
     font-size: 1rem;
   }
+  /* choose  */
   .choose {
     width: 100%;
-    height: 1000px;
-    margin: none;
+    height: auto;
   }
   .choose_header {
-    z-index: 1;
     height: 10%;
     align-items: center;
   }
@@ -1209,14 +1310,17 @@
     flex-wrap: wrap;
     height: auto;
   }
-  .choose_text,
-  .choose_image {
+  .choose_text {
     width: 100%;
     height: 100%;
   }
+  .choose_image {
+    height: 350px;
+    width: 100%;
+  }
   .choose_content > .choose_text > div > span:nth-child(2n) {
     font-size: 1.1rem;
-    font-family: sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 500;
   }
   .contact_us {
@@ -1270,15 +1374,6 @@
   .video {
     height: 350px;
     width: 90%;
-  }
-  .programmes > .programmes_buttons {
-    flex-wrap: wrap;
-    justify-content: none;
-    gap: 0.5rem;
-  }
-  .programmes > .programmes_buttons > button {
-    width: 100%;
-    justify-content: space-between;
   }
   .blog {
     height: auto;
@@ -1646,7 +1741,7 @@
   .same_tutor > .same_boxes_wrapper > .boxes > .box_text > .more_start {
     margin-top: 0.1rem;
   }
-    /* styling the responsiveness of the lesson notes section */
+  /* styling the responsiveness of the lesson notes section */
   .materials_child_body {
     padding: 0.5rem 0rem;
     padding-bottom: 2rem;
@@ -1655,10 +1750,10 @@
     grid-template-columns: 1fr 1fr 1fr;
     overflow-x: scroll;
     scrollbar-width: none;
-    padding: .5rem;
+    padding: 0.5rem;
   }
   .materials_boxes {
-    height:300px;
+    height: 300px;
     width: 190px;
   }
 }
@@ -1673,7 +1768,7 @@
     border-radius: 0.3rem;
   }
   header {
-    height: 8%;
+    height: 8% !important;
   }
   .logo_container {
     width: 100%;
@@ -1685,17 +1780,16 @@
     display: flex;
     position: absolute;
     background: linear-gradient(to bottom, rgb(69, 1, 66), hsl(42, 60%, 48%));
-    height: 400px;
+    height: 600px;
     width: 60%;
     z-index: 1;
     padding: 1rem 0rem;
-    top: 100%;
+    top: 0;
     left: 100%;
     margin-left: 40%;
     gap: 2rem;
     transition: 0.6s all ease;
-    transform: scale(0.4);
-    opacity: 0.2;
+    opacity: 0;
     /* transform: translatex(45%); */
   }
   .nav_show {
@@ -1741,12 +1835,14 @@
   main {
     padding: 0rem 0rem;
     top: 3rem;
+    margin-bottom: -4rem;
   }
   main > .programs {
     flex-wrap: wrap;
     width: 100%;
     justify-content: start;
     gap: 0rem;
+    margin-top: 2rem;
   }
   .program_sect_1 {
     gap: 1rem;
@@ -1757,8 +1853,7 @@
   .program_sect_1 > p {
     font-size: 1.1rem;
     line-height: 1.7rem;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-      "Lucida Sans", Arial, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
   .program_sect_1 > div h1,
   .program_sect_2 > em {
@@ -1800,6 +1895,7 @@
   }
   .our_vision_header {
     height: 10%;
+    margin-top: 1.5rem;
   }
   .vision_first_body {
     gap: 1rem;
@@ -1849,23 +1945,46 @@
   .form_2_register {
     width: 60%;
   }
+  /* subscription */
+  .subscription {
+    height: auto;
+  }
+  .subscription_divs {
+    padding: 1rem 0.4rem;
+  }
+  .subscription > small {
+    font-size: 0.8rem;
+  }
+  .subscription > h1 {
+    font-size: 1.5rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .subscription_divs > h1,
+  .subscription_divs > p {
+    font-size: 1rem;
+  }
+  /*  */
+  .our_programme {
+    width: 100%;
+  }
   .our_programme_comtent {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   .programmes {
-    padding: 0.4rem;
-    width: 100%;
-    gap: 0.4rem;
+    height: auto;
+    gap: 0.3rem;
+    padding: 0.3rem 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
   .programmes > h1 {
-    font-size: 80%;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-size: 50%;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 900;
   }
-  .programmes > button > a {
-    font-size: 74%;
-  }
+
+  /* services */
   .services {
     padding: 0;
   }
@@ -1924,6 +2043,7 @@
     color: rgb(228, 201, 120);
     font-size: 100%;
   }
+  /* tutors */
   .tutors {
     flex-wrap: wrap;
     margin-top: 0;
@@ -1960,26 +2080,25 @@
     background-color: rgb(115, 132, 115);
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
-  }
-  .person_image:hover,
-  .person_image:active,
-  .person_image:focus {
-    transform: scale(1.3);
-    transition: all 0.6s ease;
+    object-fit: cover;
   }
   .person_text {
     height: calc(100% - 50%);
     padding: 0.4rem;
     border-bottom-right-radius: 0rem;
     gap: 0.4rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
   .person_text > b,
   .person_text > p {
-    font-size: 60%;
+    font-size: 80%;
+    font-weight: 600;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
   .person_text > h4 {
     font-size: 0.8rem;
-    font-weight: 450;
+    font-weight: 600;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
   .ceo {
     height: 400px;
@@ -1987,14 +2106,15 @@
   .ceo_image {
     border: 2px solid var(--text-color2);
     height: 50%;
+    box-shadow: var(--box-shadow);
+    width: 40%;
   }
   .ceo_text {
     height: 50%;
     text-align: center;
   }
   .ceo_text > h1 {
-    color: var(--text-black);
-    font-size: 1.4rem;
+    font-size: 1rem;
   }
   .ceo_text > h2,
   .ceo_text > h3 {
@@ -2002,47 +2122,47 @@
   }
   .choose {
     width: 100%;
-    height: 1000px;
-    margin: none;
+    height: auto;
+    margin-bottom: 3rem;
   }
   .choose_header {
-    z-index: 1;
     height: 10%;
     align-items: center;
   }
   .choose_header > h1 {
     font-size: 1.3rem;
-    border-bottom: 2px solid var(--text-black);
+    border-bottom: 2px solid var(--main-color);
   }
   .choose_content {
     height: calc(100% - 10%);
     flex-wrap: wrap;
     height: auto;
   }
-  .choose_text,
-  .choose_image {
+  .choose_text {
     width: 100%;
     height: 100%;
   }
   .choose_image {
-    border: 4px solid var(--main-color);
-    border-radius: 0.5rem;
+    height: 400px;
+    box-shadow: var(--box-shadow);
+    width: 100%;
   }
   .choose_content > .choose_text > div > span:nth-child(2n) {
     font-size: 1.1rem;
-    font-family: sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 500;
   }
   .contact_us {
     height: auto;
-    width: 100%;
+    width: 70%;
     box-shadow: none;
+    border-radius: 1rem;
   }
   .contact_us_header {
     align-items: center;
   }
   .contact_us_header > h2 {
-    font-size: 100%;
+    font-size: 80%;
     text-align: center;
   }
   .contact_us_content > label > input {
@@ -2081,13 +2201,14 @@
     margin-bottom: 4rem;
     gap: 1rem;
     padding: 1rem;
-    flex-direction: column;
     height: auto;
     text-align: center;
     align-items: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
   .developer > .developer_name > h3 span {
     border-bottom: 2px solid var(--text-color2);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
   .call,
   .submit {
@@ -2112,7 +2233,7 @@
     font-size: 90%;
   }
   .blog_main_container {
-    height: 400px;
+    height: 300px;
   }
   .blog_post_text > h2 span,
   .blog_post_text > h3,
@@ -2200,11 +2321,10 @@
 
   /*  writing the section for the learn and the materials and the body setion too */
 
-
   .learn > h1,
   .materials > h1 {
     font-size: 1rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
   .learn_content {
     grid-template-columns: 1fr 1fr;
@@ -2461,20 +2581,20 @@
   .same_tutor > .same_boxes_wrapper > .boxes > .box_text > .more_start {
     margin-top: 0.1rem;
   }
-    /* styling the responsiveness of the lesson notes section */
-    .materials_child_body {
-      padding: 0.5rem 0rem;
-      padding-bottom: 2rem;
-    }
-    .materials_sub_body > .materials_sub_body_content {
-      grid-template-columns: 1fr 1fr 1fr;
-      scrollbar-width: none;
-      overflow: scroll;
-    }
-    .materials_boxes {
-      height:300px;
-      width: 230px;
-    }
+  /* styling the responsiveness of the lesson notes section */
+  .materials_child_body {
+    padding: 0.5rem 0rem;
+    padding-bottom: 2rem;
+  }
+  .materials_sub_body > .materials_sub_body_content {
+    grid-template-columns: 1fr 1fr 1fr;
+    scrollbar-width: none;
+    overflow: scroll;
+  }
+  .materials_boxes {
+    height: 300px;
+    width: 230px;
+  }
 }
 @media screen and (min-width: 801px) and (max-width: 1024px) {
   header {
@@ -2516,6 +2636,7 @@
     width: 80%;
     margin: 0 auto;
     height: 100vh;
+    top: 0;
   }
   .formBtn {
     height: 50px;
@@ -2523,6 +2644,7 @@
   main {
     padding: 0rem 0rem;
     top: 3rem;
+    margin-bottom: -4rem;
   }
   main > .programs {
     flex-wrap: wrap;
@@ -2530,22 +2652,22 @@
     justify-content: start;
     gap: 0rem;
     padding: 0.3rem 1rem;
+    margin-top: 2rem;
   }
   .program_sect_1 {
     gap: 1rem;
     height: 60%;
     width: 100%;
     padding: 0rem 0.5rem;
+    text-align: center;
+    top: 2rem;
   }
   .program_sect_1 > p {
     font-size: 1.5rem;
-    line-height: 1.7rem;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-      "Lucida Sans", Arial, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
-  .program_sect_1 > div h1,
   .program_sect_2 > em {
-    font-size: 2rem;
+    font-size: 1rem;
   }
   .program_sect_1 div span {
     font-size: 2rem;
@@ -2583,6 +2705,7 @@
   }
   .our_vision_header {
     height: 10%;
+    margin-top: 1.5rem;
   }
   .vision_first_body {
     gap: 1rem;
@@ -2598,7 +2721,7 @@
     font-size: 100%;
   }
   .form {
-    top: 100%;
+    top: 0;
     width: 100%;
     left: 0;
     /* height: 400px; */
@@ -2624,7 +2747,7 @@
     font-size: 1rem;
   }
   .form_2 {
-    top: 100%;
+    top: 0;
     width: 100%;
     left: 0;
     z-index: 100;
@@ -2632,29 +2755,46 @@
   .form_2_register {
     width: 40%;
   }
+  /* subscription */
+  .subscription {
+    height: auto;
+  }
+  .subscription_divs {
+    padding: 1rem 0.4rem;
+  }
+  .subscription > small {
+    font-size: 0.8rem;
+  }
+  .subscription > h1 {
+    font-size: 1.5rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .subscription_divs > h1,
+  .subscription_divs > p {
+    font-size: 1rem;
+  }
+  /*  */
+  .our_programme {
+    width: 100%;
+  }
   .our_programme_comtent {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   .programmes {
-    padding: 0.4rem;
-    width: 100%;
-    gap: 0.4rem;
+    height: auto;
+    gap: 0.6rem;
+    padding: 1rem 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
-  .programmes > h1 {
-    font-size: 80%;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    font-weight: 900;
-  }
-  .programmes > button > a {
-    font-size: 74%;
-  }
+
+  /* services */
   .services {
     padding: 0;
   }
   .services_content {
     width: 100%;
-    overflow: scroll;
   }
   .services_body_1_content,
   .services_body_2_content,
@@ -2703,10 +2843,14 @@
   .our_programme_header {
     text-align: center;
   }
-  .programmes > h1,
-  .programmes > p {
+  .programmes > h1 {
     color: rgb(228, 201, 120);
     font-size: 100%;
+    font-weight: 800;
+  }
+  .programmes > p {
+    font-size: 70%;
+    font-weight: 500;
   }
   .tutors {
     margin-top: 3rem;
@@ -2737,14 +2881,9 @@
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     background-color: rgb(115, 132, 115);
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-  }
-  .person_image:hover,
-  .person_image:active,
-  .person_image:focus {
-    transform: scale(1.3);
-    transition: all 0.6s ease;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    object-fit: cover;
   }
   .person_text {
     height: calc(100% - 50%);
@@ -2754,11 +2893,14 @@
   }
   .person_text > b,
   .person_text > p {
-    font-size: 60%;
+    font-size: 80%;
+    font-weight: 600;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
   .person_text > h4 {
     font-size: 0.8rem;
-    font-weight: 450;
+    font-weight: 600;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
   .ceo {
     height: 400px;
@@ -2770,9 +2912,9 @@
   .ceo_text {
     height: 50%;
     text-align: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
   .ceo_text > h1 {
-    color: var(--text-black);
     font-size: 1.4rem;
   }
   .ceo_text > h2,
@@ -2784,7 +2926,6 @@
     margin: none;
   }
   .choose_header {
-    z-index: 1;
     height: 20%;
     align-items: center;
   }
@@ -2798,22 +2939,25 @@
   }
   .choose_text,
   .choose_image {
-    width: 100%;
+    width: 50%;
     height: 100%;
   }
   .choose_image {
-    border: 4px solid var(--main-color);
-    border-radius: 0.5rem;
+    border: 2px solid var(--main-color);
+    border-radius: 1.5rem;
   }
   .choose_content > .choose_text > div > span:nth-child(2n) {
     font-size: 1.1rem;
-    font-family: sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 500;
   }
   .contact_us {
     height: auto;
-    width: 100%;
+    width: 70%;
     box-shadow: none;
+    border-radius: 1rem;
+    border-left: 3px solid var(--text-color2);
+    transition: border ease 0.3s;
   }
   .contact_us_header {
     align-items: center;
@@ -2881,7 +3025,10 @@
     font-size: 90%;
   }
   .blog_main_container {
-    height: 400px;
+    height: 380px;
+  }
+  .blog_post_text {
+    gap: 0.2rem;
   }
   .explore_more,
   .partners_btn {
@@ -3100,8 +3247,8 @@
   .footer_nav > .subscribe_news > input[type="email"] {
     width: 100%;
   }
-   /* styling the responsiveness of the lesson notes section */
-   .materials_child_body {
+  /* styling the responsiveness of the lesson notes section */
+  .materials_child_body {
     padding: 0.5rem 0rem;
     padding-bottom: 2rem;
   }
@@ -3109,7 +3256,7 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
   .materials_boxes {
-    height:300px;
+    height: 300px;
     width: 250px;
   }
   /* singles sections of the notifications and courses */
@@ -3133,12 +3280,18 @@
   }
 }
 /* thsi is for a laptop screen and a bigger desktopn screen too */
-@media screen and (min-width: 1025px) and (max-width: 1440px){
-  .fixed_bottom_navbar{
+@media screen and (min-width: 1025px) and (max-width: 1439px) {
+  /* home page styling */
+  /* this styling is also working for the big screen . WONDERFUL !!!*/
+
+  .services_content {
+    width: 90%;
+  }
+  .fixed_bottom_navbar {
     display: none;
   }
   .learn_content {
-    grid-template-columns: 1fr 1fr ;
+    grid-template-columns: 1fr 1fr;
   }
   .materials_content {
     grid-template-columns: 1fr 1fr 1fr;
@@ -3146,7 +3299,7 @@
   .learn > h1,
   .materials > h1 {
     font-size: 1rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
   .learn_content {
     grid-template-columns: 1fr 1fr;
@@ -3163,12 +3316,12 @@
   #materials_child {
     width: auto;
   }
-  .whatsapp_message{
+  .whatsapp_message {
     left: 25%;
     top: 92%;
   }
-    /* singles sections of the notifications and courses */
-    /* .singlebody > .singlebody_details_top {
+  /* singles sections of the notifications and courses */
+  /* .singlebody > .singlebody_details_top {
       flex-wrap: wrap;
       height: auto;
       gap: 0.4rem;
@@ -3185,8 +3338,7 @@
     .singlebody > .singlebody_details_top > .single_course_information {
       width: 100%;
       /* padding: 0rem 1rem; */
-    /* } */
-
+  /* } */
 }
 
 /* so hafar if i push this thing give you like this and you start go dey write you own python code how me go take dey view am for my end . shay i go need to download python too nii */

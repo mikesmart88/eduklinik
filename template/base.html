@@ -5,7 +5,7 @@
     <meta charset="UTF-8">{% block metadata %} {% endblock %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#fff" />
-    <meta name="author" content="@pythonmaster" />
+    <meta name="author" content="@jabatch" />
     <meta name="msapplication-TileColor" content="#fff" />
     <meta name="msapplication-TileImage" content="" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -17,263 +17,82 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'eduklinikapp/images/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'eduklinikapp/images/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static 'eduklinikapp/images/site.webmanifest' %}">
-    <link rel="stylesheet" href="{% static 'eduklinikapp/style/base.css' %}">
+    <link rel="stylesheet" href="{% static 'eduklinikapp/styles/base.css' %}">
+    <link rel="stylesheet" href="{% static 'eduklinikapp/styles/responsive.css' %}">
     <title> {% block title %} {% endblock %}</title>
 </head>
 <body>
 
     <style>
-        body{
-            margin: 0px;
-            padding: 0px;
-            overflow-x: hidden;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-             'Open Sans', 'Helvetica Neue', sans-serif;
+
+        .developer{
+            height: fit-content !important;
+            height: fit-content !important;
+            margin: 0pc !important;
+            padding-bottom: 1rem !important;
         }
 
-
-        .head{
-            width: 100%;
-            height: 70px;
-            box-sizing: border-box;
-            overflow: hidden;
-            padding: 10px 20px;
-            position: fixed;
-            z-index: 200;
-            box-shadow: 2px 0px 5px #7c7c7cbd;
-            top: 0px;
-            background-color: #fff;
+        @media screen and (max-width:1000px) {
+            header{
+                height: 8% !important;
+                padding: 0.4rem 0.2rem !important;
+            }
+            .logo_container{
+                    width: 15% !important;
+                }
+            .register_login{
+                width: fit-content !important;
+                min-width: 20% !important;
+            }
+            .register, .login{
+                width: 100px;
+            }
         }
 
-        .logo_holder{
-            width: 20%;
-            height: fit-content;
-            box-sizing: border-box;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 5px;
-            text-decoration: none;
-            color: #000;
-        }
-        .logo{
-            width: 50px;
-            height: 50px;
-            box-sizing: border-box;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        .logo img{
-            width: auto;
-            height: 100%;
-            min-width: 100%;
+        @media screen and (max-width:800px) {
+            .hamburger-menu{
+                display: flex !important;
+                position: absolute !important;
+                right: 2% !important;
+            }
+            .logo_container{
+                width: 100% !important;
+            }
+            header{
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+            }
+
+            .responsive-dropdown{
+                display: flex !important;
+                position: absolute !important;
+                background: linear-gradient(to bottom, rgb(69, 1, 66), hsl(42, 60%, 48%)) !important;
+                height: 600px !important;
+                width: 60% !important;
+                z-index: 1 !important;
+                padding: 1rem 0rem !important;
+                color: #fff !important;
+            }
+            nav ul li > a{
+                color: #fff !important;
+            }
+            footer{
+                height: fit-content !important;
+
+            }
+            footer > div:nth-child(2), footer > div:nth-child(3), footer > div:nth-child(4){
+                gap: 1rem !important;
+            }
         }
 
-        .navagator{
-            width: 100%;
-            height: 100%;
-            box-sizing: border-box;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        @media screen and (max-width:750px) {
+            .responsive-dropdown{
+                height: fit-content !important;
+                width: 80% !important;
+            }
         }
-
-        .logo_text{
-            font-size: 2rem;
-            box-sizing: border-box;
-            font-weight: 800;
-            height: 50px;
-            width: fit-content;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            color: transparent;
-            background-clip: text;
-        }
-
-        .nav_link{
-            width: fit-content;
-            box-sizing: border-box;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            max-width: 60%;
-            gap: 20px;
-        }
-
-        .nav_link a{
-            text-decoration: none;
-            color: #282828;
-            box-sizing: border-box;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .nav_link a:hover{
-            color:#832e80;
-            transition: .3s linear;
-        }
-
-        .user_link{
-            width: fit-content;
-            box-sizing: border-box;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            height: 100%;
-        }
-
-        .user_link a{
-            width: 150px;
-            height: 90%;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: #000;
-            border:2px solid #fcb819c3;
-            background-color: #fff;
-            border-radius: 10px;
-            font-weight: 500;
-        }
-
-        .user_link a:hover{
-            background-color: #fcb819c3;
-            color: #fff;
-            transition: .3s linear;
-        }
-
-        .hamburger-menu{
-            width: 50px;
-            height: 50px;
-            box-sizing: border-box;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            display: none;
-        }
-
-        .hamburger-menu svg{
-            width: 30px;
-            height: 30px;
-        }
-
-        .main_sect{
-            width: 100%;
-            height: fit-content;
-            box-sizing: border-box;
-            overflow-x: hidden;
-            min-height: 300px;
-            padding-top: 80px;
-        }
-
-        .foot{
-            width: 100%;
-            height: fit-content;
-            box-sizing: border-box;
-            overflow: hidden;
-            min-height: 200px;
-        }
-
-        .top_foot{
-            width: 100%;
-            height: 30px;
-            box-sizing: border-box;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #320d2b;
-            color: #fff;
-            padding: 5px 30px;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .social_icon{
-            width: fit-content;
-            box-sizing: border-box;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .social_icon a{
-            width: 20px;
-            height: 20px;
-            text-decoration: none;
-            color: #fff;
-            box-sizing: border-box;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .center_foot{
-            width: 100%;
-            height: fit-content;
-            box-sizing: border-box;
-            overflow: hidden;
-            padding: 30px 30px;
-            background-color: #5a1455e8;
-            color: #fff;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            flex-wrap: wrap;
-        }
-
-        .foot_box{
-            width: 250px;
-            height: fit-content;
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-
-        .foot_box a{
-            text-align: none;
-            box-sizing: border-box;
-            overflow: hidden;
-            color: #fff;
-            font-size: 13px;
-            line-height: 1rem;
-        }
-        .foot_text_box{
-            width: 450px;
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-
-        .last_foot{
-            width: 100%;
-            height: 30px;
-            box-sizing: border-box;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #000;
-            color: #fff;
-            font-size: 13px;
-            font-weight: 500;
-            font-style: italic;
-        }
-
+        
         .install-banner {
             width: 100%;
             background-color: #832e80;
@@ -319,48 +138,9 @@
             cursor: pointer;
           }
 
-        @media screen and (max-width:1000px) {
-            .logo_text{
-                display: none;
-            }
-           .nav_link{
-            display: none;
-           }
-           .hamburger-menu{
-            display: flex;
-           }
-           .user_link{
-            width: 60% !important;
-           }
-        }
-
         @media screen and (max-width:500px) {
-            .user_link{
-                display: none;
-            }
-            .head{
-                padding: 10px;
-                height: 60px;
-            }
-            .logo{
-                width: 30px;
-                height: 30px;
-            }
-            .center_foot{
-                padding: 20px 10px;
-            }
-            .foot_box{
-                width: 100%;
-            }
-            .foot_text_box{
-                width: 100%;
-            }
-            .foot_text_box p{
-                font-size: 13px;
-            }
-            .textt{
-                font-size: 10px;
-            }
+            
+            
             .install-banner{
                 padding: 10px 10px;
             } 
@@ -446,130 +226,205 @@
         </div>
       </div>
 
-    <header class="head">
-        <nav class="navagator">
-            <a href="/" class="logo_holder">
-                <span class="logo">
-                    <img src="{% static 'eduklinikapp/images/ed_logo.png' %}" alt="">
-                </span>
-                <span class="logo_text" style="background-image: url(/eduklinikapp/static/eduklinikapp/images/pop.jpg);">
-                    Eduklinik
-                </span>
-            </a>
-
-            <div class="nav_link">
-
-                <a href="/">Home</a>
-                <a href="/course/">Explore course</a>
-                <a href="/online_school/">Online school</a>
-                <a href="/blog/">Blog</a>
-                <a href="/about/">About us</a>
+    <section class="homepage_container">
+        <header id="header">
+            <div class="logo_container" style="background-image: url(/eduklinikapp/static/eduklinikapp/images/android-chrome-192x192.png);">
             </div>
-
-            <div class="user_link">
-                <a href="/dashboard/">
-                    Get started
-                </a>
-            </div>
-
-            <div class="hamburger-menu" id="hamburger_menu" onclick="document.getElementById('sidebar').style.transform='translatex(0%)';"> 
+            <div class="hamburger-menu" id="hamburger_menu" style="color: white;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
                         d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
                 </svg>
             </div>
+            <section class="responsive-dropdown">
+                <nav>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#programs">Programs</a></li>
+                        <li><a href="/online_school/" id="enrol_btn">Online-school</a></li>
+                        <li><a href="#tutors">Tutors</a></li>
+                        <li><a href="/blog/">Blog</a></li>
+                        <li><a class="contact_active" href="#footer">Contact-us</a></li>
+                    </ul>
+                </nav>
+                <div class="register_login">
+                    <button class="login">
+                        <a href="/user/login/">
+                            Login
+                        </a>
+                    </button>
+                    <button class="register">
+                        <a href="/user/">
+                            Register
+                        </a>
+                    </button>
+                </div>
+                <span class="remove_nav">*</span>
+                <span class="menu_info">
+                    All rights reserved. <br>
+                    EDUKLINIK LEARNING NEXUS ,2025. <br> <br>
+                    <a style="color: rgb(136, 47, 115); text-decoration: underline;" href="">
+                        Privacy policy
+                    </a>
+                    <a style="color:  rgb(136, 47, 115); text-decoration: underline;" href="">
+                        Terms and conditions
+                    </a>
+                </span>
+            </section>
+            <section class="form">
+                <form action="">
+                    <h1>Welcome back !</h1>
+                    <span class="remove_form">*</span>
+                    <input type="email" placeholder="Enter your email or number here" required>
+                    <input type="password" placeholder="Enter your password here" required>
+                    <div class="formBtn_div">
+                        <button class="formBtn">
+                            <a href="/eduklinikapp/online_school.html">Log in</a>
+                        </button>
+                        <small>
+                            <a href="">
+                                Forgot password ?
+                            </a>
+                        </small>
+                    </div>
+                    <h3>Dont have an account? <a class="Register_redirect" href="#">Register</a></h3>
+                    <div class="sect-2">
+                        <h4>Log in with </h4>
+                    </div>
+                    <div class="icons">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-linkedin" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+                            </svg>
+                        </span>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-facebook" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
+                            </svg></span>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-twitter-x" viewBox="0 0 16 16">
+                                <path
+                                    d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
+                            </svg></span>
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z" />
+                            </svg>
+                        </span>
+                    </div>
+                </form>
+            </section>
+            <section class="form_2">
+                <form action="">
+                    <h1>Get started !</h1>
+                    <span class="remove_form_2">*</span>
+                    <input type="name" placeholder="Name (surname first)" required>
+                    <input type="email" placeholder="E-mail" required>
+                    <input class="date" type="date" placeholder="DOB" required>
+                    <input type="password" placeholder="Enter your password here" required>
+                    <!-- <div class="gender">
+                        <label for="male">
+                            <input type="checkbox" name="gender" id="male">
+                            <span>Male</span>
+                        </label>
+                        <label for="female">
+                            <input type="checkbox" name="gender" id="female">
+                            <span>Female</span>
+                        </label>
+                    </div> -->
+                    <button class="form_2_register">
+                        <a href="/eduklinikapp/online_school.html">
+                            Register
+                        </a>
+                    </button>
+                    <h3>Already have an account ? <a class="login_redirect" href="#">Login</a></h3>
+                </form>
+            </section>
+        </header>
 
-        </nav>
-    </header>
-
-    <main class="main_sect">
+    <main >
         <wt-tkn id="us_tkn">{% csrf_token %}</wt-tkn>
         {% block content %} {% endblock %}
     </main>
 
-    <footer class="foot">
-        <div class="top_foot">
-            <span>
-                Www.educklinik.org
-            </span>
-            <span class="social_icon">
-                <a href="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
-                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
-                      </svg>
-                </a>
-                <a href="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-                        <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
-                      </svg>
-                </a>
-                <a href="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
-                        <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
-                      </svg>
-                </a>
-                <a href="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
-                        <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"/>
-                      </svg>
-                </a>
-            </span>
-        </div>
-        <div class="center_foot">
-            <div class="foot_box">
-                <p>
-                    Link
-                </p>
-                <a href="/">Home</a> <br>
-                <a href="/course/">Explore course</a> <br>
-                <a href="/online_school/">Online school</a> <br>
-                <a href="/blog/">Blog</a> <br>
-                <a href="/about/">About us</a> <br>
-                <a href="user/login">Login</a> <br>
-                <a href="user/register">Register</a> <br>
-            </div>
+    <footer id="footer">
+                <div class="foot_about">
+                    <div style="background-image: url(/eduklinikapp/static/eduklinikapp/images/android-chrome-192x192.png);"></div>
+                    <p>
+                        At Eduklinik Learning Nexus, we are committed to transforming education through innovation and
+                        excellence.
+                        Explore our <a class="footer_link" href="#">consultancy services</a> and enroll in our flagship
+                        Eduklinik <a class="footer_link" href="#">Online School</a> to redefine
+                        your learning experience.
+                    </p>
+                </div>
+                <div class="foot_links">
+                    <h1>Quick links</h1>
+                    <ul>
+                        <li><span>&#10095;</span><a href="/">Home</a></li>
+                        <li><span>&#10095;</span><a href="/online_school/" id="enrol_btn">Online-school</a></li>
+                        <li><span>&#10095;</span><a href="/log_user/">Login/Register</a></li>
+                        <li><span>&#10095;</span><a href="/blog/">Our Blog</a></li>
+                        <li><span>&#10095;</span><a href="#programs">consultancy</a></li>
+                    </ul>
+                </div>
+                <div class="subscriibe">
+                    <h1>Subscribe to our news letter</h1>
+                    <p>Get latest news , updates , tips and tricks in your inbox</p>
+                    <div>
+                        <input type="email" placeholder="E-mail" required>
+                        <button class="submit">
+                            <a href="">Submit</a>
+                        </button>
+                    </div>
+                    <button class="call">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+                            </svg>
+                        </span>
+                        <a href="callto:+234 507 768">
+                            Book a call
+                        </a>
+                    </button>
+                </div>
+                <div class="contacts">
+                    <h1>Contact us</h1>
+                    <div>
+                        <span>
+                            <h2>Address</h2>
+                            <p>Eduklinik HQ, Ilorin, Nigeria</p>
+                        </span>
+                        <span>
+                            <h2>E-mail</h2>
+                            <p><a href="mailto:info@eduklinik@gmail.com">info@eduklinik.com</a> &#10095;</p>
+                        </span>
+                        <span>
+                            <h2>Phone</h2>
+                            <p><a class="calling_footer" href="tel:+234 123 456 7890">+234 123 456 7890</a> &#10095;</p>
+                        </span>
+                    </div>
+                </div>
+            </footer>
+            <section class="developer">
+                <div class="developer_name">
+                    <h3>Developed and maintained by <span style="color: var(--text-color2);">clean code inc.(CCI)</span>
+                    </h3>
+                </div>
+                <div id="google_translate_element" class="multilingual_system"></div>
+                <div class="copyright">
+                    <h4> &copy; Copyright 2025. All rights reserved</h4>
+                    <h5>EDUKLINIK LEARNING NEXUS</h5>
+                </div>
+            </section>
 
-            <div class="foot_box">
-                <p>
-                    Learn
-                </p>
-                <a href="/course/">courses</a> <br>
-                <a href="/leasson/">lesson</a> <br>
-                <a href="/textbook/">textbook</a> <br>
-                <a href="/past_question/">past question</a> <br>
-                <a href="/handout/">handout</a> <br>
-                <a href="/syllabuse/">syllabuses</a> <br>
-            </div>
-
-            <div class="foot_box">
-                <p>
-                    Help
-                </p>
-                <a href="/contact/">contact us</a> <br>
-                <a href="//">info@eduklinik.org</a> <br>
-                <a href="//">call us</a> <br>
-            </div>
-
-            <div class="foot_text_box">
-                <h2>
-                    Eduklinik Nexus
-                </h2>
-                <p>
-                    Eduklinik is a learning platform that provides a wide range of courses and resources to help individuals
-                    enhance their skills and knowledge. With a focus on quality education, we aim to empower learners
-                    worldwide.
-                </p>
-                <small>Powerd by: CCI</small>
-            </div>
-
-        </div>
-        <div class="last_foot">
-            &copy; 2025 Eduklinik. All rights reserved.
-        </div>
-
-    </footer>
-
-    <script src="{% static 'eduklinik/scripts/homepage.js' %}"></script>
+    <script src="{% static 'eduklinikapp/scripts/homepage.js' %}"></script>
 
     <script>
 
@@ -607,11 +462,22 @@
 
     </script>
 
+    <script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      {pageLanguage: 'en'}, // Change 'en' to your website's default language
+      'google_translate_element'
+    );
+  }
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <style>
         .fixed_bottom_navbar a{
             text-decoration: none !important;
         }
     </style>
-    
+    </section>
 </body>
 </html>
